@@ -144,36 +144,36 @@ const HealthMap = () => {
         </div>
 
         {/* Map */}
-        <MapContainer
-          center={[-23.5505, -46.6333]}
-          zoom={12}
-          style={{ height: "100%", width: "100%" }}
-          className="z-0"
-        >
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-          
-          {filteredUnits.map((unit) => (
-            <Marker
-              key={unit.id}
-              position={unit.coordinates}
-              icon={createCustomIcon(unit.status)}
-              eventHandlers={{
-                click: () => setSelectedUnit(unit)
-              }}
-            >
-              <Popup>
-                <div className="p-2">
-                  <h3 className="font-semibold text-sm">{unit.name}</h3>
-                  <p className="text-xs text-muted-foreground">{unit.address}</p>
-                  <p className="text-xs mt-1">{getStatusBadge(unit.status)}</p>
-                </div>
-              </Popup>
-            </Marker>
-          ))}
-        </MapContainer>
+        <div style={{ height: "100%", width: "100%" }}>
+          <MapContainer
+            center={[-23.5505, -46.6333]}
+            zoom={12}
+            style={{ height: "100%", width: "100%" }}
+          >
+            <TileLayer
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+            {filteredUnits.map((unit) => (
+              <Marker
+                key={unit.id}
+                position={unit.coordinates}
+                icon={createCustomIcon(unit.status)}
+                eventHandlers={{
+                  click: () => setSelectedUnit(unit)
+                }}
+              >
+                <Popup>
+                  <div className="p-2">
+                    <h3 className="font-semibold text-sm">{unit.name}</h3>
+                    <p className="text-xs text-muted-foreground">{unit.address}</p>
+                    <p className="text-xs mt-1">{getStatusBadge(unit.status)}</p>
+                  </div>
+                </Popup>
+              </Marker>
+            ))}
+          </MapContainer>
+        </div>
 
         {/* Legend */}
         <div className="absolute bottom-4 left-4 z-[1000]">

@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Heart, Menu, X } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import cuidaLogo from "@/assets/cuida-logo.png";
 
 const Header = () => {
@@ -11,7 +12,7 @@ const Header = () => {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center space-x-3">
+          <Link to="/" className="flex items-center space-x-3">
             <img 
               src={cuidaLogo} 
               alt="CUIDA Logo" 
@@ -21,22 +22,22 @@ const Header = () => {
               <h1 className="text-xl font-bold text-primary">CUIDA</h1>
               <p className="text-xs text-muted-foreground">Sistema de Cuidados</p>
             </div>
-          </div>
+          </Link>
 
           <nav className="hidden md:flex items-center space-x-8">
-            <a href="#inicio" className="text-foreground hover:text-primary transition-colors font-medium">
+            <a href="/#inicio" className="text-foreground hover:text-primary transition-colors font-medium">
               Início
             </a>
-            <a href="#servicos" className="text-foreground hover:text-primary transition-colors font-medium">
+            <a href="/#servicos" className="text-foreground hover:text-primary transition-colors font-medium">
               Serviços
             </a>
-            <a href="/portal-cidadao" className="text-foreground hover:text-primary transition-colors font-medium">
+            <Link to="/portal-cidadao" className="text-foreground hover:text-primary transition-colors font-medium">
               Portal do Cidadão
-            </a>
-            <a href="#sobre" className="text-foreground hover:text-primary transition-colors font-medium">
+            </Link>
+            <a href="/#sobre" className="text-foreground hover:text-primary transition-colors font-medium">
               Sobre
             </a>
-            <a href="#contato" className="text-foreground hover:text-primary transition-colors font-medium">
+            <a href="/#contato" className="text-foreground hover:text-primary transition-colors font-medium">
               Contato
             </a>
           </nav>
@@ -70,35 +71,35 @@ const Header = () => {
           <div className="md:hidden mt-4 pb-4 border-t border-border pt-4">
             <nav className="flex flex-col space-y-4">
               <a 
-                href="#inicio" 
+                href="/#inicio" 
                 className="text-foreground hover:text-primary transition-colors font-medium py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Início
               </a>
               <a 
-                href="#servicos" 
+                href="/#servicos" 
                 className="text-foreground hover:text-primary transition-colors font-medium py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Serviços
               </a>
-              <a 
-                href="/portal-cidadao" 
+              <Link 
+                to="/portal-cidadao" 
                 className="text-foreground hover:text-primary transition-colors font-medium py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Portal do Cidadão
-              </a>
+              </Link>
               <a 
-                href="#sobre" 
+                href="/#sobre" 
                 className="text-foreground hover:text-primary transition-colors font-medium py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Sobre
               </a>
               <a 
-                href="#contato" 
+                href="/#contato" 
                 className="text-foreground hover:text-primary transition-colors font-medium py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
