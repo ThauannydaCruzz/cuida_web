@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { useState, useEffect, useRef } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -23,7 +22,7 @@ import {
   Package
 } from "lucide-react";
 
-// Fix for default markers in React Leaflet
+// Fix for default markers in Leaflet
 delete (L.Icon.Default.prototype as any)._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
@@ -31,81 +30,107 @@ L.Icon.Default.mergeOptions({
   shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
 });
 
-// Simplified custom icons using DivIcon
-const createCustomIcon = (status: string) => {
-  const iconConfig = {
-    healthy: { color: '#22c55e', icon: '✓' },
-    normal: { color: '#3b82f6', icon: '+' },
-    attention: { color: '#f59e0b', icon: '!' },
-    urgent: { color: '#ef4444', icon: '✕' }
-  };
-
-  const config = iconConfig[status as keyof typeof iconConfig] || iconConfig.normal;
-  
-  return L.divIcon({
-    html: `
-      <div style="
-        background-color: ${config.color};
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-weight: bold;
-        font-size: 14px;
-        border: 3px solid white;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-      ">
-        ${config.icon}
-      </div>
-    `,
-    className: 'custom-div-icon',
-    iconSize: [30, 30],
-    iconAnchor: [15, 15]
-  });
-};
-
-const MapComponent = ({ units, onMarkerClick }: { units: HealthUnit[], onMarkerClick: (unit: HealthUnit) => void }) => {
-  return (
-    <MapContainer
-      center={[-23.5505, -46.6333]}
-      zoom={12}
-      style={{ height: "100%", width: "100%" }}
-      scrollWheelZoom={true}
-    >
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      {units.map((unit) => (
-        <Marker
-          key={unit.id}
-          position={unit.coordinates}
-          icon={createCustomIcon(unit.status)}
-          eventHandlers={{
-            click: () => onMarkerClick(unit)
-          }}
-        >
-          <Popup>
-            <div style={{ padding: '8px' }}>
-              <h3 style={{ fontWeight: 'bold', fontSize: '14px', margin: '0 0 4px 0' }}>{unit.name}</h3>
-              <p style={{ fontSize: '12px', color: '#666', margin: '0 0 4px 0' }}>{unit.address}</p>
-              <p style={{ fontSize: '12px', margin: '0' }}>Status: {unit.status}</p>
-            </div>
-          </Popup>
-        </Marker>
-      ))}
-    </MapContainer>
-  );
-};
-
 const HealthMap = () => {
+  const mapRef = useRef<HTMLDivElement>(null);
+  const mapInstanceRef = useRef<L.Map | null>(null);
+  const markersRef = useRef<L.Marker[]>([]);
+  
   const [selectedUnit, setSelectedUnit] = useState<HealthUnit | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredUnits, setFilteredUnits] = useState<HealthUnit[]>(healthUnits);
 
+  // Create custom icons
+  const createCustomIcon = (status: string) => {
+    const iconConfig = {
+      healthy: { color: '#22c55e', icon: '✓' },
+      normal: { color: '#3b82f6', icon: '+' },
+      attention: { color: '#f59e0b', icon: '!' },
+      urgent: { color: '#ef4444', icon: '✕' }
+    };
+
+    const config = iconConfig[status as keyof typeof iconConfig] || iconConfig.normal;
+    
+    return L.divIcon({
+      html: `
+        <div style="
+          background-color: ${config.color};
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          font-weight: bold;
+          font-size: 14px;
+          border: 3px solid white;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        ">
+          ${config.icon}
+        </div>
+      `,
+      className: 'custom-div-icon',
+      iconSize: [30, 30],
+      iconAnchor: [15, 15]
+    });
+  };
+
+  // Initialize map
+  useEffect(() => {
+    if (!mapRef.current || mapInstanceRef.current) return;
+
+    // Create map instance
+    mapInstanceRef.current = L.map(mapRef.current).setView([-23.5505, -46.6333], 12);
+
+    // Add tile layer
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(mapInstanceRef.current);
+
+    // Cleanup function
+    return () => {
+      if (mapInstanceRef.current) {
+        mapInstanceRef.current.remove();
+        mapInstanceRef.current = null;
+      }
+    };
+  }, []);
+
+  // Update markers when filtered units change
+  useEffect(() => {
+    if (!mapInstanceRef.current) return;
+
+    // Clear existing markers
+    markersRef.current.forEach(marker => {
+      mapInstanceRef.current?.removeLayer(marker);
+    });
+    markersRef.current = [];
+
+    // Add new markers
+    filteredUnits.forEach(unit => {
+      const marker = L.marker(unit.coordinates, {
+        icon: createCustomIcon(unit.status)
+      });
+
+      const popupContent = `
+        <div style="padding: 8px;">
+          <h3 style="font-weight: bold; font-size: 14px; margin: 0 0 4px 0;">${unit.name}</h3>
+          <p style="font-size: 12px; color: #666; margin: 0 0 4px 0;">${unit.address}</p>
+          <p style="font-size: 12px; margin: 0;">Status: ${unit.status}</p>
+        </div>
+      `;
+
+      marker.bindPopup(popupContent);
+      marker.on('click', () => {
+        setSelectedUnit(unit);
+      });
+
+      marker.addTo(mapInstanceRef.current!);
+      markersRef.current.push(marker);
+    });
+  }, [filteredUnits]);
+
+  // Filter units based on search
   useEffect(() => {
     const filtered = healthUnits.filter(unit =>
       unit.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -178,9 +203,11 @@ const HealthMap = () => {
         </div>
 
         {/* Map */}
-        <div className="absolute inset-0">
-          <MapComponent units={filteredUnits} onMarkerClick={setSelectedUnit} />
-        </div>
+        <div 
+          ref={mapRef} 
+          className="absolute inset-0 w-full h-full"
+          style={{ zIndex: 0 }}
+        />
 
         {/* Legend */}
         <div className="absolute bottom-4 left-4 z-[1000]">
