@@ -25,19 +25,22 @@ const Header = () => {
           </Link>
 
           <nav className="hidden md:flex items-center space-x-8">
-            <a href="/#inicio" className="text-foreground hover:text-primary transition-colors font-medium">
-              Início
+            <a href="#inicio" className="text-foreground hover:text-primary transition-colors font-medium">
+              CUIDA
             </a>
-            <a href="/#servicos" className="text-foreground hover:text-primary transition-colors font-medium">
-              Serviços
+            <a href="#gestores" className="text-foreground hover:text-primary transition-colors font-medium">
+              Gestores
+            </a>
+            <a href="#tecnologia" className="text-foreground hover:text-primary transition-colors font-medium">
+              Tecnologia
+            </a>
+            <a href="#departamentos" className="text-foreground hover:text-primary transition-colors font-medium">
+              Departamentos
             </a>
             <Link to="/portal-cidadao" className="text-foreground hover:text-primary transition-colors font-medium">
               Portal do Cidadão
             </Link>
-            <a href="/#sobre" className="text-foreground hover:text-primary transition-colors font-medium">
-              Sobre
-            </a>
-            <a href="/#contato" className="text-foreground hover:text-primary transition-colors font-medium">
+            <a href="#contato" className="text-foreground hover:text-primary transition-colors font-medium">
               Contato
             </a>
           </nav>
@@ -71,18 +74,32 @@ const Header = () => {
           <div className="md:hidden mt-4 pb-4 border-t border-border pt-4">
             <nav className="flex flex-col space-y-4">
               <a 
-                href="/#inicio" 
+                href="#inicio" 
                 className="text-foreground hover:text-primary transition-colors font-medium py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Início
+                CUIDA
               </a>
               <a 
-                href="/#servicos" 
+                href="#gestores" 
                 className="text-foreground hover:text-primary transition-colors font-medium py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Serviços
+                Gestores
+              </a>
+              <a 
+                href="#tecnologia" 
+                className="text-foreground hover:text-primary transition-colors font-medium py-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Tecnologia
+              </a>
+              <a 
+                href="#departamentos" 
+                className="text-foreground hover:text-primary transition-colors font-medium py-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Departamentos
               </a>
               <Link 
                 to="/portal-cidadao" 
@@ -92,14 +109,7 @@ const Header = () => {
                 Portal do Cidadão
               </Link>
               <a 
-                href="/#sobre" 
-                className="text-foreground hover:text-primary transition-colors font-medium py-2"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Sobre
-              </a>
-              <a 
-                href="/#contato" 
+                href="#contato" 
                 className="text-foreground hover:text-primary transition-colors font-medium py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
