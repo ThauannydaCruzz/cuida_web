@@ -1,0 +1,114 @@
+import { Button } from "@/components/ui/button";
+import { Heart, Menu, X } from "lucide-react";
+import { useState } from "react";
+import cuidaLogo from "@/assets/cuida-logo.png";
+
+const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  return (
+    <header className="bg-card/95 backdrop-blur-sm border-b border-border sticky top-0 z-50 shadow-card">
+      <div className="container mx-auto px-4 py-4">
+        <div className="flex items-center justify-between">
+          {/* Logo */}
+          <div className="flex items-center space-x-3">
+            <img 
+              src={cuidaLogo} 
+              alt="CUIDA Logo" 
+              className="w-10 h-10 rounded-lg shadow-sm"
+            />
+            <div>
+              <h1 className="text-xl font-bold text-primary">CUIDA</h1>
+              <p className="text-xs text-muted-foreground">Sistema de Cuidados</p>
+            </div>
+          </div>
+
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center space-x-8">
+            <a href="#inicio" className="text-foreground hover:text-primary transition-colors font-medium">
+              Início
+            </a>
+            <a href="#servicos" className="text-foreground hover:text-primary transition-colors font-medium">
+              Serviços
+            </a>
+            <a href="#sobre" className="text-foreground hover:text-primary transition-colors font-medium">
+              Sobre
+            </a>
+            <a href="#contato" className="text-foreground hover:text-primary transition-colors font-medium">
+              Contato
+            </a>
+          </nav>
+
+          {/* Desktop Actions */}
+          <div className="hidden md:flex items-center space-x-4">
+            <Button variant="ghost">
+              Entrar
+            </Button>
+            <Button variant="hero">
+              Começar Agora
+            </Button>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden p-2 hover:bg-accent rounded-lg transition-colors"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Menu"
+          >
+            {isMenuOpen ? (
+              <X className="h-6 w-6 text-foreground" />
+            ) : (
+              <Menu className="h-6 w-6 text-foreground" />
+            )}
+          </button>
+        </div>
+
+        {/* Mobile Navigation */}
+        {isMenuOpen && (
+          <div className="md:hidden mt-4 pb-4 border-t border-border pt-4">
+            <nav className="flex flex-col space-y-4">
+              <a 
+                href="#inicio" 
+                className="text-foreground hover:text-primary transition-colors font-medium py-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Início
+              </a>
+              <a 
+                href="#servicos" 
+                className="text-foreground hover:text-primary transition-colors font-medium py-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Serviços
+              </a>
+              <a 
+                href="#sobre" 
+                className="text-foreground hover:text-primary transition-colors font-medium py-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Sobre
+              </a>
+              <a 
+                href="#contato" 
+                className="text-foreground hover:text-primary transition-colors font-medium py-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Contato
+              </a>
+              <div className="flex flex-col space-y-3 pt-4 border-t border-border">
+                <Button variant="ghost" onClick={() => setIsMenuOpen(false)}>
+                  Entrar
+                </Button>
+                <Button variant="hero" onClick={() => setIsMenuOpen(false)}>
+                  Começar Agora
+                </Button>
+              </div>
+            </nav>
+          </div>
+        )}
+      </div>
+    </header>
+  );
+};
+
+export default Header;
