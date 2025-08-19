@@ -31,7 +31,7 @@ L.Icon.Default.mergeOptions({
   shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
 });
 
-// Custom icons for different status
+// Simplified custom icons using DivIcon
 const createCustomIcon = (status: string) => {
   const iconConfig = {
     healthy: { color: '#22c55e', icon: '✓' },
@@ -61,10 +61,44 @@ const createCustomIcon = (status: string) => {
         ${config.icon}
       </div>
     `,
-    className: 'custom-marker',
+    className: 'custom-div-icon',
     iconSize: [30, 30],
     iconAnchor: [15, 15]
   });
+};
+
+const MapComponent = ({ units, onMarkerClick }: { units: HealthUnit[], onMarkerClick: (unit: HealthUnit) => void }) => {
+  return (
+    <MapContainer
+      center={[-23.5505, -46.6333]}
+      zoom={12}
+      style={{ height: "100%", width: "100%" }}
+      scrollWheelZoom={true}
+    >
+      <TileLayer
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+      />
+      {units.map((unit) => (
+        <Marker
+          key={unit.id}
+          position={unit.coordinates}
+          icon={createCustomIcon(unit.status)}
+          eventHandlers={{
+            click: () => onMarkerClick(unit)
+          }}
+        >
+          <Popup>
+            <div style={{ padding: '8px' }}>
+              <h3 style={{ fontWeight: 'bold', fontSize: '14px', margin: '0 0 4px 0' }}>{unit.name}</h3>
+              <p style={{ fontSize: '12px', color: '#666', margin: '0 0 4px 0' }}>{unit.address}</p>
+              <p style={{ fontSize: '12px', margin: '0' }}>Status: {unit.status}</p>
+            </div>
+          </Popup>
+        </Marker>
+      ))}
+    </MapContainer>
+  );
 };
 
 const HealthMap = () => {
@@ -144,35 +178,8 @@ const HealthMap = () => {
         </div>
 
         {/* Map */}
-        <div style={{ height: "100%", width: "100%" }}>
-          <MapContainer
-            center={[-23.5505, -46.6333]}
-            zoom={12}
-            style={{ height: "100%", width: "100%" }}
-          >
-            <TileLayer
-              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            />
-            {filteredUnits.map((unit) => (
-              <Marker
-                key={unit.id}
-                position={unit.coordinates}
-                icon={createCustomIcon(unit.status)}
-                eventHandlers={{
-                  click: () => setSelectedUnit(unit)
-                }}
-              >
-                <Popup>
-                  <div className="p-2">
-                    <h3 className="font-semibold text-sm">{unit.name}</h3>
-                    <p className="text-xs text-muted-foreground">{unit.address}</p>
-                    <p className="text-xs mt-1">{getStatusBadge(unit.status)}</p>
-                  </div>
-                </Popup>
-              </Marker>
-            ))}
-          </MapContainer>
+        <div className="absolute inset-0">
+          <MapComponent units={filteredUnits} onMarkerClick={setSelectedUnit} />
         </div>
 
         {/* Legend */}
