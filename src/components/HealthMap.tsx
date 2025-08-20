@@ -289,7 +289,7 @@ const HealthMap = () => {
 
       {/* Sidebar */}
       {selectedUnit && (
-        <div className="w-96 bg-card border-l border-border overflow-y-auto">
+        <div className="fixed right-0 top-0 bottom-0 w-96 bg-card border-l border-border overflow-y-auto z-[1001] shadow-xl">
           <div className="sticky top-0 bg-primary text-primary-foreground p-4 z-10">
             <div className="flex items-center justify-between">
               <h2 className="text-xl font-bold">{selectedUnit.name}</h2>
@@ -383,8 +383,8 @@ const HealthMap = () => {
                 Ver Estoque Completo
               </Button>
               <Button className="w-full" variant="secondary">
-                <Calendar className="w-4 h-4 mr-2" />
-                Agendar Reabastecimento
+                <User className="w-4 h-4 mr-2" />
+                Demonstrar Interesse
               </Button>
             </div>
 
@@ -402,9 +402,13 @@ const HealthMap = () => {
                     </div>
                     <div className="text-right">
                       <p className="text-sm font-medium">
-                        {med.quantity}/{med.maxStock}
+                        {med.quantity > 0 ? `${med.quantity} disponível` : 'Indisponível'}
                       </p>
-                      {getStatusBadge(med.status)}
+                      {med.quantity > 0 ? (
+                        <Badge variant="default" className="bg-green-500">Disponível</Badge>
+                      ) : (
+                        <Badge variant="destructive">Indisponível</Badge>
+                      )}
                     </div>
                   </div>
                 ))}
