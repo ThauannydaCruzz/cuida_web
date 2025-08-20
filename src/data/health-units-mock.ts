@@ -1,52 +1,33 @@
 import { HealthUnit } from "@/types/health-units";
 
 export const healthUnits: HealthUnit[] = [
+  // UBSs
   {
-    id: "upa-central",
-    name: "UPA Central",
-    type: "UPA",
-    address: "Av. Central, 1000 - Centro",
-    coordinates: [-23.5505, -46.6333],
-    phone: "(11) 3333-1000",
-    manager: "Dr. Ana Silva",
-    status: "attention",
-    workingHours: "24h",
-    services: ["Emergência", "Urgência", "Observação"],
+    id: "ubs-alto-cafezal",
+    name: "UBS Alto Cafezal",
+    type: "UBS",
+    address: "Rua Paes Lemes, 850",
+    coordinates: [-22.2144, -49.9463],
+    phone: "(14) 3402-1234",
+    manager: "Dr. Ana Santos",
+    status: "healthy",
+    workingHours: "07:00 - 17:00",
+    services: ["Consultas", "Vacinas", "Curativos"],
     medications: [
       {
         id: "med1",
         name: "Dipirona",
-        dosage: "5mg",
-        quantity: 0,
+        dosage: "500mg",
+        quantity: 150,
         minStock: 50,
-        maxStock: 500,
-        status: "urgent"
+        maxStock: 300,
+        status: "healthy"
       },
       {
         id: "med2",
-        name: "Soro Fisiológico",
-        dosage: "500ml",
-        quantity: 10,
-        minStock: 100,
-        maxStock: 1000,
-        expiryDate: "2024-01-15",
-        batchNumber: "XYZ",
-        status: "urgent"
-      },
-      {
-        id: "med3",
         name: "Paracetamol",
         dosage: "750mg",
         quantity: 80,
-        minStock: 50,
-        maxStock: 300,
-        status: "attention"
-      },
-      {
-        id: "med4",
-        name: "Ibuprofeno",
-        dosage: "400mg",
-        quantity: 150,
         minStock: 50,
         maxStock: 200,
         status: "healthy"
@@ -54,39 +35,85 @@ export const healthUnits: HealthUnit[] = [
     ]
   },
   {
-    id: "ubs-vila-nova",
-    name: "UBS Vila Nova",
+    id: "ubs-bandeirantes",
+    name: "UBS Bandeirantes",
     type: "UBS",
-    address: "Rua das Flores, 500 - Vila Nova",
-    coordinates: [-23.5405, -46.6233],
-    phone: "(11) 3333-2000",
-    manager: "Dra. Maria Santos",
-    status: "healthy",
+    address: "Rua Albericio Mendes Pinto, 96",
+    coordinates: [-22.2156, -49.9445],
+    phone: "(14) 3402-1235",
+    manager: "Dra. Maria Silva",
+    status: "normal",
     workingHours: "07:00 - 17:00",
-    services: ["Consultas", "Vacinas", "Curativos"],
+    services: ["Consultas", "Pré-natal", "Curativos"],
+    medications: [
+      {
+        id: "med3",
+        name: "Ibuprofeno",
+        dosage: "400mg",
+        quantity: 60,
+        minStock: 40,
+        maxStock: 150,
+        status: "normal"
+      },
+      {
+        id: "med4",
+        name: "Amoxicilina",
+        dosage: "500mg",
+        quantity: 45,
+        minStock: 30,
+        maxStock: 120,
+        status: "normal"
+      }
+    ]
+  },
+  {
+    id: "ubs-cascata",
+    name: "UBS Cascata",
+    type: "UBS",
+    address: "Rua Cláudio Manoel da Costa, 43",
+    coordinates: [-22.2167, -49.9428],
+    phone: "(14) 3402-1236",
+    manager: "Dr. João Costa",
+    status: "attention",
+    workingHours: "07:00 - 17:00",
+    services: ["Consultas", "Vacinas", "Pediatria"],
     medications: [
       {
         id: "med5",
-        name: "Dipirona",
-        dosage: "5mg",
-        quantity: 200,
-        minStock: 50,
-        maxStock: 500,
-        status: "healthy"
+        name: "Losartana",
+        dosage: "50mg",
+        quantity: 25,
+        minStock: 40,
+        maxStock: 100,
+        status: "attention"
       },
       {
         id: "med6",
-        name: "Amoxicilina",
-        dosage: "500mg",
-        quantity: 120,
+        name: "Metformina",
+        dosage: "850mg",
+        quantity: 35,
         minStock: 30,
-        maxStock: 200,
-        status: "healthy"
-      },
+        maxStock: 120,
+        status: "normal"
+      }
+    ]
+  },
+  {
+    id: "ubs-castelo-branco",
+    name: "UBS Castelo Branco",
+    type: "UBS",
+    address: "Rua Adamantina, 15",
+    coordinates: [-22.2178, -49.9411],
+    phone: "(14) 3402-1237",
+    manager: "Dra. Carla Oliveira",
+    status: "healthy",
+    workingHours: "07:00 - 17:00",
+    services: ["Consultas", "Curativos", "Vacinas"],
+    medications: [
       {
         id: "med7",
-        name: "Losartana",
-        dosage: "50mg",
+        name: "Captopril",
+        dosage: "25mg",
         quantity: 90,
         minStock: 40,
         maxStock: 150,
@@ -95,108 +122,168 @@ export const healthUnits: HealthUnit[] = [
     ]
   },
   {
-    id: "ubs-jardim-sul",
-    name: "UBS Jardim Sul",
+    id: "ubs-chico-mendes",
+    name: "UBS Chico Mendes",
     type: "UBS",
-    address: "Av. Sul, 300 - Jardim Sul",
-    coordinates: [-23.5605, -46.6433],
-    phone: "(11) 3333-3000",
-    manager: "Dr. João Oliveira",
-    status: "normal",
+    address: "Rua Amador Bueno, 1085",
+    coordinates: [-22.2189, -49.9394],
+    phone: "(14) 3402-1238",
+    manager: "Dr. Pedro Lima",
+    status: "urgent",
     workingHours: "07:00 - 17:00",
-    services: ["Consultas", "Pré-natal", "Pediatria"],
+    services: ["Consultas", "Urgência", "Curativos"],
     medications: [
       {
         id: "med8",
         name: "Insulina",
         dosage: "100UI/ml",
-        quantity: 25,
+        quantity: 0,
         minStock: 20,
-        maxStock: 100,
-        status: "normal"
+        maxStock: 80,
+        status: "urgent"
       },
       {
         id: "med9",
-        name: "Captopril",
-        dosage: "25mg",
-        quantity: 60,
+        name: "Atenolol",
+        dosage: "50mg",
+        quantity: 15,
         minStock: 30,
-        maxStock: 150,
-        status: "normal"
+        maxStock: 100,
+        status: "urgent"
       }
     ]
   },
+  // UPAs
   {
-    id: "hospital-municipal",
-    name: "Hospital Municipal",
-    type: "Hospital",
-    address: "Rua Hospital, 1500 - Centro",
-    coordinates: [-23.5305, -46.6133],
-    phone: "(11) 3333-4000",
-    manager: "Dr. Carlos Lima",
-    status: "urgent",
+    id: "upa-norte",
+    name: "UPA Norte (Zona Norte)",
+    type: "UPA",
+    address: "Rua João Caliman, 110, Parque das Nações",
+    coordinates: [-22.2123, -49.9501],
+    phone: "(14) 3402-2000",
+    manager: "Dr. Roberto Santos",
+    status: "normal",
     workingHours: "24h",
-    services: ["Emergência", "Internação", "Cirurgias", "UTI"],
+    services: ["Emergência", "Urgência", "Observação"],
     medications: [
       {
         id: "med10",
         name: "Morfina",
         dosage: "10mg/ml",
-        quantity: 2,
+        quantity: 25,
         minStock: 20,
-        maxStock: 100,
-        status: "urgent"
+        maxStock: 80,
+        status: "normal"
       },
       {
         id: "med11",
-        name: "Antibiótico",
-        dosage: "1g",
-        quantity: 0,
-        minStock: 50,
-        maxStock: 200,
-        status: "urgent"
-      },
-      {
-        id: "med12",
-        name: "Anestésico",
-        dosage: "20ml",
-        quantity: 15,
-        minStock: 30,
-        maxStock: 100,
-        expiryDate: "2024-02-01",
-        batchNumber: "ABC123",
-        status: "urgent"
+        name: "Soro Fisiológico",
+        dosage: "500ml",
+        quantity: 150,
+        minStock: 100,
+        maxStock: 500,
+        status: "normal"
       }
     ]
   },
   {
-    id: "clinica-especializada",
-    name: "Clínica Especializada",
-    type: "Clínica",
-    address: "Av. Especializada, 800 - Bela Vista",
-    coordinates: [-23.5705, -46.6533],
-    phone: "(11) 3333-5000",
-    manager: "Dra. Patricia Costa",
+    id: "upa-sul",
+    name: "UPA Zona Sul",
+    type: "UPA",
+    address: "Rua Antônio Pereira da Silva, 288, Hípica Paulista",
+    coordinates: [-22.2301, -49.9358],
+    phone: "(14) 3402-2001",
+    manager: "Dra. Sandra Costa",
+    status: "attention",
+    workingHours: "24h",
+    services: ["Emergência", "Urgência", "Observação"],
+    medications: [
+      {
+        id: "med12",
+        name: "Adrenalina",
+        dosage: "1mg/ml",
+        quantity: 8,
+        minStock: 15,
+        maxStock: 50,
+        status: "attention"
+      }
+    ]
+  },
+  // Farmácias Municipais
+  {
+    id: "farmacia-central",
+    name: "Farmácia Municipal Central",
+    type: "Farmácia",
+    address: "Rua Hidekichi Nomura, 170, Fragata",
+    coordinates: [-22.2156, -49.9478],
+    phone: "(14) 3402-3000",
+    manager: "Farm. Lucas Almeida",
     status: "healthy",
-    workingHours: "08:00 - 18:00",
-    services: ["Cardiologia", "Endocrinologia", "Neurologia"],
+    workingHours: "08:00 - 17:00",
+    services: ["Dispensação", "Medicamentos Especiais"],
     medications: [
       {
         id: "med13",
-        name: "Metformina",
-        dosage: "850mg",
-        quantity: 180,
-        minStock: 50,
-        maxStock: 300,
+        name: "Omeprazol",
+        dosage: "20mg",
+        quantity: 200,
+        minStock: 80,
+        maxStock: 400,
         status: "healthy"
       },
       {
         id: "med14",
-        name: "Atorvastatina",
-        dosage: "20mg",
-        quantity: 100,
-        minStock: 30,
+        name: "Sinvastatina",
+        dosage: "40mg",
+        quantity: 120,
+        minStock: 50,
+        maxStock: 250,
+        status: "healthy"
+      }
+    ]
+  },
+  {
+    id: "farmacia-norte",
+    name: "Farmácia Municipal Zona Norte",
+    type: "Farmácia",
+    address: "Av. Professora Berta de Camargo Vieira, 595",
+    coordinates: [-22.2101, -49.9512],
+    phone: "(14) 3402-3001",
+    manager: "Farm. Rita Santos",
+    status: "normal",
+    workingHours: "08:00 - 17:00",
+    services: ["Dispensação", "Programa Hiperdia"],
+    medications: [
+      {
+        id: "med15",
+        name: "Hidroclorotiazida",
+        dosage: "25mg",
+        quantity: 75,
+        minStock: 50,
         maxStock: 200,
+        status: "normal"
+      }
+    ]
+  },
+  {
+    id: "farmacia-sul",
+    name: "Farmácia Municipal Zona Sul",
+    type: "Farmácia",
+    address: "Av. João Ramalho, 1081, Parque São Jorge",
+    coordinates: [-22.2334, -49.9389],
+    phone: "(14) 3402-3002",
+    manager: "Farm. André Silva",
+    status: "healthy",
+    workingHours: "08:00 - 17:00",
+    services: ["Dispensação", "Medicamentos Controlados"],
+    medications: [
+      {
+        id: "med16",
+        name: "Clonazepam",
+        dosage: "2mg",
+        quantity: 60,
+        minStock: 30,
+        maxStock: 100,
         status: "healthy"
       }
     ]

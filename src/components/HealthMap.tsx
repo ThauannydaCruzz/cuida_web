@@ -37,6 +37,7 @@ const HealthMap = () => {
   
   const [selectedUnit, setSelectedUnit] = useState<HealthUnit | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
+  const [medicationSearch, setMedicationSearch] = useState("");
   const [filteredUnits, setFilteredUnits] = useState<HealthUnit[]>(healthUnits);
 
   // Create custom icons
@@ -79,8 +80,8 @@ const HealthMap = () => {
   useEffect(() => {
     if (!mapRef.current || mapInstanceRef.current) return;
 
-    // Create map instance
-    mapInstanceRef.current = L.map(mapRef.current).setView([-23.5505, -46.6333], 12);
+    // Create map instance - Marília SP coordinates
+    mapInstanceRef.current = L.map(mapRef.current).setView([-22.2144, -49.9463], 13);
 
     // Add tile layer
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -132,13 +133,36 @@ const HealthMap = () => {
 
   // Filter units based on search
   useEffect(() => {
-    const filtered = healthUnits.filter(unit =>
-      unit.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      unit.address.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      unit.type.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    let filtered = healthUnits;
+    
+    // Filter by unit name/address/type
+    if (searchTerm) {
+      filtered = filtered.filter(unit =>
+        unit.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        unit.address.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        unit.type.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+    
+    // Filter by medication availability
+    if (medicationSearch) {
+      filtered = filtered.filter(unit =>
+        unit.medications.some(med => 
+          med.name.toLowerCase().includes(medicationSearch.toLowerCase()) && 
+          med.quantity > 0
+        )
+      ).sort((a, b) => {
+        // Sort by distance from city center (approximate)
+        const centerLat = -22.2144;
+        const centerLng = -49.9463;
+        const distA = Math.sqrt(Math.pow(a.coordinates[0] - centerLat, 2) + Math.pow(a.coordinates[1] - centerLng, 2));
+        const distB = Math.sqrt(Math.pow(b.coordinates[0] - centerLat, 2) + Math.pow(b.coordinates[1] - centerLng, 2));
+        return distA - distB;
+      });
+    }
+    
     setFilteredUnits(filtered);
-  }, [searchTerm]);
+  }, [searchTerm, medicationSearch]);
 
   const getAlertSummary = (unit: HealthUnit): AlertSummary => {
     const attentionItems = unit.medications.filter(med => med.status === 'attention').length;
@@ -183,23 +207,49 @@ const HealthMap = () => {
   };
 
   return (
-    <div className="h-screen flex">
-      {/* Map Container */}
+    <div className="h-screen flex flex-col">
+      {/* Map Container - Full height */}
       <div className="flex-1 relative">
-        {/* Search and Filter Bar */}
-        <div className="absolute top-4 left-4 right-4 z-[1000] flex gap-2">
-          <div className="flex-1 relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+        {/* Search Controls - Positioned inside map */}
+        <div className="absolute top-6 left-6 right-6 z-[1000] space-y-3">
+          {/* Unit Search */}
+          <div className="flex gap-3">
+            <div className="flex-1 relative">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+              <Input
+                placeholder="Buscar unidade de saúde..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="pl-10 bg-white/95 backdrop-blur-sm shadow-lg border-0"
+              />
+            </div>
+            <Button variant="outline" size="icon" className="bg-white/95 backdrop-blur-sm shadow-lg border-0">
+              <Filter className="w-4 h-4" />
+            </Button>
+          </div>
+          
+          {/* Medication Search */}
+          <div className="relative">
+            <Package className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
             <Input
-              placeholder="Buscar Unidade..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10 bg-white shadow-card"
+              placeholder="Buscar medicação disponível..."
+              value={medicationSearch}
+              onChange={(e) => setMedicationSearch(e.target.value)}
+              className="pl-10 bg-white/95 backdrop-blur-sm shadow-lg border-0"
             />
           </div>
-          <Button variant="outline" size="icon" className="bg-white shadow-card">
-            <Filter className="w-4 h-4" />
-          </Button>
+          
+          {/* Results info */}
+          {(searchTerm || medicationSearch) && (
+            <div className="bg-white/95 backdrop-blur-sm rounded-lg p-3 shadow-lg">
+              <p className="text-sm text-muted-foreground">
+                {medicationSearch 
+                  ? `${filteredUnits.length} unidades com "${medicationSearch}" disponível`
+                  : `${filteredUnits.length} unidades encontradas`
+                }
+              </p>
+            </div>
+          )}
         </div>
 
         {/* Map */}
@@ -210,24 +260,25 @@ const HealthMap = () => {
         />
 
         {/* Legend */}
-        <div className="absolute bottom-4 left-4 z-[1000]">
-          <Card className="shadow-card">
+        <div className="absolute bottom-6 left-6 z-[1000]">
+          <Card className="bg-white/95 backdrop-blur-sm shadow-lg border-0">
             <CardContent className="p-4">
-              <div className="grid grid-cols-2 gap-2 text-xs">
+              <h3 className="font-semibold text-sm mb-3">Legenda de Status</h3>
+              <div className="grid grid-cols-2 gap-3 text-xs">
                 <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 bg-green-500 rounded-full flex items-center justify-center text-white text-xs">✓</div>
+                  <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center text-white text-xs font-bold">✓</div>
                   <span>Estoque Saudável</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 bg-blue-500 rounded-full flex items-center justify-center text-white text-xs">+</div>
+                  <div className="w-5 h-5 bg-blue-500 rounded-full flex items-center justify-center text-white text-xs font-bold">+</div>
                   <span>Estoque Normal</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 bg-orange-500 rounded-full flex items-center justify-center text-white text-xs">!</div>
+                  <div className="w-5 h-5 bg-orange-500 rounded-full flex items-center justify-center text-white text-xs font-bold">!</div>
                   <span>Atenção Necessária</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 bg-red-500 rounded-full flex items-center justify-center text-white text-xs">✕</div>
+                  <div className="w-5 h-5 bg-red-500 rounded-full flex items-center justify-center text-white text-xs font-bold">✕</div>
                   <span>Ação Urgente</span>
                 </div>
               </div>

@@ -13,7 +13,7 @@ export interface Medication {
 export interface HealthUnit {
   id: string;
   name: string;
-  type: 'UBS' | 'UPA' | 'Hospital' | 'Clínica';
+  type: 'UBS' | 'UPA' | 'Hospital' | 'Clínica' | 'Farmácia';
   address: string;
   coordinates: [number, number]; // [lat, lng]
   phone: string;
