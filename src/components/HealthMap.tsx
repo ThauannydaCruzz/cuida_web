@@ -36,7 +36,7 @@ const HealthMap = () => {
   const markersRef = useRef<L.Marker[]>([]);
   
   const [selectedUnit, setSelectedUnit] = useState<HealthUnit | null>(null);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedMarkerPosition, setSelectedMarkerPosition] = useState<{ x: number; y: number } | null>(null);
   const [medicationSearch, setMedicationSearch] = useState("");
   const [filteredUnits, setFilteredUnits] = useState<HealthUnit[]>(healthUnits);
 
@@ -122,8 +122,17 @@ const HealthMap = () => {
       `;
 
       marker.bindPopup(popupContent);
-      marker.on('click', () => {
+      marker.on('click', (e) => {
         setSelectedUnit(unit);
+        // Calcular posição do marcador na tela
+        const markerElement = e.target.getElement();
+        if (markerElement) {
+          const rect = markerElement.getBoundingClientRect();
+          setSelectedMarkerPosition({
+            x: rect.left + rect.width / 2,
+            y: rect.top
+          });
+        }
       });
 
       marker.addTo(mapInstanceRef.current!);
@@ -131,18 +140,9 @@ const HealthMap = () => {
     });
   }, [filteredUnits]);
 
-  // Filter units based on search
+  // Filter units based on medication search
   useEffect(() => {
     let filtered = healthUnits;
-    
-    // Filter by unit name/address/type
-    if (searchTerm) {
-      filtered = filtered.filter(unit =>
-        unit.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        unit.address.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        unit.type.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-    }
     
     // Filter by medication availability
     if (medicationSearch) {
@@ -162,7 +162,7 @@ const HealthMap = () => {
     }
     
     setFilteredUnits(filtered);
-  }, [searchTerm, medicationSearch]);
+  }, [medicationSearch]);
 
   const getAlertSummary = (unit: HealthUnit): AlertSummary => {
     const attentionItems = unit.medications.filter(med => med.status === 'attention').length;
@@ -211,45 +211,26 @@ const HealthMap = () => {
       {/* Map Container - Full height */}
       <div className="flex-1 relative">
         {/* Search Controls - Positioned inside map */}
-        <div className="absolute top-6 left-6 right-6 z-[1000] space-y-3">
-          {/* Unit Search */}
+        <div className="absolute top-6 left-6 right-6 z-[1000]">
+          {/* Medication Search */}
           <div className="flex gap-3">
             <div className="flex-1 relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+              <Package className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
               <Input
-                placeholder="Buscar unidade de saúde..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
+                placeholder="Buscar medicação disponível..."
+                value={medicationSearch}
+                onChange={(e) => setMedicationSearch(e.target.value)}
                 className="pl-10 bg-white/95 backdrop-blur-sm shadow-lg border-0"
               />
             </div>
-            <Button variant="outline" size="icon" className="bg-white/95 backdrop-blur-sm shadow-lg border-0">
-              <Filter className="w-4 h-4" />
-            </Button>
+            {medicationSearch && (
+              <div className="bg-white/95 backdrop-blur-sm rounded-lg px-3 py-2 shadow-lg">
+                <p className="text-sm text-muted-foreground">
+                  {filteredUnits.length} unidades com "{medicationSearch}" disponível
+                </p>
+              </div>
+            )}
           </div>
-          
-          {/* Medication Search */}
-          <div className="relative">
-            <Package className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
-            <Input
-              placeholder="Buscar medicação disponível..."
-              value={medicationSearch}
-              onChange={(e) => setMedicationSearch(e.target.value)}
-              className="pl-10 bg-white/95 backdrop-blur-sm shadow-lg border-0"
-            />
-          </div>
-          
-          {/* Results info */}
-          {(searchTerm || medicationSearch) && (
-            <div className="bg-white/95 backdrop-blur-sm rounded-lg p-3 shadow-lg">
-              <p className="text-sm text-muted-foreground">
-                {medicationSearch 
-                  ? `${filteredUnits.length} unidades com "${medicationSearch}" disponível`
-                  : `${filteredUnits.length} unidades encontradas`
-                }
-              </p>
-            </div>
-          )}
         </div>
 
         {/* Map */}
@@ -287,134 +268,67 @@ const HealthMap = () => {
         </div>
       </div>
 
-      {/* Sidebar */}
-      {selectedUnit && (
-        <div className="fixed right-0 top-0 bottom-0 w-96 bg-card border-l border-border overflow-y-auto z-[1001] shadow-xl">
-          <div className="sticky top-0 bg-primary text-primary-foreground p-4 z-10">
-            <div className="flex items-center justify-between">
-              <h2 className="text-xl font-bold">{selectedUnit.name}</h2>
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={() => setSelectedUnit(null)}
-                className="text-primary-foreground hover:bg-primary-foreground/20"
-              >
-                <X className="w-4 h-4" />
-              </Button>
+      {/* Info Bubble */}
+      {selectedUnit && selectedMarkerPosition && (
+        <div 
+          className="fixed z-[1001] w-80 bg-white/95 backdrop-blur-sm rounded-lg shadow-xl border p-4"
+          style={{
+            left: `${Math.max(20, Math.min(selectedMarkerPosition.x - 160, window.innerWidth - 340))}px`,
+            top: `${Math.max(20, selectedMarkerPosition.y - 20)}px`,
+          }}
+        >
+          {/* Header */}
+          <div className="flex items-center justify-between mb-3">
+            <h3 className="font-bold text-lg text-primary">{selectedUnit.name}</h3>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => {
+                setSelectedUnit(null);
+                setSelectedMarkerPosition(null);
+              }}
+              className="h-6 w-6"
+            >
+              <X className="w-4 h-4" />
+            </Button>
+          </div>
+
+          {/* Unit Info */}
+          <div className="space-y-2 mb-4">
+            <div className="flex items-center gap-2 text-xs">
+              <MapPin className="w-3 h-3 text-muted-foreground" />
+              <span className="text-muted-foreground">{selectedUnit.address}</span>
+            </div>
+            <div className="flex items-center gap-2 text-xs">
+              <Clock className="w-3 h-3 text-muted-foreground" />
+              <span className="text-muted-foreground">{selectedUnit.workingHours}</span>
+            </div>
+            <div className="flex items-center gap-2 text-xs">
+              <Phone className="w-3 h-3 text-muted-foreground" />
+              <span className="text-muted-foreground">{selectedUnit.phone}</span>
             </div>
           </div>
 
-          <div className="p-6 space-y-6">
-            {/* Unit Info */}
-            <div className="space-y-3">
-              <div className="flex items-center gap-2 text-sm">
-                <MapPin className="w-4 h-4 text-muted-foreground" />
-                <span>{selectedUnit.address}</span>
-              </div>
-              <div className="flex items-center gap-2 text-sm">
-                <Phone className="w-4 h-4 text-muted-foreground" />
-                <span>{selectedUnit.phone}</span>
-              </div>
-              <div className="flex items-center gap-2 text-sm">
-                <Clock className="w-4 h-4 text-muted-foreground" />
-                <span>{selectedUnit.workingHours}</span>
-              </div>
-              <div className="flex items-center gap-2 text-sm">
-                <User className="w-4 h-4 text-muted-foreground" />
-                <span>{selectedUnit.manager}</span>
-              </div>
-              <div className="mt-2">
-                {getStatusBadge(selectedUnit.status)}
-              </div>
+          {/* Medications */}
+          <div className="mb-4">
+            <h4 className="font-medium text-sm mb-2">Medicamentos Disponíveis</h4>
+            <div className="space-y-1 max-h-32 overflow-y-auto">
+              {selectedUnit.medications.filter(med => med.quantity > 0).slice(0, 3).map((med) => (
+                <div key={med.id} className="flex items-center justify-between text-xs">
+                  <span className="font-medium">{med.name}</span>
+                  <Badge variant="default" className="bg-green-500 text-white text-xs">
+                    {med.quantity} disponível
+                  </Badge>
+                </div>
+              ))}
             </div>
-
-            {/* Alert Summary */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-lg">Sumário de Alertas</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                {(() => {
-                  const summary = getAlertSummary(selectedUnit);
-                  return (
-                    <>
-                      <div className="flex items-center justify-between">
-                        <span className="text-sm">Itens em Atenção:</span>
-                        <Badge variant="outline" className="text-orange-600">
-                          {summary.attentionItems}
-                        </Badge>
-                      </div>
-                      <div className="flex items-center justify-between">
-                        <span className="text-sm">Itens em Falta:</span>
-                        <Badge variant="destructive">
-                          {summary.missingItems}
-                        </Badge>
-                      </div>
-                    </>
-                  );
-                })()}
-              </CardContent>
-            </Card>
-
-            {/* Urgent Actions */}
-            {(() => {
-              const summary = getAlertSummary(selectedUnit);
-              return summary.urgentActions.length > 0 && (
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="text-lg">Ações Urgentes</CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-2">
-                    {summary.urgentActions.map((action, index) => (
-                      <div key={index} className="flex items-center gap-2 text-sm">
-                        <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                        <span>{action}</span>
-                      </div>
-                    ))}
-                  </CardContent>
-                </Card>
-              );
-            })()}
-
-            {/* Action Buttons */}
-            <div className="space-y-3">
-              <Button className="w-full" variant="default">
-                <Package className="w-4 h-4 mr-2" />
-                Ver Estoque Completo
-              </Button>
-              <Button className="w-full" variant="secondary">
-                <User className="w-4 h-4 mr-2" />
-                Demonstrar Interesse
-              </Button>
-            </div>
-
-            {/* Medications List */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-lg">Medicamentos</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                {selectedUnit.medications.slice(0, 5).map((med) => (
-                  <div key={med.id} className="flex items-center justify-between py-2 border-b border-border last:border-0">
-                    <div className="flex-1">
-                      <p className="font-medium text-sm">{med.name}</p>
-                      <p className="text-xs text-muted-foreground">{med.dosage}</p>
-                    </div>
-                    <div className="text-right">
-                      <p className="text-sm font-medium">
-                        {med.quantity > 0 ? `${med.quantity} disponível` : 'Indisponível'}
-                      </p>
-                      {med.quantity > 0 ? (
-                        <Badge variant="default" className="bg-green-500">Disponível</Badge>
-                      ) : (
-                        <Badge variant="destructive">Indisponível</Badge>
-                      )}
-                    </div>
-                  </div>
-                ))}
-              </CardContent>
-            </Card>
           </div>
+
+          {/* Action Button */}
+          <Button className="w-full text-sm" variant="default">
+            <User className="w-3 h-3 mr-2" />
+            Demonstrar Interesse
+          </Button>
         </div>
       )}
     </div>
