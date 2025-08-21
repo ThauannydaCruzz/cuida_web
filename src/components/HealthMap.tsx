@@ -289,93 +289,137 @@ const HealthMap = () => {
       {/* Info Bubble */}
       {selectedUnit && selectedMarkerPosition && (
         <div 
-          className="fixed z-[1001] w-72 bg-gradient-card backdrop-blur-md rounded-xl shadow-hero border border-border/50 p-5 animate-in fade-in-0 zoom-in-95 duration-200"
+          className="fixed z-[1001] w-80 max-w-[calc(100vw-40px)] bg-gradient-to-br from-card/95 to-card/90 backdrop-blur-xl rounded-2xl shadow-2xl border border-border/30 overflow-hidden animate-in fade-in-0 zoom-in-95 duration-300"
           style={{
-            left: `${Math.max(20, Math.min(selectedMarkerPosition.x - 144, window.innerWidth - 308))}px`,
-            top: `${Math.max(20, selectedMarkerPosition.y - 20)}px`,
+            left: `${Math.max(20, Math.min(selectedMarkerPosition.x - 160, window.innerWidth - 340))}px`,
+            top: `${Math.max(20, selectedMarkerPosition.y - 30)}px`,
           }}
         >
+          {/* Glass overlay effect */}
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent pointer-events-none" />
+          
           {/* Header */}
-          <div className="flex items-start justify-between mb-4">
-            <div>
-              <h3 className="font-bold text-base text-primary leading-tight">{selectedUnit.name}</h3>
-              {getStatusBadge(selectedUnit.status)}
-            </div>
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => {
-                setSelectedUnit(null);
-                setSelectedMarkerPosition(null);
-              }}
-              className="h-7 w-7 hover:bg-accent/50 transition-colors"
-            >
-              <X className="w-4 h-4" />
-            </Button>
-          </div>
-
-          {/* Unit Info */}
-          <div className="space-y-2 mb-4">
-            <div className="flex items-center gap-2 text-xs text-muted-foreground">
-              <MapPin className="w-3 h-3 flex-shrink-0" />
-              <span className="line-clamp-2">{selectedUnit.address}</span>
-            </div>
-            <div className="flex items-center gap-2 text-xs text-muted-foreground">
-              <Clock className="w-3 h-3 flex-shrink-0" />
-              <span>{selectedUnit.workingHours}</span>
-            </div>
-            <div className="flex items-center gap-2 text-xs text-muted-foreground">
-              <Phone className="w-3 h-3 flex-shrink-0" />
-              <span>{selectedUnit.phone}</span>
+          <div className="relative p-4 border-b border-border/20">
+            <div className="flex items-start justify-between">
+              <div className="flex-1 min-w-0">
+                <h3 className="font-bold text-lg text-foreground leading-tight truncate mb-1">{selectedUnit.name}</h3>
+                {getStatusBadge(selectedUnit.status)}
+              </div>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => {
+                  setSelectedUnit(null);
+                  setSelectedMarkerPosition(null);
+                }}
+                className="h-8 w-8 ml-2 hover:bg-accent/50 transition-all duration-200"
+              >
+                <X className="w-4 h-4" />
+              </Button>
             </div>
           </div>
 
-          {/* Medications */}
-          <div className="mb-4">
-            <h4 className="font-medium text-sm mb-3 text-card-foreground flex items-center gap-2">
-              <Package className="w-4 h-4 text-primary" />
-              Medicamentos Disponíveis
-            </h4>
-            <div className="space-y-2 max-h-28 overflow-y-auto">
-              {selectedUnit.medications.filter(med => med.quantity > 0).slice(0, 4).map((med) => (
-                <div key={med.id} className="group">
-                  <div className="flex items-center justify-between p-2 rounded-lg bg-accent/30 hover:bg-accent/50 transition-colors">
-                    <div className="flex-1 min-w-0">
-                      <p className="font-medium text-xs text-card-foreground truncate">{med.name}</p>
-                      <p className="text-xs text-muted-foreground">{med.dosage}</p>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Badge variant="secondary" className="text-xs px-2 py-1">
-                        {med.quantity} disp.
-                      </Badge>
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        onClick={() => handleMedicationInterest(med.id, med.name)}
-                        className="h-6 w-6 p-0 opacity-70 group-hover:opacity-100 transition-opacity hover:bg-primary/10 hover:text-primary"
-                      >
-                        <Heart className="w-3 h-3" />
-                      </Button>
-                    </div>
-                  </div>
-                  {medicationInterests[med.id] && (
-                    <div className="ml-2 mt-1">
-                      <span className="text-xs text-primary font-medium flex items-center gap-1">
-                        <ThumbsUp className="w-3 h-3" />
-                        {medicationInterests[med.id]} pessoa(s) interessada(s)
-                      </span>
-                    </div>
-                  )}
+          {/* Content */}
+          <div className="relative p-4 space-y-4">
+            {/* Unit Info */}
+            <div className="grid grid-cols-1 gap-2 text-sm">
+              <div className="flex items-center gap-2 text-muted-foreground">
+                <MapPin className="w-4 h-4 flex-shrink-0 text-primary" />
+                <span className="line-clamp-1">{selectedUnit.address}</span>
+              </div>
+              <div className="flex items-center gap-4">
+                <div className="flex items-center gap-2 text-muted-foreground">
+                  <Clock className="w-4 h-4 flex-shrink-0 text-primary" />
+                  <span className="text-xs">{selectedUnit.workingHours}</span>
                 </div>
-              ))}
+                <div className="flex items-center gap-2 text-muted-foreground">
+                  <Phone className="w-4 h-4 flex-shrink-0 text-primary" />
+                  <span className="text-xs">{selectedUnit.phone}</span>
+                </div>
+              </div>
             </div>
-          </div>
 
-          {/* Unit Type Info */}
-          <div className="text-center">
-            <Badge variant="outline" className="text-xs border-primary/30 text-primary">
-              {selectedUnit.type}
-            </Badge>
+            {/* Medications */}
+            <div>
+              <h4 className="font-semibold text-sm mb-3 text-foreground flex items-center gap-2">
+                <Package className="w-4 h-4 text-primary" />
+                Medicamentos Disponíveis
+                <Badge variant="secondary" className="text-xs ml-auto">
+                  {selectedUnit.medications.filter(med => med.quantity > 0).length} itens
+                </Badge>
+              </h4>
+              <div className="space-y-2 max-h-40 overflow-y-auto custom-scrollbar">
+                {selectedUnit.medications.filter(med => med.quantity > 0).slice(0, 6).map((med) => {
+                  const interests = medicationInterests[med.id] || 0;
+                  const isSufficient = med.quantity >= interests;
+                  
+                  return (
+                    <div key={med.id} className="group">
+                      <div className="flex items-center justify-between p-3 rounded-xl bg-gradient-to-r from-accent/40 to-accent/20 hover:from-accent/60 hover:to-accent/40 transition-all duration-200 border border-border/20">
+                        <div className="flex-1 min-w-0">
+                          <p className="font-medium text-sm text-foreground truncate">{med.name}</p>
+                          <p className="text-xs text-muted-foreground">{med.dosage}</p>
+                        </div>
+                        <div className="flex items-center gap-3">
+                          <div className="text-right">
+                            <Badge 
+                              variant={med.quantity > 10 ? "default" : med.quantity > 5 ? "secondary" : "outline"} 
+                              className="text-xs mb-1"
+                            >
+                              {med.quantity} disp.
+                            </Badge>
+                            {interests > 0 && (
+                              <div className={`text-xs font-medium flex items-center gap-1 ${
+                                isSufficient ? 'text-green-600' : 'text-amber-600'
+                              }`}>
+                                <ThumbsUp className="w-3 h-3" />
+                                {interests} interessado{interests > 1 ? 's' : ''}
+                              </div>
+                            )}
+                          </div>
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => handleMedicationInterest(med.id, med.name)}
+                            className="h-8 w-8 p-0 opacity-70 group-hover:opacity-100 transition-all duration-200 hover:bg-primary/20 hover:text-primary hover:scale-110"
+                          >
+                            <Heart className={`w-4 h-4 ${interests > 0 ? 'fill-current text-red-500' : ''}`} />
+                          </Button>
+                        </div>
+                      </div>
+                      {interests > 0 && (
+                        <div className="ml-3 mt-1">
+                          <div className={`text-xs font-medium px-2 py-1 rounded-lg inline-flex items-center gap-1 ${
+                            isSufficient 
+                              ? 'bg-green-100 text-green-700 border border-green-200' 
+                              : 'bg-amber-100 text-amber-700 border border-amber-200'
+                          }`}>
+                            {isSufficient ? (
+                              <>
+                                <CheckCircle className="w-3 h-3" />
+                                Estoque suficiente
+                              </>
+                            ) : (
+                              <>
+                                <AlertTriangle className="w-3 h-3" />
+                                Demanda maior que estoque
+                              </>
+                            )}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Footer */}
+            <div className="pt-2 border-t border-border/20">
+              <Badge variant="outline" className="text-xs border-primary/30 text-primary bg-primary/5">
+                {selectedUnit.type}
+              </Badge>
+            </div>
           </div>
         </div>
       )}
