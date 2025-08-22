@@ -117,6 +117,63 @@ All colors MUST be HSL.
   }
 }
 
+/* Custom design system classes */
+@layer components {
+  .font-poppins {
+    font-family: 'Poppins', system-ui, sans-serif;
+  }
+  
+  .transition-cuida {
+    @apply transition-all duration-300 ease-in-out;
+  }
+  
+  .shadow-cuida {
+    box-shadow: var(--shadow-card);
+  }
+  
+  .shadow-cuida-lg {
+    box-shadow: 0 10px 30px hsl(var(--primary) / 0.15);
+  }
+  
+  .bg-cuida-gradient-soft {
+    background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--muted)) 100%);
+  }
+  
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  .animate-float-delayed {
+    animation: float 3s ease-in-out infinite 1.5s;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+}
+
+/* Additional color variables for specific design needs */
+@layer base {
+  :root {
+    --cuida-blue: 206 84% 45%;
+    --cuida-green: 152 45% 55%;
+    --primary-hover: 206 84% 35%;
+    --success: 152 45% 55%;
+    --warning: 45 93% 58%;
+    --surface: 210 17% 96%;
+  }
+  
+  .dark {
+    --cuida-blue: 206 84% 65%;
+    --cuida-green: 152 45% 65%;
+    --primary-hover: 206 84% 75%;
+    --success: 152 45% 65%;
+    --warning: 45 93% 68%;
+    --surface: 213 25% 12%;
+  }
+}
+
 @layer base {
   * {
     @apply border-border;
