@@ -5,13 +5,14 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Users, Eye, EyeOff, ArrowLeft, Heart } from "lucide-react";
 import { useNavigate, Link } from "react-router-dom";
-
 export default function LoginCli() {
   const [showPassword, setShowPassword] = useState(false);
-  const [formData, setFormData] = useState({ cpf: "", password: "" });
+  const [formData, setFormData] = useState({
+    cpf: "",
+    password: ""
+  });
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
@@ -22,15 +23,10 @@ export default function LoginCli() {
       navigate("/portal-cidadao"); // Redireciona para o portal
     }, 1000);
   };
-
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-cuida-green/10 to-cuida-green/20 flex items-center justify-center p-4">
+  return <div className="min-h-screen bg-gradient-to-br from-cuida-green/10 to-cuida-green/20 flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         {/* Voltar ao início */}
-        <button 
-          onClick={() => navigate("/")} 
-          className="inline-flex items-center gap-2 text-cuida-green hover:text-cuida-green/80 mb-6"
-        >
+        <button onClick={() => navigate("/")} className="inline-flex items-center gap-2 text-cuida-green hover:text-cuida-green/80 mb-6">
           <ArrowLeft className="w-4 h-4" /> Voltar ao início
         </button>
 
@@ -60,44 +56,26 @@ export default function LoginCli() {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="space-y-2">
                 <Label htmlFor="cpf" className="text-sm font-medium text-foreground">CPF</Label>
-                <Input
-                  id="cpf"
-                  type="text"
-                  placeholder="000.000.000-00"
-                  value={formData.cpf}
-                  onChange={(e) => setFormData({ ...formData, cpf: e.target.value })}
-                  className="h-11"
-                  required
-                />
+                <Input id="cpf" type="text" placeholder="000.000.000-00" value={formData.cpf} onChange={e => setFormData({
+                ...formData,
+                cpf: e.target.value
+              })} className="h-11" required />
               </div>
 
               <div className="space-y-2">
                 <Label htmlFor="password" className="text-sm font-medium text-foreground">Senha</Label>
                 <div className="relative">
-                  <Input
-                    id="password"
-                    type={showPassword ? "text" : "password"}
-                    placeholder="Digite sua senha"
-                    value={formData.password}
-                    onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                    className="h-11 pr-10"
-                    required
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
-                  >
+                  <Input id="password" type={showPassword ? "text" : "password"} placeholder="Digite sua senha" value={formData.password} onChange={e => setFormData({
+                  ...formData,
+                  password: e.target.value
+                })} className="h-11 pr-10" required />
+                  <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground">
                     {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                   </button>
                 </div>
               </div>
 
-              <Button 
-                type="submit" 
-                className="w-full bg-cuida-green hover:bg-cuida-green/90 text-white h-11 font-medium"
-                disabled={isLoading}
-              >
+              <Button type="submit" disabled={isLoading} className="w-full bg-cuida-green hover:bg-cuida-green/90 h-11 font-medium text-cyan-400">
                 {isLoading ? "Entrando..." : "Entrar no Portal"}
               </Button>
             </form>
@@ -105,10 +83,7 @@ export default function LoginCli() {
             <div className="mt-6 text-center">
               <p className="text-sm text-muted-foreground">
                 Primeira vez aqui?{" "}
-                <Link
-                  to="/clientes/cadastroClientes"
-                  className="text-cuida-green hover:text-cuida-green/80 font-medium"
-                >
+                <Link to="/clientes/cadastroClientes" className="text-cuida-green hover:text-cuida-green/80 font-medium">
                   Cadastre-se
                 </Link>
               </p>
@@ -122,6 +97,5 @@ export default function LoginCli() {
           </CardContent>
         </Card>
       </div>
-    </div>
-  );
+    </div>;
 }
