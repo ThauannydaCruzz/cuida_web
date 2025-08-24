@@ -10,11 +10,7 @@ const HomePage = () => {
         <div className="max-w-7xl mx-auto px-8 py-6">
           <div className="flex items-center justify-between">
             <div className="text-2xl font-bold text-primary font-poppins">CUIDA.</div>
-            <div className="hidden md:flex items-center space-x-12">
-              <a href="#" className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors">Home</a>
-              <a href="#" className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors">Sobre</a>
-              <a href="#" className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors">Serviços</a>
-            </div>
+            
             <div className="flex items-center space-x-4">
               <Link to="/clientes/loginClientes">
                 <Button className="bg-primary text-primary-foreground hover:bg-primary-hover rounded-full px-6 py-2.5 text-sm font-medium transition-cuida">
