@@ -3,10 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Heart, Users, Activity, Shield } from "lucide-react";
 import roboticHand from "@/assets/robotic-hand-medical.png";
-
 const HomePage = () => {
-  return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-surface">
+  return <div className="min-h-screen bg-gradient-to-b from-background to-surface">
       {/* Navigation */}
       <nav className="relative z-10 bg-background/80 backdrop-blur-sm border-b border-border">
         <div className="max-w-7xl mx-auto px-8 py-6">
@@ -79,11 +77,7 @@ const HomePage = () => {
             <div className="relative">
               {/* Main robot image */}
               <div className="relative z-10 flex justify-center">
-                <img 
-                  src={roboticHand} 
-                  alt="Inteligência Artificial em Saúde" 
-                  className="w-full h-auto max-w-lg mx-auto drop-shadow-2xl"
-                />
+                
               </div>
 
               {/* Floating cards */}
@@ -184,8 +178,6 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-    </div>
-  );
+    </div>;
 };
-
 export default HomePage;
