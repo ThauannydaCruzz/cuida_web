@@ -15,11 +15,10 @@ const HomePage = () => {
             <div className="hidden md:flex items-center space-x-12">
               <a href="#" className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors">Home</a>
               <a href="#" className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors">Sobre</a>
-              <a href="#" className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors">Tecnologia</a>
               <a href="#" className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors">Serviços</a>
             </div>
             <div className="flex items-center space-x-4">
-              <Link to="/portal-cidadao">
+              <Link to="/clientes/loginClientes">
                 <Button className="bg-primary text-primary-foreground hover:bg-primary-hover rounded-full px-6 py-2.5 text-sm font-medium transition-cuida">
                   Portal Cidadão
                 </Button>
@@ -60,17 +59,17 @@ const HomePage = () => {
                 Explore o futuro da medicina. Empodere profissionais de saúde e cidadãos.
               </p>
 
-              <div className="flex gap-4 pt-4">
-                <Link to="/portal-cidadao">
-                  <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary-hover rounded-full px-8 py-3 text-sm font-medium flex items-center gap-2 shadow-cuida">
+              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                <Link to="/clientes/loginClientes">
+                  <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary-hover rounded-full px-8 py-3 text-sm font-medium flex items-center gap-2 shadow-cuida w-full sm:w-auto">
                     <Heart className="w-4 h-4" />
                     Consultar Medicamentos
                   </Button>
                 </Link>
-                <Link to="/registry">
-                  <Button variant="outline" size="lg" className="rounded-full px-8 py-3 text-sm font-medium">
+                <Link to="/login">
+                  <Button variant="outline" size="lg" className="rounded-full px-8 py-3 text-sm font-medium w-full sm:w-auto">
                     <Users className="w-4 h-4 mr-2" />
-                    Registro de Unidades
+                    Área dos Gestores
                   </Button>
                 </Link>
               </div>

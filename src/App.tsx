@@ -12,6 +12,8 @@ import HomeFuncionario from "./pages/HomeFuncionario";
 import ClientesCadastrados from "./pages/ClientesCadastrados";
 import Documento from "./pages/Documento";
 import EmployeeDashboard from "./pages/EmployeeDashboard";
+import LoginCli from "./pages/LoginCli";
+import CadastroClientes from "./pages/CadastroClientes";
 
 const queryClient = new QueryClient();
 
@@ -30,6 +32,8 @@ const App = () => (
           <Route path="/clientes-cadastrados" element={<ClientesCadastrados />} />
           <Route path="/documento" element={<Documento />} />
           <Route path="/employee-dashboard" element={<EmployeeDashboard />} />
+          <Route path="/clientes/loginClientes" element={<LoginCli />} />
+          <Route path="/clientes/cadastroClientes" element={<CadastroClientes />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
