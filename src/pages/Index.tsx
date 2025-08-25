@@ -1,24 +1,31 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Heart, Users, Activity, Shield } from "lucide-react";
+import { Heart, Users, Activity, Shield, MapPin, Clock, Stethoscope, Bot, TrendingUp, Award } from "lucide-react";
 import roboticHand from "@/assets/robotic-hand-medical.png";
 const HomePage = () => {
   return <div className="min-h-screen bg-gradient-to-b from-background to-surface">
       {/* Navigation */}
-      <nav className="relative z-10 bg-background/80 backdrop-blur-sm border-b border-border">
+      <nav className="relative z-10 bg-background/95 backdrop-blur-md border-b border-border/50 shadow-sm">
         <div className="max-w-7xl mx-auto px-8 py-6">
           <div className="flex items-center justify-between">
-            <div className="text-2xl font-bold text-primary font-poppins">CUIDA.</div>
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-gradient-primary rounded-xl flex items-center justify-center">
+                <Heart className="w-6 h-6 text-white" />
+              </div>
+              <div className="text-2xl font-bold text-foreground font-poppins">CUIDA</div>
+            </div>
             
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-3">
               <Link to="/clientes/loginClientes">
-                <Button className="bg-primary text-primary-foreground hover:bg-primary-hover rounded-full px-6 py-2.5 text-sm font-medium transition-cuida">
+                <Button className="bg-gradient-primary text-white hover:opacity-90 rounded-xl px-6 py-3 text-sm font-medium transition-all duration-300 shadow-lg hover:shadow-xl">
+                  <Users className="w-4 h-4 mr-2" />
                   Portal Cidadão
                 </Button>
               </Link>
               <Link to="/login">
-                <Button variant="outline" className="rounded-full px-6 py-2.5 text-sm font-medium">
+                <Button variant="outline" className="border-2 border-primary/20 text-primary hover:bg-primary/5 rounded-xl px-6 py-3 text-sm font-medium transition-all duration-300">
+                  <Shield className="w-4 h-4 mr-2" />
                   Área Gestores
                 </Button>
               </Link>
@@ -34,14 +41,15 @@ const HomePage = () => {
             
             {/* Left Side - Content */}
             <div className="space-y-8">
-              <div className="space-y-4">
-                <p className="text-sm text-primary font-medium">
-                  Sistema Mais Avançado de Gestão de Medicamentos da Saúde
-                </p>
-                <h1 className="text-6xl font-bold text-foreground leading-[1.1] font-poppins">
+              <div className="space-y-6">
+                <div className="inline-flex items-center gap-2 bg-primary/10 text-primary font-medium px-4 py-2 rounded-full text-sm border border-primary/20">
+                  <Bot className="w-4 h-4" />
+                  Sistema Mais Avançado de Gestão de Medicamentos
+                </div>
+                <h1 className="text-5xl md:text-6xl font-bold text-foreground leading-[1.1] font-poppins">
                   Revolucionando
                   <br />
-                  <span className="bg-gradient-to-r from-primary to-cuida-green bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r from-primary via-secondary to-cuida-green bg-clip-text text-transparent">
                     Gestão de Saúde
                   </span> com IA
                 </h1>
@@ -53,16 +61,16 @@ const HomePage = () => {
                 Explore o futuro da medicina. Empodere profissionais de saúde e cidadãos.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              <div className="flex flex-col sm:flex-row gap-4 pt-6">
                 <Link to="/clientes/loginClientes">
-                  <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary-hover rounded-full px-8 py-3 text-sm font-medium flex items-center gap-2 shadow-cuida w-full sm:w-auto">
-                    <Heart className="w-4 h-4" />
+                  <Button size="lg" className="bg-gradient-primary text-white hover:opacity-90 rounded-xl px-8 py-4 text-base font-medium flex items-center gap-3 shadow-xl hover:shadow-2xl transition-all duration-300 w-full sm:w-auto">
+                    <Stethoscope className="w-5 h-5" />
                     Consultar Medicamentos
                   </Button>
                 </Link>
                 <Link to="/login">
-                  <Button variant="outline" size="lg" className="rounded-full px-8 py-3 text-sm font-medium w-full sm:w-auto">
-                    <Users className="w-4 h-4 mr-2" />
+                  <Button variant="outline" size="lg" className="border-2 border-primary/30 text-primary hover:bg-primary/10 rounded-xl px-8 py-4 text-base font-medium w-full sm:w-auto transition-all duration-300">
+                    <Shield className="w-5 h-5 mr-3" />
                     Área dos Gestores
                   </Button>
                 </Link>
@@ -77,45 +85,45 @@ const HomePage = () => {
               </div>
 
               {/* Floating cards */}
-              <Card className="absolute top-8 right-0 bg-card shadow-cuida rounded-2xl p-4 w-48 animate-float">
+              <Card className="absolute top-8 right-0 bg-card/80 backdrop-blur-sm shadow-2xl rounded-2xl p-5 w-56 animate-float border border-primary/10">
                 <CardContent className="p-0">
-                  <div className="flex items-center gap-3">
-                    <div className="flex -space-x-2">
-                      <div className="w-8 h-8 bg-primary rounded-full border-2 border-background"></div>
-                      <div className="w-8 h-8 bg-success rounded-full border-2 border-background"></div>
-                      <div className="w-8 h-8 bg-warning rounded-full border-2 border-background"></div>
+                  <div className="flex items-center gap-4">
+                    <div className="flex -space-x-3">
+                      <div className="w-10 h-10 bg-gradient-to-br from-primary to-primary-glow rounded-full border-3 border-background shadow-lg"></div>
+                      <div className="w-10 h-10 bg-gradient-to-br from-secondary to-success rounded-full border-3 border-background shadow-lg"></div>
+                      <div className="w-10 h-10 bg-gradient-to-br from-warning to-accent rounded-full border-3 border-background shadow-lg"></div>
                     </div>
                     <div>
-                      <div className="text-2xl font-bold text-foreground font-poppins">300+</div>
-                      <div className="text-sm text-muted-foreground">Gestores Especializados</div>
+                      <div className="text-3xl font-bold text-foreground font-poppins">300+</div>
+                      <div className="text-sm text-muted-foreground font-medium">Gestores Especializados</div>
                     </div>
                   </div>
                 </CardContent>
               </Card>
 
-              <Card className="absolute top-48 right-8 bg-card shadow-cuida rounded-2xl p-4 w-52 animate-float-delayed">
+              <Card className="absolute top-48 right-8 bg-card/80 backdrop-blur-sm shadow-2xl rounded-2xl p-5 w-60 animate-float-delayed border border-secondary/10">
                 <CardContent className="p-0">
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
-                      <Activity className="w-6 h-6 text-primary" />
+                  <div className="flex items-center gap-4">
+                    <div className="w-14 h-14 bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl flex items-center justify-center border border-primary/20">
+                      <TrendingUp className="w-7 h-7 text-primary" />
                     </div>
                     <div>
-                      <div className="text-2xl font-bold text-foreground font-poppins">5,000+</div>
-                      <div className="text-sm text-muted-foreground">Medicamentos Controlados</div>
+                      <div className="text-3xl font-bold text-foreground font-poppins">5,000+</div>
+                      <div className="text-sm text-muted-foreground font-medium">Medicamentos Controlados</div>
                     </div>
                   </div>
                 </CardContent>
               </Card>
 
-              <Card className="absolute bottom-16 left-8 bg-card shadow-cuida rounded-2xl p-4 w-48 animate-float">
+              <Card className="absolute bottom-16 left-8 bg-card/80 backdrop-blur-sm shadow-2xl rounded-2xl p-5 w-52 animate-float border border-success/10">
                 <CardContent className="p-0">
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 bg-success/10 rounded-xl flex items-center justify-center">
-                      <Shield className="w-6 h-6 text-success" />
+                  <div className="flex items-center gap-4">
+                    <div className="w-14 h-14 bg-gradient-to-br from-success/20 to-success/10 rounded-2xl flex items-center justify-center border border-success/20">
+                      <Award className="w-7 h-7 text-success" />
                     </div>
                     <div>
-                      <div className="text-2xl font-bold text-foreground font-poppins">100%</div>
-                      <div className="text-sm text-muted-foreground">Transparência</div>
+                      <div className="text-3xl font-bold text-foreground font-poppins">100%</div>
+                      <div className="text-sm text-muted-foreground font-medium">Transparência</div>
                     </div>
                   </div>
                 </CardContent>
@@ -136,39 +144,54 @@ const HomePage = () => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <Card className="p-8 text-center shadow-cuida hover:shadow-cuida-lg transition-all duration-300">
+            <Card className="group p-8 text-center shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-primary/10 hover:border-primary/20 bg-gradient-to-b from-card to-card/50">
               <CardContent className="p-0">
-                <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <Heart className="w-8 h-8 text-primary" />
+                <div className="w-20 h-20 bg-gradient-to-br from-primary/20 to-primary/10 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 border border-primary/20">
+                  <Stethoscope className="w-9 h-9 text-primary" />
                 </div>
-                <h3 className="text-xl font-semibold mb-4 font-poppins">Portal do Cidadão</h3>
-                <p className="text-muted-foreground">
-                  Consulte medicamentos disponíveis, localize unidades de saúde e acompanhe seu histórico médico.
+                <h3 className="text-2xl font-bold mb-4 font-poppins text-foreground">Portal do Cidadão</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Consulte medicamentos disponíveis, localize unidades de saúde e acompanhe seu histórico médico com facilidade.
                 </p>
+                <div className="flex items-center justify-center gap-2 mt-6 text-primary">
+                  <MapPin className="w-4 h-4" />
+                  <Clock className="w-4 h-4" />
+                  <Heart className="w-4 h-4" />
+                </div>
               </CardContent>
             </Card>
 
-            <Card className="p-8 text-center shadow-cuida hover:shadow-cuida-lg transition-all duration-300">
+            <Card className="group p-8 text-center shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-secondary/10 hover:border-secondary/20 bg-gradient-to-b from-card to-card/50">
               <CardContent className="p-0">
-                <div className="w-16 h-16 bg-success/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <Users className="w-8 h-8 text-success" />
+                <div className="w-20 h-20 bg-gradient-to-br from-secondary/20 to-secondary/10 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 border border-secondary/20">
+                  <Users className="w-9 h-9 text-secondary" />
                 </div>
-                <h3 className="text-xl font-semibold mb-4 font-poppins">Gestão Inteligente</h3>
-                <p className="text-muted-foreground">
+                <h3 className="text-2xl font-bold mb-4 font-poppins text-foreground">Gestão Inteligente</h3>
+                <p className="text-muted-foreground leading-relaxed">
                   Ferramentas avançadas para gestores controlarem estoque e otimizarem a distribuição de medicamentos.
                 </p>
+                <div className="flex items-center justify-center gap-2 mt-6 text-secondary">
+                  <TrendingUp className="w-4 h-4" />
+                  <Activity className="w-4 h-4" />
+                  <Shield className="w-4 h-4" />
+                </div>
               </CardContent>
             </Card>
 
-            <Card className="p-8 text-center shadow-cuida hover:shadow-cuida-lg transition-all duration-300">
+            <Card className="group p-8 text-center shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-warning/10 hover:border-warning/20 bg-gradient-to-b from-card to-card/50">
               <CardContent className="p-0">
-                <div className="w-16 h-16 bg-warning/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <Activity className="w-8 h-8 text-warning" />
+                <div className="w-20 h-20 bg-gradient-to-br from-warning/20 to-warning/10 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 border border-warning/20">
+                  <Bot className="w-9 h-9 text-warning" />
                 </div>
-                <h3 className="text-xl font-semibold mb-4 font-poppins">IA Avançada</h3>
-                <p className="text-muted-foreground">
+                <h3 className="text-2xl font-bold mb-4 font-poppins text-foreground">IA Avançada</h3>
+                <p className="text-muted-foreground leading-relaxed">
                   Inteligência artificial para previsão de demanda, alertas automáticos e otimização de recursos.
                 </p>
+                <div className="flex items-center justify-center gap-2 mt-6 text-warning">
+                  <Bot className="w-4 h-4" />
+                  <TrendingUp className="w-4 h-4" />
+                  <Award className="w-4 h-4" />
+                </div>
               </CardContent>
             </Card>
           </div>

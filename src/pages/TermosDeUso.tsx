@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, Shield, Heart } from "lucide-react";
+import { ArrowLeft, Shield, Heart, Clock } from "lucide-react";
 
 export default function TermosDeUso() {
   const navigate = useNavigate();
@@ -20,29 +20,30 @@ export default function TermosDeUso() {
             Voltar
           </Button>
 
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
-              <Heart className="w-7 h-7 text-primary-foreground" />
+          <div className="flex items-center justify-center gap-4 mb-8">
+            <div className="w-16 h-16 bg-gradient-primary rounded-2xl flex items-center justify-center shadow-lg">
+              <Heart className="w-9 h-9 text-white" />
             </div>
             <div className="text-center">
-              <h1 className="text-2xl font-bold text-foreground font-poppins">CUIDA</h1>
-              <p className="text-sm text-muted-foreground">Marília - SP</p>
+              <h1 className="text-3xl font-bold text-foreground font-poppins">CUIDA</h1>
+              <p className="text-sm text-muted-foreground font-medium">Marília - SP</p>
             </div>
           </div>
         </div>
 
         {/* Termos de Uso Card */}
-        <Card className="shadow-lg border-border">
-          <CardHeader className="text-center pb-6">
-            <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Shield className="w-8 h-8 text-primary" />
+        <Card className="shadow-2xl border border-primary/10 bg-card/95 backdrop-blur-sm">
+          <CardHeader className="text-center pb-8">
+            <div className="w-20 h-20 bg-gradient-to-br from-primary/20 to-primary/10 rounded-3xl flex items-center justify-center mx-auto mb-6 border border-primary/20 shadow-lg">
+              <Shield className="w-10 h-10 text-primary" />
             </div>
-            <CardTitle className="text-2xl font-bold text-foreground font-poppins">
+            <CardTitle className="text-3xl font-bold text-foreground font-poppins">
               Termo de Compromisso e Uso da Plataforma CUIDA
             </CardTitle>
-            <p className="text-sm text-muted-foreground mt-2">
+            <div className="inline-flex items-center gap-2 bg-primary/10 text-primary font-medium px-4 py-2 rounded-full text-sm border border-primary/20 mt-4">
+              <Clock className="w-4 h-4" />
               Última atualização: 20/08/2025
-            </p>
+            </div>
           </CardHeader>
 
           <CardContent className="prose prose-gray max-w-none">

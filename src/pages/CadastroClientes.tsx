@@ -84,23 +84,23 @@ export default function CadastroClientes() {
         </button>
 
         {/* Header da logo */}
-        <div className="flex items-center justify-center gap-3 mb-8">
-          <div className="w-12 h-12 bg-cuida-green rounded-lg flex items-center justify-center">
-            <Heart className="w-7 h-7 text-white" />
+        <div className="flex items-center justify-center gap-4 mb-8">
+          <div className="w-14 h-14 bg-gradient-secondary rounded-2xl flex items-center justify-center shadow-lg">
+            <Heart className="w-8 h-8 text-white" />
           </div>
-          <div className="text-left">
-            <h1 className="text-lg font-bold text-foreground">Portal do Cidadão</h1>
-            <p className="text-sm text-muted-foreground">Marília - SP</p>
+          <div className="text-center">
+            <h1 className="text-xl font-bold text-foreground font-poppins">Portal do Cidadão</h1>
+            <p className="text-sm text-muted-foreground font-medium">Marília - SP</p>
           </div>
         </div>
 
-        <Card className="shadow-xl border-0 bg-card">
-          <CardHeader className="text-center pb-6">
-            <div className="w-16 h-16 bg-cuida-green/10 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Users className="w-8 h-8 text-cuida-green" />
+        <Card className="shadow-2xl border border-secondary/10 bg-card/95 backdrop-blur-sm">
+          <CardHeader className="text-center pb-8">
+            <div className="w-20 h-20 bg-gradient-to-br from-secondary/20 to-secondary/10 rounded-3xl flex items-center justify-center mx-auto mb-6 border border-secondary/20 shadow-lg">
+              <Users className="w-10 h-10 text-secondary" />
             </div>
-            <CardTitle className="text-2xl font-bold text-foreground">Cadastro do Cidadão</CardTitle>
-            <CardDescription className="text-muted-foreground">
+            <CardTitle className="text-3xl font-bold text-foreground font-poppins">Cadastro do Cidadão</CardTitle>
+            <CardDescription className="text-muted-foreground text-base mt-2">
               Preencha seus dados para acessar o portal de saúde
             </CardDescription>
           </CardHeader>
@@ -293,26 +293,31 @@ export default function CadastroClientes() {
                 />
                 <Label htmlFor="acceptTerms" className="text-sm text-muted-foreground leading-relaxed">
                   Aceito os{" "}
-                  <a href="/termos.pdf" target="_blank" className="text-cuida-green hover:text-cuida-green/80 underline">
+                  <Link to="/termos-de-uso" className="text-secondary hover:text-secondary/80 underline">
                     termos de uso e política de privacidade
-                  </a>{" "}
+                  </Link>{" "}
                   do Portal do Cidadão
                 </Label>
               </div>
 
               <Button 
                 type="submit" 
-                className="w-full bg-cuida-green hover:bg-cuida-green/90 text-white h-11 font-medium mt-6" 
+                className="w-full bg-gradient-secondary text-white hover:opacity-90 h-12 font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 mt-6" 
                 disabled={loading}
               >
-                {loading ? "Cadastrando..." : "Criar Conta"}
+                {loading ? (
+                  <div className="flex items-center gap-2">
+                    <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                    Cadastrando...
+                  </div>
+                ) : "Criar Conta"}
               </Button>
             </form>
 
             <div className="mt-6 text-center">
               <p className="text-sm text-muted-foreground">
                 Já tem conta?{" "}
-                <Link to="/clientes/loginClientes" className="text-cuida-green hover:text-cuida-green/80 font-medium">
+                <Link to="/clientes/loginClientes" className="text-secondary hover:text-secondary/80 font-medium">
                   Faça login
                 </Link>
               </p>
