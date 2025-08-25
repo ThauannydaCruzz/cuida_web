@@ -118,7 +118,7 @@ const HomePage = () => {
               <Card className="absolute bottom-16 left-8 bg-card/80 backdrop-blur-sm shadow-2xl rounded-2xl p-5 w-52 animate-float border border-success/10">
                 <CardContent className="p-0">
                   <div className="flex items-center gap-4">
-                    <div className="w-14 h-14 bg-gradient-to-br from-success/20 to-success/10 rounded-2xl flex items-center justify-center border border-success/20">
+                    <div className="w-14 h-14 bg-gradient-to-br from-success/20 to-success/10 rounded-2xl flex items-center justify-center border border-success/20 bg-orange-300">
                       <Award className="w-7 h-7 text-success" />
                     </div>
                     <div>
