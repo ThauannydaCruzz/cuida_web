@@ -3,12 +3,9 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Users, UserCheck, MapPin, Activity, Shield, Heart } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-
 const HomeFuncionario = () => {
   const navigate = useNavigate();
-
-  return (
-    <div className="min-h-screen bg-cuida-gradient-soft">
+  return <div className="min-h-screen bg-cuida-gradient-soft">
       {/* Header */}
       <header className="bg-white shadow-sm border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -74,16 +71,10 @@ const HomeFuncionario = () => {
                   </div>
                 </div>
                 <div className="pt-4 space-y-2">
-                  <Button
-                    className="w-full bg-cuida-blue hover:bg-cuida-blue/90 text-white py-3 text-lg font-medium"
-                    onClick={() => navigate("/login")}
-                  >
+                  <Button onClick={() => navigate("/login")} className="w-full bg-cuida-blue hover:bg-cuida-blue/90 py-3 text-lg font-medium text-cyan-300">
                     Acessar Sistema Interno
                   </Button>
-                  <Button
-                    className="w-full bg-cuida-blue/70 hover:bg-cuida-blue/85 text-white py-3 text-lg font-medium"
-                    onClick={() => navigate("/medicamentos")}
-                  >
+                  <Button className="w-full bg-cuida-blue/70 hover:bg-cuida-blue/85 text-white py-3 text-lg font-medium" onClick={() => navigate("/medicamentos")}>
                     Ver Medicamentos
                   </Button>
                 </div>
@@ -117,10 +108,7 @@ const HomeFuncionario = () => {
                   </div>
                 </div>
                 <div className="pt-4">
-                  <Button
-                    className="w-full bg-cuida-green hover:bg-cuida-green/90 text-white py-3 text-lg font-medium"
-                    onClick={() => navigate("/portal-cidadao")}
-                  >
+                  <Button className="w-full bg-cuida-green hover:bg-cuida-green/90 text-white py-3 text-lg font-medium" onClick={() => navigate("/portal-cidadao")}>
                     Entrar no Portal
                   </Button>
                 </div>
@@ -183,8 +171,6 @@ const HomeFuncionario = () => {
           </div>
         </div>
       </footer>
-    </div>
-  );
+    </div>;
 };
-
 export default HomeFuncionario;
