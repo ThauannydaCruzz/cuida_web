@@ -32,35 +32,34 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-cuida-green/10 to-cuida-green/20 flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         {/* Voltar ao início */}
         <button 
           onClick={() => navigate("/")} 
-          className="inline-flex items-center gap-2 text-cuida-blue hover:text-cuida-blue/80 mb-6"
+          className="inline-flex items-center gap-2 text-cuida-green hover:text-cuida-green/80 mb-6"
         >
           <ArrowLeft className="w-4 h-4" /> Voltar ao início
         </button>
 
         {/* Header da logo */}
-        <div className="flex items-center justify-center gap-3 mb-8">
-          <div className="w-12 h-12 bg-cuida-blue rounded-lg flex items-center justify-center">
-            <Heart className="w-7 h-7 text-white" />
+        <div className="flex items-center justify-center gap-4 mb-8">
+          <div className="w-14 h-14 bg-gradient-primary rounded-2xl flex items-center justify-center shadow-lg">
+            <Heart className="w-8 h-8 text-white" />
           </div>
-          <div className="text-left">
-            <h1 className="text-lg font-bold text-gray-900">Secretaria de Saúde</h1>
-            <p className="text-sm text-gray-600">Marília - SP</p>
+          <div className="text-center">
+            <h1 className="text-xl font-bold text-foreground font-poppins">Secretaria de Saúde</h1>
+            <p className="text-sm text-muted-foreground font-medium">Marília - SP</p>
           </div>
         </div>
 
-        {/* Login Card */}
-        <Card className="shadow-xl border-0">
-          <CardHeader className="text-center pb-6">
-            <div className="w-16 h-16 bg-cuida-blue/20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <UserCheck className="w-8 h-8 text-cuida-blue" />
+        <Card className="shadow-2xl border border-primary/10 bg-card/95 backdrop-blur-sm">
+          <CardHeader className="text-center pb-8">
+            <div className="w-20 h-20 bg-gradient-to-br from-primary/20 to-primary/10 rounded-3xl flex items-center justify-center mx-auto mb-6 border border-primary/20 shadow-lg">
+              <UserCheck className="w-10 h-10 text-primary" />
             </div>
-            <CardTitle className="text-2xl font-bold text-gray-900">Acesso de Funcionário</CardTitle>
-            <CardDescription className="text-gray-600">
+            <CardTitle className="text-3xl font-bold text-foreground font-poppins">Acesso de Funcionário</CardTitle>
+            <CardDescription className="text-muted-foreground text-base mt-2">
               Entre com suas credenciais para acessar o sistema interno
             </CardDescription>
           </CardHeader>
@@ -68,7 +67,7 @@ const Login = () => {
           <CardContent>
             <form onSubmit={handleLogin} className="space-y-6">
               <div className="space-y-2">
-                <Label htmlFor="email" className="text-sm font-medium text-gray-700">Email institucional</Label>
+                <Label htmlFor="email" className="text-sm font-medium text-foreground">Email institucional</Label>
                 <Input
                   id="email"
                   type="email"
@@ -81,7 +80,7 @@ const Login = () => {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="password" className="text-sm font-medium text-gray-700">Senha</Label>
+                <Label htmlFor="password" className="text-sm font-medium text-foreground">Senha</Label>
                 <div className="relative">
                   <Input
                     id="password"
@@ -95,7 +94,7 @@ const Login = () => {
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
                   >
                     {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                   </button>
@@ -104,23 +103,32 @@ const Login = () => {
 
               <Button
                 type="submit"
-                className="w-full h-11 bg-cuida-blue hover:bg-cuida-blue/90 text-white font-medium transition"
+                className="w-full bg-gradient-primary text-white hover:opacity-90 h-12 font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
                 disabled={isLoading}
               >
-                {isLoading ? "Entrando..." : "Entrar no Sistema"}
+                {isLoading ? (
+                  <div className="flex items-center gap-2">
+                    <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                    Entrando...
+                  </div>
+                ) : "Entrar no Sistema"}
               </Button>
             </form>
 
-            <p className="mt-6 text-center text-sm text-gray-600">
-              Não tem acesso?{" "}
-              <button onClick={() => navigate("/cadastro")} className="text-cuida-blue font-medium hover:text-cuida-blue/80">
-                Solicitar cadastro
-              </button>
-            </p>
+            <div className="mt-6 text-center">
+              <p className="text-sm text-muted-foreground">
+                Não tem acesso?{" "}
+                <button onClick={() => navigate("/cadastro")} className="text-cuida-green hover:text-cuida-green/80 font-medium">
+                  Solicitar cadastro
+                </button>
+              </p>
+            </div>
 
-            <p className="mt-6 text-xs text-gray-500 text-center border-t pt-4">
-              Sistema restrito a funcionários autorizados da Secretaria de Saúde de Marília
-            </p>
+            <div className="mt-6 pt-6 border-t border-border">
+              <p className="text-xs text-muted-foreground text-center">
+                Sistema restrito a funcionários autorizados da Secretaria de Saúde de Marília
+              </p>
+            </div>
           </CardContent>
         </Card>
       </div>

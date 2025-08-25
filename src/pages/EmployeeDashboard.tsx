@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import HealthMap from "@/components/HealthMap";
 import {
   Heart,
   Package,
@@ -13,11 +14,13 @@ import {
   Droplet,
   Activity,
   HeartPulse,
-  CheckCircle
+  CheckCircle,
+  Map
 } from "lucide-react";
 
 export default function EmployeeDashboardPage() {
   const navigate = useNavigate();
+  const [activeView, setActiveView] = useState<'dashboard' | 'map'>('dashboard');
 
   const [medicamentos] = useState([
     { id: 1, nome: "Paracetamol 500mg", quantidade: 3, retiradoHoje: 5, visualizacoes: 12, fila: 8 },
@@ -30,39 +33,83 @@ export default function EmployeeDashboardPage() {
   const tempoMedioAtendimento = 12; // minutos
   const eficiencia = 85; // %
 
+  if (activeView === 'map') {
+    return (
+      <div className="min-h-screen bg-background">
+        {/* Header */}
+        <header className="bg-card shadow-sm border-b z-20 relative">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center justify-between h-16">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center">
+                  <Heart className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <h1 className="text-xl font-bold text-foreground">Mapa de Gestão</h1>
+                  <p className="text-sm text-muted-foreground">Sistema Interno - Secretaria de Saúde</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <Button 
+                  variant="outline" 
+                  onClick={() => setActiveView('dashboard')}
+                  className="gap-2"
+                >
+                  <Activity className="w-4 h-4" />
+                  Dashboard
+                </Button>
+                <span className="text-sm text-muted-foreground ml-4">Bem-vindo, João Silva</span>
+                <Button variant="outline" size="sm" className="gap-2">
+                  <LogOut className="w-4 h-4" /> Sair
+                </Button>
+              </div>
+            </div>
+          </div>
+        </header>
+        <HealthMap />
+      </div>
+    );
+  }
+
   return (
-    <div className="min-h-screen bg-gray-50 relative">
+    <div className="min-h-screen bg-background relative">
       {/* Cabeçalho */}
-      <header className="bg-white shadow-sm border-b z-20 relative">
+      <header className="bg-card shadow-sm border-b z-20 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
+              <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center">
                 <Heart className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h1 className="text-xl font-bold text-gray-900">Painel do Funcionário</h1>
-                <p className="text-sm text-gray-600">Sistema Interno - Secretaria de Saúde</p>
+                <h1 className="text-xl font-bold text-foreground">Painel do Funcionário</h1>
+                <p className="text-sm text-muted-foreground">Sistema Interno - Secretaria de Saúde</p>
               </div>
             </div>
 
             <div className="flex items-center gap-3">
-              <Button className="bg-blue-600 hover:bg-blue-700 gap-2" onClick={() => navigate("/medicamentos")}>
+              <Button variant="secondary" onClick={() => navigate("/medicamentos")} className="gap-2">
+                <Package className="w-4 h-4" />
                 Medicamentos
               </Button>
-              <Button className="bg-green-600 hover:bg-green-700 gap-2" onClick={() => navigate("/clientes-cadastrados")}>
+              <Button variant="secondary" onClick={() => navigate("/clientes-cadastrados")} className="gap-2">
+                <Users className="w-4 h-4" />
                 Clientes
               </Button>
-              <Button
-                className="bg-purple-600 hover:bg-purple-700 gap-2"
-                onClick={() => navigate("/documento")}
+              <Button 
+                onClick={() => setActiveView('map')}
+                className="bg-gradient-primary hover:opacity-90 gap-2"
               >
-                <FileText className="w-4 h-4" /> Documentos
+                <Map className="w-4 h-4" />
+                Mapa
+              </Button>
+              <Button variant="secondary" onClick={() => navigate("/documento")} className="gap-2">
+                <FileText className="w-4 h-4" />
+                Documentos
               </Button>
 
-
-              <span className="text-sm text-gray-600 ml-4">Bem-vindo, João Silva</span>
-              <Button variant="outline" size="sm" className="gap-2 bg-transparent">
+              <span className="text-sm text-muted-foreground ml-4">Bem-vindo, João Silva</span>
+              <Button variant="outline" size="sm" className="gap-2">
                 <LogOut className="w-4 h-4" /> Sair
               </Button>
             </div>
