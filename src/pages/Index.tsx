@@ -91,7 +91,7 @@ const HomePage = () => {
                     <div className="flex -space-x-3">
                       <div className="w-10 h-10 bg-gradient-to-br from-primary to-primary-glow rounded-full border-3 border-background shadow-lg"></div>
                       <div className="w-10 h-10 bg-gradient-to-br from-secondary to-success rounded-full border-3 border-background shadow-lg"></div>
-                      <div className="w-10 h-10 bg-gradient-to-br from-warning to-accent rounded-full border-3 border-background shadow-lg"></div>
+                      <div className="w-10 h-10 bg-gradient-to-br from-warning to-accent rounded-full border-3 border-background shadow-lg bg-orange-300"></div>
                     </div>
                     <div>
                       <div className="text-3xl font-bold text-foreground font-poppins">300+</div>
