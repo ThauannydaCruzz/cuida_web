@@ -24,10 +24,13 @@ import {
   Package,
   Heart,
   ThumbsUp,
-  ArrowLeft
+  ArrowLeft,
+  TrendingUp,
+  Truck,
+  BarChart3,
+  Eye
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import Header from "@/components/Header";
 
 // Fix for default markers in Leaflet
 delete (L.Icon.Default.prototype as any)._getIconUrl;
@@ -231,84 +234,141 @@ const FuncionarioMapa = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-secondary/5 to-background">
-      <Header />
-      
-      {/* Back Button */}
-      <div className="p-6">
+      {/* Back Button - Floating */}
+      <div className="fixed top-6 left-6 z-[1002]">
         <Button
           variant="ghost"
           onClick={() => navigate("/home-funcionario")}
-          className="flex items-center gap-2 hover:bg-accent/50 transition-colors"
+          className="flex items-center gap-2 bg-card/90 backdrop-blur-xl hover:bg-card border border-border/30 rounded-2xl shadow-lg transition-all duration-300 hover:scale-105"
         >
           <ArrowLeft className="w-4 h-4" />
-          Voltar para Home
+          Voltar
         </Button>
       </div>
 
-      <div className="h-[calc(100vh-140px)] flex flex-col px-6 pb-6">
-        {/* Header */}
-        <div className="mb-6">
-          <h1 className="text-3xl font-bold text-foreground mb-2">Mapa das Unidades de Saúde</h1>
-          <p className="text-muted-foreground">Monitoramento em tempo real das unidades de saúde de Marília</p>
+      {/* Floating Action Buttons */}
+      <div className="fixed top-6 right-6 z-[1002] flex flex-col gap-3">
+        <Button
+          onClick={() => navigate("/funcionario/agendamento")}
+          className="bg-primary/90 hover:bg-primary backdrop-blur-xl text-primary-foreground rounded-2xl shadow-lg transition-all duration-300 hover:scale-105 flex items-center gap-2 px-4 py-3"
+        >
+          <Truck className="w-4 h-4" />
+          Agendar Entrega
+        </Button>
+        <Button
+          variant="outline"
+          className="bg-card/90 hover:bg-card backdrop-blur-xl border border-border/30 rounded-2xl shadow-lg transition-all duration-300 hover:scale-105 flex items-center gap-2 px-4 py-3"
+        >
+          <BarChart3 className="w-4 h-4" />
+          Análise Geral
+        </Button>
+      </div>
+
+      {/* Full Screen Map Container */}
+      <div className="fixed inset-0 top-0 left-0 w-full h-full">
+        {/* Search Controls - Positioned inside map */}
+        <div className="absolute top-20 left-6 right-6 z-[1000]">
+          {/* Medication Search */}
+          <div className="flex gap-3">
+            <div className="flex-1 relative">
+              <Package className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+              <Input
+                placeholder="Buscar medicação nas unidades..."
+                value={medicationSearch}
+                onChange={(e) => setMedicationSearch(e.target.value)}
+                className="pl-10 bg-card/95 backdrop-blur-xl shadow-xl border-border/50 focus:ring-primary/30 rounded-2xl text-lg py-6"
+              />
+            </div>
+            {medicationSearch && (
+              <div className="bg-card/95 backdrop-blur-xl rounded-2xl px-6 py-3 shadow-xl border border-border/50">
+                <p className="text-sm text-muted-foreground">
+                  <span className="text-primary font-medium text-lg">{filteredUnits.length}</span> unidades com "{medicationSearch}" disponível
+                </p>
+              </div>
+            )}
+          </div>
         </div>
 
-        {/* Map Container - Full height */}
-        <div className="flex-1 relative rounded-3xl overflow-hidden shadow-2xl border border-border/20">
-          {/* Search Controls - Positioned inside map */}
-          <div className="absolute top-6 left-6 right-6 z-[1000]">
-            {/* Medication Search */}
-            <div className="flex gap-3">
-              <div className="flex-1 relative">
-                <Package className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
-                <Input
-                  placeholder="Buscar medicação disponível..."
-                  value={medicationSearch}
-                  onChange={(e) => setMedicationSearch(e.target.value)}
-                  className="pl-10 bg-card/95 backdrop-blur-sm shadow-card border-border/50 focus:ring-primary/30 rounded-2xl"
-                />
+        {/* Map */}
+        <div 
+          ref={mapRef} 
+          className="absolute inset-0 w-full h-full"
+          style={{ zIndex: 0 }}
+        />
+
+        {/* Legend - Enhanced */}
+        <div className="absolute bottom-6 left-6 z-[1000]">
+          <Card className="bg-card/95 backdrop-blur-xl shadow-2xl border-border/50 rounded-3xl">
+            <CardContent className="p-6">
+              <h3 className="font-bold text-lg mb-4 text-card-foreground flex items-center gap-2">
+                <Eye className="w-5 h-5 text-primary" />
+                Status das Unidades
+              </h3>
+              <div className="grid grid-cols-2 gap-4 text-sm">
+                <div className="flex items-center gap-3">
+                  <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center text-white text-xs font-bold shadow-lg">✓</div>
+                  <div>
+                    <p className="font-medium text-foreground">Estoque Saudável</p>
+                    <p className="text-xs text-muted-foreground">Acima de 80%</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-white text-xs font-bold shadow-lg">+</div>
+                  <div>
+                    <p className="font-medium text-foreground">Estoque Normal</p>
+                    <p className="text-xs text-muted-foreground">50% - 80%</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-6 h-6 bg-amber-500 rounded-full flex items-center justify-center text-white text-xs font-bold shadow-lg">!</div>
+                  <div>
+                    <p className="font-medium text-foreground">Atenção</p>
+                    <p className="text-xs text-muted-foreground">20% - 50%</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center text-white text-xs font-bold shadow-lg">✕</div>
+                  <div>
+                    <p className="font-medium text-foreground">Urgente</p>
+                    <p className="text-xs text-muted-foreground">Abaixo de 20%</p>
+                  </div>
+                </div>
               </div>
-              {medicationSearch && (
-                <div className="bg-card/95 backdrop-blur-sm rounded-2xl px-4 py-2 shadow-card border border-border/50">
-                  <p className="text-sm text-muted-foreground">
-                    <span className="text-primary font-medium">{filteredUnits.length}</span> unidades com "{medicationSearch}" disponível
-                  </p>
-                </div>
-              )}
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Floating Navigation Bar */}
+        <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-[1001]">
+          <div className="bg-card/90 backdrop-blur-xl rounded-3xl p-3 shadow-2xl border border-border/30">
+            <div className="flex items-center gap-3">
+              <Button
+                onClick={() => navigate("/funcionario/mapa")}
+                variant="default"
+                className="flex flex-col items-center gap-2 p-4 h-auto rounded-2xl"
+              >
+                <MapPin className="w-5 h-5" />
+                <span className="text-xs font-medium">Mapa</span>
+              </Button>
+
+              <Button
+                onClick={() => navigate("/funcionario/dashboard")}
+                variant="ghost"
+                className="flex flex-col items-center gap-2 p-4 h-auto hover:bg-accent/50 rounded-2xl"
+              >
+                <BarChart3 className="w-5 h-5" />
+                <span className="text-xs font-medium">Dashboard</span>
+              </Button>
+
+              <Button
+                onClick={() => navigate("/funcionario/documentos")}
+                variant="ghost"
+                className="flex flex-col items-center gap-2 p-4 h-auto hover:bg-accent/50 rounded-2xl"
+              >
+                <Package className="w-5 h-5" />
+                <span className="text-xs font-medium">Documentos</span>
+              </Button>
             </div>
-          </div>
-
-          {/* Map */}
-          <div 
-            ref={mapRef} 
-            className="absolute inset-0 w-full h-full"
-            style={{ zIndex: 0 }}
-          />
-
-          {/* Legend */}
-          <div className="absolute bottom-6 left-6 z-[1000]">
-            <Card className="bg-card/95 backdrop-blur-sm shadow-card border-border/50 rounded-2xl">
-              <CardContent className="p-4">
-                <h3 className="font-semibold text-sm mb-3 text-card-foreground">Legenda de Status</h3>
-                <div className="grid grid-cols-2 gap-3 text-xs">
-                  <div className="flex items-center gap-2">
-                    <div className="w-5 h-5 bg-secondary rounded-full flex items-center justify-center text-secondary-foreground text-xs font-bold">✓</div>
-                    <span className="text-muted-foreground">Estoque Saudável</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-5 h-5 bg-primary rounded-full flex items-center justify-center text-primary-foreground text-xs font-bold">+</div>
-                    <span className="text-muted-foreground">Estoque Normal</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-5 h-5 bg-amber-500 rounded-full flex items-center justify-center text-white text-xs font-bold">!</div>
-                    <span className="text-muted-foreground">Atenção Necessária</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-5 h-5 bg-destructive rounded-full flex items-center justify-center text-destructive-foreground text-xs font-bold">✕</div>
-                    <span className="text-muted-foreground">Ação Urgente</span>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
           </div>
         </div>
 
@@ -348,21 +408,39 @@ const FuncionarioMapa = () => {
             {/* Content */}
             <div className="relative p-4 space-y-4">
               {/* Unit Info */}
-              <div className="grid grid-cols-1 gap-2 text-sm">
-                <div className="flex items-center gap-2 text-muted-foreground">
-                  <MapPin className="w-4 h-4 flex-shrink-0 text-primary" />
-                  <span className="line-clamp-1">{selectedUnit.address}</span>
+              <div className="grid grid-cols-1 gap-3 text-sm">
+                <div className="flex items-center gap-3 text-muted-foreground">
+                  <MapPin className="w-5 h-5 flex-shrink-0 text-primary" />
+                  <span className="line-clamp-1 font-medium">{selectedUnit.address}</span>
                 </div>
-                <div className="flex items-center gap-4">
+                <div className="grid grid-cols-2 gap-4">
                   <div className="flex items-center gap-2 text-muted-foreground">
                     <Clock className="w-4 h-4 flex-shrink-0 text-primary" />
-                    <span className="text-xs">{selectedUnit.workingHours}</span>
+                    <span className="text-sm">{selectedUnit.workingHours}</span>
                   </div>
                   <div className="flex items-center gap-2 text-muted-foreground">
                     <Phone className="w-4 h-4 flex-shrink-0 text-primary" />
-                    <span className="text-xs">{selectedUnit.phone}</span>
+                    <span className="text-sm">{selectedUnit.phone}</span>
                   </div>
                 </div>
+              </div>
+
+              {/* Quick Actions */}
+              <div className="flex gap-2">
+                <Button
+                  onClick={() => navigate("/funcionario/agendamento", { state: { selectedUnit } })}
+                  className="flex-1 bg-primary/90 hover:bg-primary text-primary-foreground py-2 rounded-xl text-sm font-medium transition-all duration-200 hover:scale-105"
+                >
+                  <Truck className="w-4 h-4 mr-1" />
+                  Agendar Entrega
+                </Button>
+                <Button
+                  variant="outline"
+                  className="flex-1 border-primary/30 hover:bg-primary/10 py-2 rounded-xl text-sm font-medium transition-all duration-200 hover:scale-105"
+                >
+                  <TrendingUp className="w-4 h-4 mr-1" />
+                  Análise
+                </Button>
               </div>
 
               {/* Medications */}
@@ -408,8 +486,9 @@ const FuncionarioMapa = () => {
                               size="sm"
                               onClick={() => handleMedicationInterest(med.id, med.name)}
                               className="h-8 w-8 p-0 opacity-70 group-hover:opacity-100 transition-all duration-200 hover:bg-primary/20 hover:text-primary hover:scale-110"
+                              title="Registrar demanda"
                             >
-                              <Plus className="w-4 h-4" />
+                              <TrendingUp className="w-4 h-4" />
                             </Button>
                           </div>
                         </div>
@@ -423,12 +502,12 @@ const FuncionarioMapa = () => {
                               {isSufficient ? (
                                 <>
                                   <CheckCircle className="w-3 h-3" />
-                                  Estoque suficiente
+                                  Estoque suficiente para demanda
                                 </>
                               ) : (
                                 <>
                                   <AlertTriangle className="w-3 h-3" />
-                                  Demanda registrada
+                                  Demanda registrada - Agendar reposição
                                 </>
                               )}
                             </div>
