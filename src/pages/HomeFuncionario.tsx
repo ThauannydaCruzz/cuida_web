@@ -40,75 +40,154 @@ const HomeFuncionario = () => {
         </div>
       </section>
 
-      {/* Access Cards */}
-      <section className="py-12 px-4 sm:px-6 lg:px-8">
+      {/* Quick Access Section */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto text-center mb-12">
+          <h3 className="text-3xl font-bold text-foreground mb-4">Acesso Rápido</h3>
+          <p className="text-lg text-muted-foreground">Ferramentas essenciais para gestão da saúde pública</p>
+        </div>
+        
+        {/* Navigation Buttons */}
+        <div className="max-w-2xl mx-auto mb-16">
+          <div className="bg-card/60 backdrop-blur-xl rounded-3xl p-2 shadow-2xl border border-border/20">
+            <div className="grid grid-cols-3 gap-2">
+              <Button
+                onClick={() => navigate("/funcionario/mapa")}
+                variant="ghost"
+                className="flex flex-col items-center gap-3 p-6 h-auto bg-gradient-to-br from-primary/10 to-primary/5 hover:from-primary/20 hover:to-primary/10 border border-primary/20 rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-lg group"
+              >
+                <div className="w-12 h-12 bg-primary/20 rounded-2xl flex items-center justify-center group-hover:bg-primary/30 transition-colors">
+                  <MapPin className="w-6 h-6 text-primary" />
+                </div>
+                <div className="text-center">
+                  <p className="font-semibold text-sm text-foreground">Mapa</p>
+                  <p className="text-xs text-muted-foreground">Unidades de Saúde</p>
+                </div>
+              </Button>
+
+              <Button
+                onClick={() => navigate("/funcionario/dashboard")}
+                variant="ghost"
+                className="flex flex-col items-center gap-3 p-6 h-auto bg-gradient-to-br from-secondary/10 to-secondary/5 hover:from-secondary/20 hover:to-secondary/10 border border-secondary/20 rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-lg group"
+              >
+                <div className="w-12 h-12 bg-secondary/20 rounded-2xl flex items-center justify-center group-hover:bg-secondary/30 transition-colors">
+                  <Activity className="w-6 h-6 text-secondary-foreground" />
+                </div>
+                <div className="text-center">
+                  <p className="font-semibold text-sm text-foreground">Dashboard</p>
+                  <p className="text-xs text-muted-foreground">Dados & Métricas</p>
+                </div>
+              </Button>
+
+              <Button
+                onClick={() => navigate("/funcionario/documentos")}
+                variant="ghost"
+                className="flex flex-col items-center gap-3 p-6 h-auto bg-gradient-to-br from-accent/10 to-accent/5 hover:from-accent/20 hover:to-accent/10 border border-accent/20 rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-lg group"
+              >
+                <div className="w-12 h-12 bg-accent/20 rounded-2xl flex items-center justify-center group-hover:bg-accent/30 transition-colors">
+                  <Users className="w-6 h-6 text-accent-foreground" />
+                </div>
+                <div className="text-center">
+                  <p className="font-semibold text-sm text-foreground">Documentos</p>
+                  <p className="text-xs text-muted-foreground">Consultas</p>
+                </div>
+              </Button>
+            </div>
+          </div>
+        </div>
+
+        {/* Access Cards */}
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-8">
             {/* Employee Access */}
-            <Card className="bg-white shadow-cuida-lg hover:shadow-cuida transition-shadow duration-300 border-l-4 border-l-cuida-blue">
-              <CardHeader className="text-center pb-6">
-                <div className="w-16 h-16 bg-cuida-blue/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <UserCheck className="w-8 h-8 text-cuida-blue" />
+            <Card className="bg-gradient-to-br from-card to-card/80 shadow-2xl hover:shadow-3xl transition-all duration-300 border border-border/20 rounded-3xl overflow-hidden group hover:scale-[1.02]">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent pointer-events-none" />
+              <CardHeader className="text-center pb-6 relative">
+                <div className="w-20 h-20 bg-gradient-to-br from-primary to-primary/80 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                  <UserCheck className="w-10 h-10 text-primary-foreground" />
                 </div>
-                <CardTitle className="text-2xl font-bold text-foreground">Acesso para Funcionários</CardTitle>
-                <CardDescription className="text-muted-foreground text-base">
-                  Sistema de gestão interna para profissionais da saúde
+                <CardTitle className="text-2xl font-bold text-foreground mb-2">Sistema Interno</CardTitle>
+                <CardDescription className="text-muted-foreground text-base leading-relaxed">
+                  Plataforma completa de gestão para profissionais da saúde
                 </CardDescription>
               </CardHeader>
-              <CardContent className="space-y-6">
+              <CardContent className="space-y-6 relative">
                 <div className="space-y-4">
-                  <div className="flex items-center gap-3 text-foreground">
-                    <Activity className="w-5 h-5 text-cuida-blue" />
-                    <span>Gerenciamento de medicamentos</span>
+                  <div className="flex items-center gap-4 p-3 rounded-2xl bg-accent/10 transition-colors hover:bg-accent/20">
+                    <div className="w-10 h-10 bg-primary/20 rounded-xl flex items-center justify-center">
+                      <Activity className="w-5 h-5 text-primary" />
+                    </div>
+                    <span className="text-foreground font-medium">Gerenciamento de medicamentos</span>
                   </div>
-                  <div className="flex items-center gap-3 text-foreground">
-                    <Users className="w-5 h-5 text-cuida-blue" />
-                    <span>Controle de filas em tempo real</span>
+                  <div className="flex items-center gap-4 p-3 rounded-2xl bg-accent/10 transition-colors hover:bg-accent/20">
+                    <div className="w-10 h-10 bg-primary/20 rounded-xl flex items-center justify-center">
+                      <Users className="w-5 h-5 text-primary" />
+                    </div>
+                    <span className="text-foreground font-medium">Controle de filas em tempo real</span>
                   </div>
-                  <div className="flex items-center gap-3 text-foreground">
-                    <MapPin className="w-5 h-5 text-cuida-blue" />
-                    <span>Monitoramento de unidades</span>
+                  <div className="flex items-center gap-4 p-3 rounded-2xl bg-accent/10 transition-colors hover:bg-accent/20">
+                    <div className="w-10 h-10 bg-primary/20 rounded-xl flex items-center justify-center">
+                      <MapPin className="w-5 h-5 text-primary" />
+                    </div>
+                    <span className="text-foreground font-medium">Monitoramento de unidades</span>
                   </div>
                 </div>
-                <div className="pt-4 space-y-2">
-                  <Button onClick={() => navigate("/login")} className="w-full bg-cuida-blue hover:bg-cuida-blue/90 py-3 text-lg font-medium text-cyan-300">
+                <div className="pt-6 space-y-3">
+                  <Button 
+                    onClick={() => navigate("/login")} 
+                    className="w-full bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 py-4 text-lg font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+                  >
                     Acessar Sistema Interno
                   </Button>
-                  <Button className="w-full bg-cuida-blue/70 hover:bg-cuida-blue/85 text-white py-3 text-lg font-medium" onClick={() => navigate("/medicamentos")}>
-                    Ver Medicamentos
+                  <Button 
+                    variant="outline"
+                    className="w-full border-2 border-primary/20 hover:border-primary/40 hover:bg-primary/5 py-4 text-lg font-semibold rounded-2xl transition-all duration-300" 
+                    onClick={() => navigate("/funcionario/dashboard")}
+                  >
+                    Ver Dashboard
                   </Button>
                 </div>
               </CardContent>
             </Card>
 
             {/* Customer Access */}
-            <Card className="bg-white shadow-cuida-lg hover:shadow-cuida transition-shadow duration-300 border-l-4 border-l-cuida-green">
-              <CardHeader className="text-center pb-6">
-                <div className="w-16 h-16 bg-cuida-green/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Users className="w-8 h-8 text-cuida-green" />
+            <Card className="bg-gradient-to-br from-card to-card/80 shadow-2xl hover:shadow-3xl transition-all duration-300 border border-border/20 rounded-3xl overflow-hidden group hover:scale-[1.02]">
+              <div className="absolute inset-0 bg-gradient-to-br from-secondary/5 to-transparent pointer-events-none" />
+              <CardHeader className="text-center pb-6 relative">
+                <div className="w-20 h-20 bg-gradient-to-br from-secondary to-secondary/80 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                  <Users className="w-10 h-10 text-secondary-foreground" />
                 </div>
-                <CardTitle className="text-2xl font-bold text-foreground">Portal do Cidadão</CardTitle>
-                <CardDescription className="text-muted-foreground text-base">
+                <CardTitle className="text-2xl font-bold text-foreground mb-2">Portal do Cidadão</CardTitle>
+                <CardDescription className="text-muted-foreground text-base leading-relaxed">
                   Serviços de saúde online para a população de Marília
                 </CardDescription>
               </CardHeader>
-              <CardContent className="space-y-6">
+              <CardContent className="space-y-6 relative">
                 <div className="space-y-4">
-                  <div className="flex items-center gap-3 text-foreground">
-                    <MapPin className="w-5 h-5 text-cuida-green" />
-                    <span>Localizar postos de saúde</span>
+                  <div className="flex items-center gap-4 p-3 rounded-2xl bg-accent/10 transition-colors hover:bg-accent/20">
+                    <div className="w-10 h-10 bg-secondary/20 rounded-xl flex items-center justify-center">
+                      <MapPin className="w-5 h-5 text-secondary-foreground" />
+                    </div>
+                    <span className="text-foreground font-medium">Localizar postos de saúde</span>
                   </div>
-                  <div className="flex items-center gap-3 text-foreground">
-                    <Activity className="w-5 h-5 text-cuida-green" />
-                    <span>Consultar disponibilidade de medicamentos</span>
+                  <div className="flex items-center gap-4 p-3 rounded-2xl bg-accent/10 transition-colors hover:bg-accent/20">
+                    <div className="w-10 h-10 bg-secondary/20 rounded-xl flex items-center justify-center">
+                      <Activity className="w-5 h-5 text-secondary-foreground" />
+                    </div>
+                    <span className="text-foreground font-medium">Consultar medicamentos disponíveis</span>
                   </div>
-                  <div className="flex items-center gap-3 text-foreground">
-                    <Heart className="w-5 h-5 text-cuida-green" />
-                    <span>Informações e dicas de saúde</span>
+                  <div className="flex items-center gap-4 p-3 rounded-2xl bg-accent/10 transition-colors hover:bg-accent/20">
+                    <div className="w-10 h-10 bg-secondary/20 rounded-xl flex items-center justify-center">
+                      <Heart className="w-5 h-5 text-secondary-foreground" />
+                    </div>
+                    <span className="text-foreground font-medium">Informações e dicas de saúde</span>
                   </div>
                 </div>
-                <div className="pt-4">
-                  <Button className="w-full bg-cuida-green hover:bg-cuida-green/90 text-white py-3 text-lg font-medium" onClick={() => navigate("/portal-cidadao")}>
+                <div className="pt-6">
+                  <Button 
+                    className="w-full bg-gradient-to-r from-secondary to-secondary/80 hover:from-secondary/90 hover:to-secondary/70 py-4 text-lg font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02]" 
+                    onClick={() => navigate("/portal-cidadao")}
+                  >
                     Entrar no Portal
                   </Button>
                 </div>
