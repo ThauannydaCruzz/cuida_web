@@ -201,40 +201,34 @@ const HomeFuncionario = () => {
       </section>
 
       {/* Floating Navigation Bar */}
-      <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50">
-        <div className="bg-card/90 backdrop-blur-xl rounded-3xl p-3 shadow-2xl border border-border/30">
-          <div className="flex items-center gap-3">
+      <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50">
+        <div className="bg-white/95 backdrop-blur-sm rounded-2xl px-4 py-3 shadow-lg border border-gray-200/50">
+          <div className="flex items-center gap-1">
             <Button
               onClick={() => navigate("/funcionario/mapa")}
               variant="ghost"
-              className="flex flex-col items-center gap-2 p-4 h-auto bg-gradient-to-br from-primary/10 to-primary/5 hover:from-primary/20 hover:to-primary/10 border border-primary/20 rounded-2xl transition-all duration-300 hover:scale-105 group"
+              className="flex flex-col items-center gap-1 p-3 h-auto hover:bg-gray-100 rounded-xl transition-colors"
             >
-              <div className="w-10 h-10 bg-primary/20 rounded-xl flex items-center justify-center group-hover:bg-primary/30 transition-colors">
-                <MapPin className="w-5 h-5 text-primary" />
-              </div>
-              <span className="text-xs font-medium text-foreground">Mapa</span>
+              <MapPin className="w-5 h-5 text-gray-600" />
+              <span className="text-xs text-gray-600">Mapa</span>
             </Button>
 
             <Button
               onClick={() => navigate("/funcionario/dashboard")}
               variant="ghost"
-              className="flex flex-col items-center gap-2 p-4 h-auto bg-gradient-to-br from-secondary/10 to-secondary/5 hover:from-secondary/20 hover:to-secondary/10 border border-secondary/20 rounded-2xl transition-all duration-300 hover:scale-105 group"
+              className="flex flex-col items-center gap-1 p-3 h-auto hover:bg-gray-100 rounded-xl transition-colors"
             >
-              <div className="w-10 h-10 bg-secondary/20 rounded-xl flex items-center justify-center group-hover:bg-secondary/30 transition-colors">
-                <Activity className="w-5 h-5 text-secondary-foreground" />
-              </div>
-              <span className="text-xs font-medium text-foreground">Dashboard</span>
+              <Activity className="w-5 h-5 text-gray-600" />
+              <span className="text-xs text-gray-600">Dashboard</span>
             </Button>
 
             <Button
               onClick={() => navigate("/funcionario/documentos")}
               variant="ghost"
-              className="flex flex-col items-center gap-2 p-4 h-auto bg-gradient-to-br from-accent/10 to-accent/5 hover:from-accent/20 hover:to-accent/10 border border-accent/20 rounded-2xl transition-all duration-300 hover:scale-105 group"
+              className="flex flex-col items-center gap-1 p-3 h-auto hover:bg-gray-100 rounded-xl transition-colors"
             >
-              <div className="w-10 h-10 bg-accent/20 rounded-xl flex items-center justify-center group-hover:bg-accent/30 transition-colors">
-                <Users className="w-5 h-5 text-accent-foreground" />
-              </div>
-              <span className="text-xs font-medium text-foreground">Documentos</span>
+              <Users className="w-5 h-5 text-gray-600" />
+              <span className="text-xs text-gray-600">Documentos</span>
             </Button>
           </div>
         </div>
