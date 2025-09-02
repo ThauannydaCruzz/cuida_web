@@ -5,50 +5,21 @@ import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { useNavigate } from "react-router-dom";
 import { healthUnits } from "@/data/health-units-mock";
-import { 
-  ArrowLeft, 
-  Activity, 
-  Package, 
-  AlertTriangle, 
-  TrendingUp, 
-  MapPin, 
-  DollarSign,
-  Truck,
-  Calendar,
-  BarChart3,
-  PieChart,
-  Target,
-  Clock,
-  CheckCircle,
-  XCircle,
-  AlertCircle,
-  TrendingDown,
-  Home,
-  Star,
-  Zap
-} from "lucide-react";
+import { ArrowLeft, Activity, Package, AlertTriangle, TrendingUp, MapPin, DollarSign, Truck, Calendar, BarChart3, PieChart, Target, Clock, CheckCircle, XCircle, AlertCircle, TrendingDown, Home, Star, Zap } from "lucide-react";
 import Header from "@/components/Header";
-
 const FuncionarioDashboard = () => {
   const navigate = useNavigate();
 
   // Calculate dashboard metrics
   const totalUnits = healthUnits.length;
   const totalMedications = healthUnits.reduce((acc, unit) => acc + unit.medications.length, 0);
-  const availableMedications = healthUnits.reduce((acc, unit) => 
-    acc + unit.medications.filter(med => med.quantity > 0).length, 0);
+  const availableMedications = healthUnits.reduce((acc, unit) => acc + unit.medications.filter(med => med.quantity > 0).length, 0);
   const outOfStockMedications = totalMedications - availableMedications;
-  
-  const unitsWithIssues = healthUnits.filter(unit => 
-    unit.status === 'attention' || unit.status === 'urgent').length;
-  
+  const unitsWithIssues = healthUnits.filter(unit => unit.status === 'attention' || unit.status === 'urgent').length;
   const medicationsByStatus = {
-    healthy: healthUnits.reduce((acc, unit) => 
-      acc + unit.medications.filter(med => med.status === 'healthy').length, 0),
-    attention: healthUnits.reduce((acc, unit) => 
-      acc + unit.medications.filter(med => med.status === 'attention').length, 0),
-    urgent: healthUnits.reduce((acc, unit) => 
-      acc + unit.medications.filter(med => med.status === 'urgent').length, 0),
+    healthy: healthUnits.reduce((acc, unit) => acc + unit.medications.filter(med => med.status === 'healthy').length, 0),
+    attention: healthUnits.reduce((acc, unit) => acc + unit.medications.filter(med => med.status === 'attention').length, 0),
+    urgent: healthUnits.reduce((acc, unit) => acc + unit.medications.filter(med => med.status === 'urgent').length, 0)
   };
 
   // Cost and financial metrics
@@ -57,7 +28,6 @@ const FuncionarioDashboard = () => {
     lastMonth: 428_000,
     trend: 5.1
   };
-
   const deliveryMetrics = {
     completed: 89,
     pending: 12,
@@ -68,30 +38,61 @@ const FuncionarioDashboard = () => {
   // Expired and expiring medications
   const expiredMedications = 23;
   const expiringNext30Days = 45;
-
-  const topMedicationsByDemand = [
-    { name: "Paracetamol 500mg", demand: 45, stock: 120, cost: "R$ 2.340" },
-    { name: "Dipirona 500mg", demand: 38, stock: 85, cost: "R$ 1.890" },
-    { name: "Ibuprofeno 600mg", demand: 32, stock: 95, cost: "R$ 2.180" },
-    { name: "Amoxicilina 500mg", demand: 28, stock: 65, cost: "R$ 3.420" },
-    { name: "Omeprazol 20mg", demand: 25, stock: 110, cost: "R$ 1.650" }
-  ];
+  const topMedicationsByDemand = [{
+    name: "Paracetamol 500mg",
+    demand: 45,
+    stock: 120,
+    cost: "R$ 2.340"
+  }, {
+    name: "Dipirona 500mg",
+    demand: 38,
+    stock: 85,
+    cost: "R$ 1.890"
+  }, {
+    name: "Ibuprofeno 600mg",
+    demand: 32,
+    stock: 95,
+    cost: "R$ 2.180"
+  }, {
+    name: "Amoxicilina 500mg",
+    demand: 28,
+    stock: 65,
+    cost: "R$ 3.420"
+  }, {
+    name: "Omeprazol 20mg",
+    demand: 25,
+    stock: 110,
+    cost: "R$ 1.650"
+  }];
 
   // Best and worst performing units (storage efficiency)
-  const bestStorageUnits = [
-    { name: "UBS Vila Nova", efficiency: 98, score: "Excelente" },
-    { name: "UPA Centro", efficiency: 95, score: "Excelente" },
-    { name: "USF Jardim América", efficiency: 92, score: "Muito Bom" }
-  ];
-
-  const worstStorageUnits = [
-    { name: "UBS Periférica Sul", efficiency: 45, score: "Crítico" },
-    { name: "USF Rural Norte", efficiency: 52, score: "Ruim" },
-    { name: "UBS Zona Leste", efficiency: 58, score: "Regular" }
-  ];
-
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-rose-50">
+  const bestStorageUnits = [{
+    name: "UBS Vila Nova",
+    efficiency: 98,
+    score: "Excelente"
+  }, {
+    name: "UPA Centro",
+    efficiency: 95,
+    score: "Excelente"
+  }, {
+    name: "USF Jardim América",
+    efficiency: 92,
+    score: "Muito Bom"
+  }];
+  const worstStorageUnits = [{
+    name: "UBS Periférica Sul",
+    efficiency: 45,
+    score: "Crítico"
+  }, {
+    name: "USF Rural Norte",
+    efficiency: 52,
+    score: "Ruim"
+  }, {
+    name: "UBS Zona Leste",
+    efficiency: 58,
+    score: "Regular"
+  }];
+  return <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-rose-50">
       {/* Sidebar Navigation */}
       <div className="fixed left-0 top-0 h-full w-64 bg-gradient-to-b from-blue-600 to-blue-800 text-white z-40">
         <div className="p-6">
@@ -103,24 +104,9 @@ const FuncionarioDashboard = () => {
           </div>
           
           <nav className="space-y-2">
-            <button 
-              onClick={() => navigate("/home-funcionario")}
-              className="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-white/10 transition-colors text-left"
-            >
-              <Home className="w-5 h-5" />
-              <span>Dashboard</span>
-            </button>
-            <button 
-              onClick={() => navigate("/funcionario/mapa")}
-              className="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-white/10 transition-colors text-left"
-            >
-              <MapPin className="w-5 h-5" />
-              <span>Mapa</span>
-            </button>
-            <button 
-              onClick={() => navigate("/funcionario/documentos")}
-              className="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-white/10 transition-colors text-left"
-            >
+            
+            
+            <button onClick={() => navigate("/funcionario/documentos")} className="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-white/10 transition-colors text-left">
               <Package className="w-5 h-5" />
               <span>Entregas</span>
             </button>
@@ -213,7 +199,9 @@ const FuncionarioDashboard = () => {
                 <h3 className="text-lg font-semibold text-gray-700 mb-4">Medicamentos</h3>
                 <div className="relative w-32 h-32 mx-auto mb-4">
                   <div className="w-32 h-32 rounded-full border-8 border-gray-200"></div>
-                  <div className="absolute top-0 left-0 w-32 h-32 rounded-full border-8 border-rose-500 transform rotate-45" style={{clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)'}}></div>
+                  <div className="absolute top-0 left-0 w-32 h-32 rounded-full border-8 border-rose-500 transform rotate-45" style={{
+                  clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)'
+                }}></div>
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="text-center">
                       <p className="text-2xl font-bold text-gray-800">56%</p>
@@ -242,7 +230,9 @@ const FuncionarioDashboard = () => {
                 <h3 className="text-lg font-semibold text-gray-700 mb-4">Status do Estoque</h3>
                 <div className="relative w-32 h-32 mx-auto mb-4">
                   <div className="w-32 h-32 rounded-full border-8 border-gray-200"></div>
-                  <div className="absolute top-0 left-0 w-32 h-32 rounded-full border-8 border-blue-500 transform -rotate-45" style={{clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)'}}></div>
+                  <div className="absolute top-0 left-0 w-32 h-32 rounded-full border-8 border-blue-500 transform -rotate-45" style={{
+                  clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)'
+                }}></div>
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="text-center">
                       <p className="text-2xl font-bold text-gray-800">50%</p>
@@ -279,7 +269,9 @@ const FuncionarioDashboard = () => {
                     <span className="font-semibold">56%</span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2">
-                    <div className="bg-rose-500 h-2 rounded-full" style={{width: '56%'}}></div>
+                    <div className="bg-rose-500 h-2 rounded-full" style={{
+                    width: '56%'
+                  }}></div>
                   </div>
                 </div>
                 <div>
@@ -288,7 +280,9 @@ const FuncionarioDashboard = () => {
                     <span className="font-semibold">49%</span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2">
-                    <div className="bg-blue-500 h-2 rounded-full" style={{width: '49%'}}></div>
+                    <div className="bg-blue-500 h-2 rounded-full" style={{
+                    width: '49%'
+                  }}></div>
                   </div>
                 </div>
                 <div>
@@ -297,7 +291,9 @@ const FuncionarioDashboard = () => {
                     <span className="font-semibold">78%</span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2">
-                    <div className="bg-blue-400 h-2 rounded-full" style={{width: '78%'}}></div>
+                    <div className="bg-blue-400 h-2 rounded-full" style={{
+                    width: '78%'
+                  }}></div>
                   </div>
                 </div>
               </div>
@@ -317,8 +313,7 @@ const FuncionarioDashboard = () => {
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                {topMedicationsByDemand.map((med, index) => (
-                  <div key={med.name} className="flex items-center justify-between p-4 rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors">
+                {topMedicationsByDemand.map((med, index) => <div key={med.name} className="flex items-center justify-between p-4 rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors">
                     <div className="flex items-center gap-4">
                       <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
                         <span className="text-sm font-bold text-blue-600">{index + 1}</span>
@@ -333,8 +328,7 @@ const FuncionarioDashboard = () => {
                         {med.demand} solicitações
                       </Badge>
                     </div>
-                  </div>
-                ))}
+                  </div>)}
               </div>
             </CardContent>
           </Card>
@@ -355,8 +349,7 @@ const FuncionarioDashboard = () => {
                     Melhores Unidades
                   </h4>
                   <div className="space-y-3">
-                    {bestStorageUnits.map((unit, index) => (
-                      <div key={unit.name} className="flex items-center justify-between p-3 rounded-lg bg-green-50">
+                    {bestStorageUnits.map((unit, index) => <div key={unit.name} className="flex items-center justify-between p-3 rounded-lg bg-green-50">
                         <div className="flex items-center gap-3">
                           <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
                             <span className="text-sm font-bold text-green-700">{index + 1}</span>
@@ -369,8 +362,7 @@ const FuncionarioDashboard = () => {
                         <Badge className="bg-green-200 text-green-800">
                           {unit.efficiency}%
                         </Badge>
-                      </div>
-                    ))}
+                      </div>)}
                   </div>
                 </div>
 
@@ -380,8 +372,7 @@ const FuncionarioDashboard = () => {
                     Unidades Críticas
                   </h4>
                   <div className="space-y-3">
-                    {worstStorageUnits.map((unit, index) => (
-                      <div key={unit.name} className="flex items-center justify-between p-3 rounded-lg bg-red-50">
+                    {worstStorageUnits.map((unit, index) => <div key={unit.name} className="flex items-center justify-between p-3 rounded-lg bg-red-50">
                         <div className="flex items-center gap-3">
                           <div className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center">
                             <AlertTriangle className="w-4 h-4 text-red-700" />
@@ -394,8 +385,7 @@ const FuncionarioDashboard = () => {
                         <Badge className="bg-red-200 text-red-800">
                           {unit.efficiency}%
                         </Badge>
-                      </div>
-                    ))}
+                      </div>)}
                   </div>
                 </div>
               </div>
@@ -418,10 +408,7 @@ const FuncionarioDashboard = () => {
                       <p className="text-white text-center">Mapa das Unidades de Saúde</p>
                       <p className="text-white/80 text-sm text-center">Clique para visualizar detalhes</p>
                     </div>
-                    <Button 
-                      onClick={() => navigate("/funcionario/mapa")}
-                      className="absolute bottom-4 right-4 bg-white/20 hover:bg-white/30 text-white border border-white/30"
-                    >
+                    <Button onClick={() => navigate("/funcionario/mapa")} className="absolute bottom-4 right-4 bg-white/20 hover:bg-white/30 text-white border border-white/30">
                       Abrir Mapa
                     </Button>
                   </div>
@@ -454,16 +441,10 @@ const FuncionarioDashboard = () => {
                   <div className="bg-white/20 rounded-xl p-4">
                     <h4 className="text-white font-semibold mb-3">Ações Rápidas</h4>
                     <div className="space-y-2">
-                      <Button 
-                        onClick={() => navigate("/funcionario/documentos")}
-                        className="w-full bg-white/20 hover:bg-white/30 text-white border border-white/30 text-sm"
-                      >
+                      <Button onClick={() => navigate("/funcionario/documentos")} className="w-full bg-white/20 hover:bg-white/30 text-white border border-white/30 text-sm">
                         Agendar Entrega
                       </Button>
-                      <Button 
-                        onClick={() => navigate("/funcionario/mapa")}
-                        className="w-full bg-white/20 hover:bg-white/30 text-white border border-white/30 text-sm"
-                      >
+                      <Button onClick={() => navigate("/funcionario/mapa")} className="w-full bg-white/20 hover:bg-white/30 text-white border border-white/30 text-sm">
                         Analisar Estoque
                       </Button>
                     </div>
@@ -474,8 +455,6 @@ const FuncionarioDashboard = () => {
           </CardContent>
         </Card>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default FuncionarioDashboard;
