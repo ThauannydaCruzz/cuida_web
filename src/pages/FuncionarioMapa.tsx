@@ -266,24 +266,21 @@ const FuncionarioMapa = () => {
 
       {/* Full Screen Map Container */}
       <div className="fixed inset-0 top-0 left-0 w-full h-full">
-        {/* Search Controls - Positioned inside map */}
-        <div className="absolute top-20 left-6 right-6 z-[1000]">
-          {/* Medication Search */}
-          <div className="flex gap-3">
-            <div className="flex-1 relative">
-              <Package className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
-              <Input
-                placeholder="Buscar medicação nas unidades..."
-                value={medicationSearch}
-                onChange={(e) => setMedicationSearch(e.target.value)}
-                className="pl-10 bg-card/95 backdrop-blur-xl shadow-xl border-border/50 focus:ring-primary/30 rounded-2xl text-lg py-6"
-              />
-            </div>
+        {/* Minimal Search Bar */}
+        <div className="absolute top-6 left-1/2 transform -translate-x-1/2 z-[1000] w-80 max-w-[calc(100vw-40px)]">
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+            <Input
+              placeholder="Buscar medicação..."
+              value={medicationSearch}
+              onChange={(e) => setMedicationSearch(e.target.value)}
+              className="pl-10 bg-card/95 backdrop-blur-xl shadow-lg border-border/30 rounded-full"
+            />
             {medicationSearch && (
-              <div className="bg-card/95 backdrop-blur-xl rounded-2xl px-6 py-3 shadow-xl border border-border/50">
-                <p className="text-sm text-muted-foreground">
-                  <span className="text-primary font-medium text-lg">{filteredUnits.length}</span> unidades com "{medicationSearch}" disponível
-                </p>
+              <div className="absolute -bottom-8 left-0 right-0 text-center">
+                <span className="text-xs bg-card/90 backdrop-blur-xl px-2 py-1 rounded-full border border-border/30">
+                  {filteredUnits.length} unidades
+                </span>
               </div>
             )}
           </div>
@@ -296,46 +293,28 @@ const FuncionarioMapa = () => {
           style={{ zIndex: 0 }}
         />
 
-        {/* Legend - Enhanced */}
-        <div className="absolute bottom-6 left-6 z-[1000]">
-          <Card className="bg-card/95 backdrop-blur-xl shadow-2xl border-border/50 rounded-3xl">
-            <CardContent className="p-6">
-              <h3 className="font-bold text-lg mb-4 text-card-foreground flex items-center gap-2">
-                <Eye className="w-5 h-5 text-primary" />
-                Status das Unidades
-              </h3>
-              <div className="grid grid-cols-2 gap-4 text-sm">
-                <div className="flex items-center gap-3">
-                  <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center text-white text-xs font-bold shadow-lg">✓</div>
-                  <div>
-                    <p className="font-medium text-foreground">Estoque Saudável</p>
-                    <p className="text-xs text-muted-foreground">Acima de 80%</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-white text-xs font-bold shadow-lg">+</div>
-                  <div>
-                    <p className="font-medium text-foreground">Estoque Normal</p>
-                    <p className="text-xs text-muted-foreground">50% - 80%</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-6 h-6 bg-amber-500 rounded-full flex items-center justify-center text-white text-xs font-bold shadow-lg">!</div>
-                  <div>
-                    <p className="font-medium text-foreground">Atenção</p>
-                    <p className="text-xs text-muted-foreground">20% - 50%</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center text-white text-xs font-bold shadow-lg">✕</div>
-                  <div>
-                    <p className="font-medium text-foreground">Urgente</p>
-                    <p className="text-xs text-muted-foreground">Abaixo de 20%</p>
-                  </div>
-                </div>
+        {/* Minimal Legend */}
+        <div className="absolute bottom-24 left-6 z-[1000]">
+          <div className="bg-card/90 backdrop-blur-xl rounded-2xl p-3 shadow-lg border border-border/30">
+            <div className="flex gap-3 text-xs">
+              <div className="flex items-center gap-1">
+                <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                <span>Saudável</span>
               </div>
-            </CardContent>
-          </Card>
+              <div className="flex items-center gap-1">
+                <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
+                <span>Normal</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <div className="w-3 h-3 bg-amber-500 rounded-full"></div>
+                <span>Atenção</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                <span>Urgente</span>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Floating Navigation Bar */}
@@ -372,24 +351,21 @@ const FuncionarioMapa = () => {
           </div>
         </div>
 
-        {/* Info Bubble */}
+        {/* Simplified Info Bubble */}
         {selectedUnit && selectedMarkerPosition && (
           <div 
-            className="fixed z-[1001] w-80 max-w-[calc(100vw-40px)] bg-gradient-to-br from-card/95 to-card/90 backdrop-blur-xl rounded-2xl shadow-2xl border border-border/30 overflow-hidden animate-in fade-in-0 zoom-in-95 duration-300"
+            className="fixed z-[1001] w-72 max-w-[calc(100vw-40px)] bg-card/95 backdrop-blur-xl rounded-xl shadow-lg border border-border/30 overflow-hidden animate-in fade-in-0 zoom-in-95 duration-200"
             style={{
-              left: `${Math.max(20, Math.min(selectedMarkerPosition.x - 160, window.innerWidth - 340))}px`,
+              left: `${Math.max(20, Math.min(selectedMarkerPosition.x - 144, window.innerWidth - 308))}px`,
               top: `${Math.max(20, selectedMarkerPosition.y - 30)}px`,
             }}
           >
-            {/* Glass overlay effect */}
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent pointer-events-none" />
-            
             {/* Header */}
-            <div className="relative p-4 border-b border-border/20">
+            <div className="p-3 border-b border-border/20">
               <div className="flex items-start justify-between">
                 <div className="flex-1 min-w-0">
-                  <h3 className="font-bold text-lg text-foreground leading-tight truncate mb-1">{selectedUnit.name}</h3>
-                  {getStatusBadge(selectedUnit.status)}
+                  <h3 className="font-medium text-sm text-foreground truncate">{selectedUnit.name}</h3>
+                  <p className="text-xs text-muted-foreground truncate">{selectedUnit.address}</p>
                 </div>
                 <Button
                   variant="ghost"
@@ -398,132 +374,38 @@ const FuncionarioMapa = () => {
                     setSelectedUnit(null);
                     setSelectedMarkerPosition(null);
                   }}
-                  className="h-8 w-8 ml-2 hover:bg-accent/50 transition-all duration-200"
+                  className="h-6 w-6 ml-2"
                 >
-                  <X className="w-4 h-4" />
+                  <X className="w-3 h-3" />
                 </Button>
               </div>
             </div>
 
             {/* Content */}
-            <div className="relative p-4 space-y-4">
-              {/* Unit Info */}
-              <div className="grid grid-cols-1 gap-3 text-sm">
-                <div className="flex items-center gap-3 text-muted-foreground">
-                  <MapPin className="w-5 h-5 flex-shrink-0 text-primary" />
-                  <span className="line-clamp-1 font-medium">{selectedUnit.address}</span>
-                </div>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="flex items-center gap-2 text-muted-foreground">
-                    <Clock className="w-4 h-4 flex-shrink-0 text-primary" />
-                    <span className="text-sm">{selectedUnit.workingHours}</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-muted-foreground">
-                    <Phone className="w-4 h-4 flex-shrink-0 text-primary" />
-                    <span className="text-sm">{selectedUnit.phone}</span>
-                  </div>
-                </div>
+            <div className="p-3 space-y-3">
+              {/* Status */}
+              <div className="flex justify-center">
+                {getStatusBadge(selectedUnit.status)}
               </div>
 
-              {/* Quick Actions */}
+              {/* Actions */}
               <div className="flex gap-2">
                 <Button
                   onClick={() => navigate("/funcionario/agendamento", { state: { selectedUnit } })}
-                  className="flex-1 bg-primary/90 hover:bg-primary text-primary-foreground py-2 rounded-xl text-sm font-medium transition-all duration-200 hover:scale-105"
+                  size="sm"
+                  className="flex-1 text-xs"
                 >
-                  <Truck className="w-4 h-4 mr-1" />
-                  Agendar Entrega
+                  <Truck className="w-3 h-3 mr-1" />
+                  Agendar
                 </Button>
                 <Button
                   variant="outline"
-                  className="flex-1 border-primary/30 hover:bg-primary/10 py-2 rounded-xl text-sm font-medium transition-all duration-200 hover:scale-105"
+                  size="sm"
+                  className="flex-1 text-xs"
                 >
-                  <TrendingUp className="w-4 h-4 mr-1" />
-                  Análise
+                  <BarChart3 className="w-3 h-3 mr-1" />
+                  Analisar
                 </Button>
-              </div>
-
-              {/* Medications */}
-              <div>
-                <h4 className="font-semibold text-sm mb-3 text-foreground flex items-center gap-2">
-                  <Package className="w-4 h-4 text-primary" />
-                  Medicamentos Disponíveis
-                  <Badge variant="secondary" className="text-xs ml-auto">
-                    {selectedUnit.medications.filter(med => med.quantity > 0).length} itens
-                  </Badge>
-                </h4>
-                <div className="space-y-2 max-h-40 overflow-y-auto custom-scrollbar">
-                  {selectedUnit.medications.filter(med => med.quantity > 0).slice(0, 6).map((med) => {
-                    const interests = medicationInterests[med.id] || 0;
-                    const isSufficient = med.quantity >= interests;
-                    
-                    return (
-                      <div key={med.id} className="group">
-                        <div className="flex items-center justify-between p-3 rounded-xl bg-gradient-to-r from-accent/40 to-accent/20 hover:from-accent/60 hover:to-accent/40 transition-all duration-200 border border-border/20">
-                          <div className="flex-1 min-w-0">
-                            <p className="font-medium text-sm text-foreground truncate">{med.name}</p>
-                            <p className="text-xs text-muted-foreground">{med.dosage}</p>
-                          </div>
-                          <div className="flex items-center gap-3">
-                            <div className="text-right">
-                              <Badge 
-                                variant={med.quantity > 10 ? "default" : med.quantity > 5 ? "secondary" : "outline"} 
-                                className="text-xs mb-1"
-                              >
-                                {med.quantity} disp.
-                              </Badge>
-                              {interests > 0 && (
-                                <div className={`text-xs font-medium flex items-center gap-1 ${
-                                  isSufficient ? 'text-green-600' : 'text-amber-600'
-                                }`}>
-                                  <ThumbsUp className="w-3 h-3" />
-                                  {interests} demanda{interests > 1 ? 's' : ''}
-                                </div>
-                              )}
-                            </div>
-                            <Button
-                              variant="ghost"
-                              size="sm"
-                              onClick={() => handleMedicationInterest(med.id, med.name)}
-                              className="h-8 w-8 p-0 opacity-70 group-hover:opacity-100 transition-all duration-200 hover:bg-primary/20 hover:text-primary hover:scale-110"
-                              title="Registrar demanda"
-                            >
-                              <TrendingUp className="w-4 h-4" />
-                            </Button>
-                          </div>
-                        </div>
-                        {interests > 0 && (
-                          <div className="ml-3 mt-1">
-                            <div className={`text-xs font-medium px-2 py-1 rounded-lg inline-flex items-center gap-1 ${
-                              isSufficient 
-                                ? 'bg-green-100 text-green-700 border border-green-200' 
-                                : 'bg-amber-100 text-amber-700 border border-amber-200'
-                            }`}>
-                              {isSufficient ? (
-                                <>
-                                  <CheckCircle className="w-3 h-3" />
-                                  Estoque suficiente para demanda
-                                </>
-                              ) : (
-                                <>
-                                  <AlertTriangle className="w-3 h-3" />
-                                  Demanda registrada - Agendar reposição
-                                </>
-                              )}
-                            </div>
-                          </div>
-                        )}
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* Footer */}
-              <div className="pt-2 border-t border-border/20">
-                <Badge variant="outline" className="text-xs border-primary/30 text-primary bg-primary/5">
-                  {selectedUnit.type}
-                </Badge>
               </div>
             </div>
           </div>
