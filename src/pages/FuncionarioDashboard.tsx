@@ -92,31 +92,31 @@ const FuncionarioDashboard = () => {
     efficiency: 58,
     score: "Regular"
   }];
-  return <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-rose-50">
+  return <div className="min-h-screen bg-gradient-to-br from-primary/5 via-background to-secondary/5">
       {/* Sidebar Navigation */}
-      <div className="fixed left-0 top-0 h-full w-64 bg-gradient-to-b from-blue-600 to-blue-800 text-white z-40">
+      <div className="fixed left-0 top-0 h-full w-64 bg-gradient-to-b from-primary to-primary/80 text-primary-foreground z-40">
         <div className="p-6">
           <div className="flex items-center gap-3 mb-8">
-            <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
+            <div className="w-10 h-10 bg-primary-foreground/20 rounded-lg flex items-center justify-center">
               <Activity className="w-6 h-6" />
             </div>
-            <h2 className="text-xl font-bold">CUIDA</h2>
+            <h2 className="text-xl font-bold font-poppins">CUIDA</h2>
           </div>
           
           <nav className="space-y-2">
             
             
-            <button onClick={() => navigate("/funcionario/documentos")} className="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-white/10 transition-colors text-left">
-              <Package className="w-5 h-5" />
-              <span>Entregas</span>
+            <button onClick={() => navigate("/funcionario/mapa")} className="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-primary-foreground/10 transition-colors text-left">
+              <MapPin className="w-5 h-5" />
+              <span>Mapa</span>
             </button>
-            <button className="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-white/10 transition-colors text-left">
+            <button onClick={() => navigate("/funcionario/documentos")} className="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-primary-foreground/10 transition-colors text-left">
+              <Package className="w-5 h-5" />
+              <span>Documentos</span>
+            </button>
+            <button className="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-primary-foreground/10 transition-colors text-left">
               <Calendar className="w-5 h-5" />
               <span>Calendário</span>
-            </button>
-            <button className="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-white/10 transition-colors text-left">
-              <Activity className="w-5 h-5" />
-              <span>Contato</span>
             </button>
           </nav>
         </div>
@@ -127,10 +127,10 @@ const FuncionarioDashboard = () => {
         {/* Header */}
         <div className="flex justify-between items-center mb-8">
           <div>
-            <h1 className="text-3xl font-bold text-gray-800 mb-2">Dashboard Administrativo</h1>
-            <p className="text-gray-600">Análise completa dos medicamentos na cidade de Marília</p>
+            <h1 className="text-3xl font-bold text-foreground mb-2 font-poppins">Dashboard Administrativo</h1>
+            <p className="text-muted-foreground">Análise completa dos medicamentos na cidade de Marília</p>
           </div>
-          <Button className="bg-rose-500 hover:bg-rose-600 text-white px-6 py-2 rounded-lg">
+          <Button className="bg-accent hover:bg-accent/90 text-accent-foreground px-6 py-2 rounded-lg">
             Contato
           </Button>
         </div>
@@ -140,23 +140,23 @@ const FuncionarioDashboard = () => {
           {/* Monthly Costs */}
           <Card className="bg-white border-0 shadow-lg rounded-2xl overflow-hidden">
             <CardContent className="p-0">
-              <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-6 text-white">
+              <div className="bg-gradient-to-r from-primary to-primary/80 p-6 text-primary-foreground">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-blue-100 text-sm mb-1">Custo Mensal Total</p>
+                    <p className="text-primary-foreground/80 text-sm mb-1">Custo Mensal Total</p>
                     <p className="text-3xl font-bold">R$ {monthlyCosts.total.toLocaleString('pt-BR')}</p>
                     <div className="flex items-center gap-2 mt-2">
-                      <TrendingUp className="w-4 h-4 text-blue-200" />
-                      <span className="text-sm text-blue-100">+{monthlyCosts.trend}% vs mês anterior</span>
+                      <TrendingUp className="w-4 h-4 text-primary-foreground/70" />
+                      <span className="text-sm text-primary-foreground/80">+{monthlyCosts.trend}% vs mês anterior</span>
                     </div>
                   </div>
-                  <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center">
+                  <div className="w-16 h-16 bg-primary-foreground/20 rounded-2xl flex items-center justify-center">
                     <DollarSign className="w-8 h-8" />
                   </div>
                 </div>
               </div>
               <div className="p-6">
-                <Button className="w-full bg-blue-500 hover:bg-blue-600 text-white rounded-xl">
+                <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-xl">
                   Analisar
                 </Button>
               </div>
@@ -166,23 +166,23 @@ const FuncionarioDashboard = () => {
           {/* Deliveries */}
           <Card className="bg-white border-0 shadow-lg rounded-2xl overflow-hidden">
             <CardContent className="p-0">
-              <div className="bg-gradient-to-r from-rose-500 to-rose-600 p-6 text-white">
+              <div className="bg-gradient-to-r from-accent to-accent/80 p-6 text-accent-foreground">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-rose-100 text-sm mb-1">Entregas Este Mês</p>
+                    <p className="text-accent-foreground/80 text-sm mb-1">Entregas Este Mês</p>
                     <p className="text-3xl font-bold">{deliveryMetrics.completed}</p>
                     <div className="flex items-center gap-2 mt-2">
-                      <CheckCircle className="w-4 h-4 text-rose-200" />
-                      <span className="text-sm text-rose-100">{deliveryMetrics.onTime}% no prazo</span>
+                      <CheckCircle className="w-4 h-4 text-accent-foreground/70" />
+                      <span className="text-sm text-accent-foreground/80">{deliveryMetrics.onTime}% no prazo</span>
                     </div>
                   </div>
-                  <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center">
+                  <div className="w-16 h-16 bg-accent-foreground/20 rounded-2xl flex items-center justify-center">
                     <Truck className="w-8 h-8" />
                   </div>
                 </div>
               </div>
               <div className="p-6">
-                <Button className="w-full bg-rose-500 hover:bg-rose-600 text-white rounded-xl">
+                <Button className="w-full bg-accent hover:bg-accent/90 text-accent-foreground rounded-xl">
                   Agendar
                 </Button>
               </div>

@@ -1,26 +1,33 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Users, UserCheck, MapPin, Activity, Shield, Heart } from "lucide-react";
+import { Users, UserCheck, MapPin, Activity, Shield, Heart, Calendar, Clock, Truck, BarChart3, FileText } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 const HomeFuncionario = () => {
   const navigate = useNavigate();
   return <div className="min-h-screen bg-cuida-gradient-soft">
       {/* Header */}
-      <header className="bg-white shadow-sm border-b">
+      <header className="bg-background/95 backdrop-blur-md border-b border-border/50 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-cuida-blue rounded-lg flex items-center justify-center">
+            <div className="flex items-center gap-4">
+              <div className="w-10 h-10 bg-gradient-primary rounded-xl flex items-center justify-center">
                 <Heart className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h1 className="text-xl font-bold text-foreground">CUIDA</h1>
-                <p className="text-sm text-muted-foreground">Marília - SP</p>
+                <h1 className="text-xl font-bold text-foreground font-poppins">CUIDA</h1>
+                <p className="text-sm text-muted-foreground">Área dos Gestores - Marília, SP</p>
+              </div>
+              <div className="text-xs text-muted-foreground mx-2">|</div>
+              <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                <div className="w-6 h-6 bg-secondary/10 rounded flex items-center justify-center">
+                  <Shield className="w-3 h-3 text-secondary" />
+                </div>
+                <span>Secretaria de Saúde de Marília</span>
               </div>
             </div>
             <div className="flex items-center gap-2">
-              <Shield className="w-5 h-5 text-cuida-blue" />
+              <Shield className="w-5 h-5 text-primary" />
               <span className="text-sm font-medium text-foreground">Sistema Oficial</span>
             </div>
           </div>
@@ -28,28 +35,49 @@ const HomeFuncionario = () => {
       </header>
 
       {/* Hero Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-foreground mb-6">
-            Sistema de Saúde Digital de Marília
+          <div className="inline-flex items-center gap-2 bg-primary/10 text-primary font-medium px-4 py-2 rounded-full text-sm border border-primary/20 mb-6">
+            <Shield className="w-4 h-4" />
+            Sistema Digital de Saúde de Marília
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6 font-poppins">
+            Gestão Inteligente de 
+            <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent"> Medicamentos</span>
           </h2>
           <p className="text-xl text-muted-foreground mb-12 max-w-3xl mx-auto">
-            Plataforma integrada para gestão de medicamentos, atendimento aos cidadãos e monitoramento
-            em tempo real das unidades de saúde da cidade.
+            Plataforma integrada para controle completo do estoque, distribuição e monitoramento 
+            de medicamentos em todas as unidades de saúde do município
           </p>
         </div>
       </section>
 
-      {/* Hero Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-5xl font-bold text-foreground mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-            Sistema de Gestão de Saúde
-          </h2>
-          <p className="text-xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed">
-            Plataforma integrada para gestão de medicamentos, atendimento aos cidadãos e monitoramento
-            em tempo real das unidades de saúde da cidade de Marília.
-          </p>
+      {/* Introdução do Sistema */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-card">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8 text-center">
+            <div className="p-6">
+              <div className="w-16 h-16 bg-gradient-to-br from-primary/20 to-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4 border border-primary/20">
+                <Activity className="w-8 h-8 text-primary" />
+              </div>
+              <h3 className="text-xl font-bold text-foreground mb-2 font-poppins">Controle de Estoque</h3>
+              <p className="text-muted-foreground">Monitore em tempo real os níveis de medicamentos em todas as unidades</p>
+            </div>
+            <div className="p-6">
+              <div className="w-16 h-16 bg-gradient-to-br from-secondary/20 to-secondary/10 rounded-2xl flex items-center justify-center mx-auto mb-4 border border-secondary/20">
+                <Truck className="w-8 h-8 text-secondary" />
+              </div>
+              <h3 className="text-xl font-bold text-foreground mb-2 font-poppins">Gestão de Entregas</h3>
+              <p className="text-muted-foreground">Organize e acompanhe as entregas de medicamentos para cada unidade</p>
+            </div>
+            <div className="p-6">
+              <div className="w-16 h-16 bg-gradient-to-br from-accent/20 to-accent/10 rounded-2xl flex items-center justify-center mx-auto mb-4 border border-accent/20">
+                <BarChart3 className="w-8 h-8 text-accent" />
+              </div>
+              <h3 className="text-xl font-bold text-foreground mb-2 font-poppins">Análise de Dados</h3>
+              <p className="text-muted-foreground">Relatórios detalhados para otimizar a distribuição e reduzir custos</p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -93,7 +121,7 @@ const HomeFuncionario = () => {
                 
                 <div className="pt-8 space-y-4">
                   <Button 
-                    onClick={() => navigate("/login")} 
+                    onClick={() => navigate("/funcionario/dashboard")} 
                     className="w-full bg-gradient-to-r from-primary via-primary/90 to-primary/80 hover:from-primary/90 hover:via-primary/80 hover:to-primary/70 py-6 text-xl font-semibold rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-[1.02] text-primary-foreground"
                   >
                     <UserCheck className="w-5 h-5 mr-2" />

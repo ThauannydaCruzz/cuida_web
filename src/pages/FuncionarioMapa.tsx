@@ -233,7 +233,7 @@ const FuncionarioMapa = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-secondary/5 to-background">
+    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-background to-secondary/5">
       {/* Back Button - Floating */}
       <div className="fixed top-6 left-6 z-[1002]">
         <Button

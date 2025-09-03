@@ -9,11 +9,18 @@ const HomePage = () => {
       <nav className="relative z-10 bg-background/95 backdrop-blur-md border-b border-border/50 shadow-sm">
         <div className="max-w-7xl mx-auto px-8 py-6">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-gradient-primary rounded-xl flex items-center justify-center">
-                <Heart className="w-6 h-6 text-white" />
+            <div className="flex items-center gap-4">
+              <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center">
+                <Heart className="w-5 h-5 text-primary" />
               </div>
-              <div className="text-2xl font-bold text-foreground font-poppins">CUIDA</div>
+              <div className="text-xl font-bold text-foreground font-poppins">CUIDA</div>
+              <div className="text-xs text-muted-foreground mx-2">|</div>
+              <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                <div className="w-6 h-6 bg-secondary/10 rounded flex items-center justify-center">
+                  <Shield className="w-3 h-3 text-secondary" />
+                </div>
+                <span>Secretaria de Saúde de Marília</span>
+              </div>
             </div>
             
             <div className="flex items-center space-x-3">
@@ -23,7 +30,7 @@ const HomePage = () => {
                   Portal Cidadão
                 </Button>
               </Link>
-              <Link to="/login">
+              <Link to="/funcionario/home">
                 <Button variant="outline" className="border-2 border-primary/20 text-primary hover:bg-primary/5 rounded-xl px-6 py-3 text-sm font-medium transition-all duration-300">
                   <Shield className="w-4 h-4 mr-2" />
                   Área Gestores
@@ -68,7 +75,7 @@ const HomePage = () => {
                     Consultar Medicamentos
                   </Button>
                 </Link>
-                <Link to="/login">
+                <Link to="/funcionario/home">
                   <Button variant="outline" size="lg" className="border-2 border-primary/30 text-primary hover:bg-primary/10 rounded-xl px-8 py-4 text-base font-medium w-full sm:w-auto transition-all duration-300">
                     <Shield className="w-5 h-5 mr-3" />
                     Área dos Gestores
@@ -91,7 +98,7 @@ const HomePage = () => {
                     <div className="flex -space-x-3">
                       <div className="w-10 h-10 bg-gradient-to-br from-primary to-primary-glow rounded-full border-3 border-background shadow-lg"></div>
                       <div className="w-10 h-10 bg-gradient-to-br from-secondary to-success rounded-full border-3 border-background shadow-lg"></div>
-                      <div className="w-10 h-10 bg-gradient-to-br from-warning to-accent rounded-full border-3 border-background shadow-lg bg-orange-300"></div>
+                      <div className="w-10 h-10 bg-gradient-to-br from-accent to-warning rounded-full border-3 border-background shadow-lg"></div>
                     </div>
                     <div>
                       <div className="text-3xl font-bold text-foreground font-poppins">300+</div>
@@ -118,8 +125,8 @@ const HomePage = () => {
               <Card className="absolute bottom-16 left-8 bg-card/80 backdrop-blur-sm shadow-2xl rounded-2xl p-5 w-52 animate-float border border-success/10">
                 <CardContent className="p-0">
                   <div className="flex items-center gap-4">
-                    <div className="w-14 h-14 bg-gradient-to-br from-success/20 to-success/10 rounded-2xl flex items-center justify-center border border-success/20 bg-orange-300">
-                      <Award className="w-7 h-7 text-success" />
+                    <div className="w-14 h-14 bg-gradient-to-br from-accent/20 to-accent/10 rounded-2xl flex items-center justify-center border border-accent/20">
+                      <Award className="w-7 h-7 text-accent" />
                     </div>
                     <div>
                       <div className="text-3xl font-bold text-foreground font-poppins">100%</div>
@@ -178,16 +185,16 @@ const HomePage = () => {
               </CardContent>
             </Card>
 
-            <Card className="group p-8 text-center shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-warning/10 hover:border-warning/20 bg-gradient-to-b from-card to-card/50">
+            <Card className="group p-8 text-center shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-accent/10 hover:border-accent/20 bg-gradient-to-b from-card to-card/50">
               <CardContent className="p-0">
-                <div className="w-20 h-20 bg-gradient-to-br from-warning/20 to-warning/10 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 border border-warning/20">
-                  <Bot className="w-9 h-9 text-warning" />
+                <div className="w-20 h-20 bg-gradient-to-br from-accent/20 to-accent/10 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 border border-accent/20">
+                  <Bot className="w-9 h-9 text-accent" />
                 </div>
                 <h3 className="text-2xl font-bold mb-4 font-poppins text-foreground">IA Avançada</h3>
                 <p className="text-muted-foreground leading-relaxed">
                   Inteligência artificial para previsão de demanda, alertas automáticos e otimização de recursos.
                 </p>
-                <div className="flex items-center justify-center gap-2 mt-6 text-warning">
+                <div className="flex items-center justify-center gap-2 mt-6 text-accent">
                   <Bot className="w-4 h-4" />
                   <TrendingUp className="w-4 h-4" />
                   <Award className="w-4 h-4" />

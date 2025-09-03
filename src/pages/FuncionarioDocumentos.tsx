@@ -104,14 +104,14 @@ const FuncionarioDocumentos = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Sidebar */}
-      <div className="fixed left-0 top-0 w-64 h-full bg-primary text-primary-foreground">
+      <div className="fixed left-0 top-0 w-64 h-full bg-gradient-to-b from-primary to-primary/80 text-primary-foreground">
         <div className="p-6">
           <div className="flex items-center gap-3 mb-8">
             <div className="w-8 h-8 bg-primary-foreground/20 rounded-lg flex items-center justify-center">
               <img src="/lovable-uploads/5463ac4b-0afc-4ed6-b3a7-04924c4a23fa.png" alt="Logo" className="w-6 h-6" />
             </div>
             <div>
-              <h1 className="font-bold text-sm">CUIDA - Sistema de Controle de Numerações</h1>
+              <h1 className="font-bold text-sm font-poppins">CUIDA - Sistema de Controle de Numerações</h1>
               <p className="text-xs opacity-80">v 1.0_build_00</p>
             </div>
           </div>
@@ -230,14 +230,14 @@ const FuncionarioDocumentos = () => {
               </div>
 
               <div className="flex gap-2">
-                <Button className="bg-green-600 hover:bg-green-700">
+                <Button className="bg-secondary hover:bg-secondary/90 text-secondary-foreground">
                   <Search className="w-4 h-4 mr-2" />
                   Buscar
                 </Button>
-                <Button variant="outline" className="text-red-600 border-red-600 hover:bg-red-50">
+                <Button variant="outline" className="text-destructive border-destructive hover:bg-destructive/10">
                   Limpar
                 </Button>
-                <Button className="bg-blue-600 hover:bg-blue-700">
+                <Button className="bg-primary hover:bg-primary/90 text-primary-foreground">
                   Novo
                 </Button>
               </div>
