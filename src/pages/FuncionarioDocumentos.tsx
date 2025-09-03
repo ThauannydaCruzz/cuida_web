@@ -4,31 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { useNavigate } from "react-router-dom";
-import { 
-  ArrowLeft, 
-  Search, 
-  FileText, 
-  Download, 
-  Eye, 
-  Calendar, 
-  User, 
-  MapPin,
-  Package,
-  Copy,
-  BarChart3,
-  Filter,
-  ChevronLeft,
-  ChevronRight
-} from "lucide-react";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-
+import { ArrowLeft, Search, FileText, Download, Eye, Calendar, User, MapPin, Package, Copy, BarChart3, Filter, ChevronLeft, ChevronRight } from "lucide-react";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 const FuncionarioDocumentos = () => {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
@@ -38,109 +15,80 @@ const FuncionarioDocumentos = () => {
   const itemsPerPage = 10;
 
   // Mock data for documents
-  const documents = [
-    {
-      numero: "1/2021-GABPRESI",
-      tipo: "INFORMAÇÃO", 
-      matricula: "0753362389 - Carlos Angelson Frota Veras",
-      unidade: "GABINETE DA PRESIDÊNCIA",
-      status: "Ativo",
-      geracao: "04/03/2021 às 15:54",
-      arquivo: true
-    },
-    {
-      numero: "11/2021-GABPRESI", 
-      tipo: "INFORMAÇÃO",
-      matricula: "0387590384 - DAVID ABREU DA SILVA", 
-      unidade: "GABINETE DA PRESIDÊNCIA",
-      status: "Ativo",
-      geracao: "08/03/2021 às 10:51",
-      arquivo: true
-    },
-    {
-      numero: "2/2021-CDESENV",
-      tipo: "INFORMAÇÃO",
-      matricula: "42730 - ANDREA ALENCAR BEZERRA",
-      unidade: "COORDENADORIA DE DESENVOLVIMENTO DE SISTEMAS", 
-      status: "Ativo",
-      geracao: "08/03/2021 às 17:10",
-      arquivo: false
-    },
-    {
-      numero: "4/2021-GABPRESI",
-      tipo: "INFORMAÇÃO", 
-      matricula: "0753362389 - Carlos Angelson Frota Veras",
-      unidade: "GABINETE DA PRESIDÊNCIA",
-      status: "Ativo", 
-      geracao: "04/03/2021 às 16:09",
-      arquivo: true
-    },
-    {
-      numero: "5/2021-GABPRESI",
-      tipo: "INFORMAÇÃO",
-      matricula: "0753362389 - Carlos Angelson Frota Veras", 
-      unidade: "GABINETE DA PRESIDÊNCIA",
-      status: "Ativo",
-      geracao: "04/03/2021 às 16:10",
-      arquivo: false
-    }
-  ];
-
+  const documents = [{
+    numero: "1/2021-GABPRESI",
+    tipo: "INFORMAÇÃO",
+    matricula: "0753362389 - Carlos Angelson Frota Veras",
+    unidade: "GABINETE DA PRESIDÊNCIA",
+    status: "Ativo",
+    geracao: "04/03/2021 às 15:54",
+    arquivo: true
+  }, {
+    numero: "11/2021-GABPRESI",
+    tipo: "INFORMAÇÃO",
+    matricula: "0387590384 - DAVID ABREU DA SILVA",
+    unidade: "GABINETE DA PRESIDÊNCIA",
+    status: "Ativo",
+    geracao: "08/03/2021 às 10:51",
+    arquivo: true
+  }, {
+    numero: "2/2021-CDESENV",
+    tipo: "INFORMAÇÃO",
+    matricula: "42730 - ANDREA ALENCAR BEZERRA",
+    unidade: "COORDENADORIA DE DESENVOLVIMENTO DE SISTEMAS",
+    status: "Ativo",
+    geracao: "08/03/2021 às 17:10",
+    arquivo: false
+  }, {
+    numero: "4/2021-GABPRESI",
+    tipo: "INFORMAÇÃO",
+    matricula: "0753362389 - Carlos Angelson Frota Veras",
+    unidade: "GABINETE DA PRESIDÊNCIA",
+    status: "Ativo",
+    geracao: "04/03/2021 às 16:09",
+    arquivo: true
+  }, {
+    numero: "5/2021-GABPRESI",
+    tipo: "INFORMAÇÃO",
+    matricula: "0753362389 - Carlos Angelson Frota Veras",
+    unidade: "GABINETE DA PRESIDÊNCIA",
+    status: "Ativo",
+    geracao: "04/03/2021 às 16:10",
+    arquivo: false
+  }];
   const filteredDocuments = documents.filter(doc => {
-    const matchesSearch = doc.matricula.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         doc.numero.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         doc.unidade.toLowerCase().includes(searchTerm.toLowerCase());
-    
+    const matchesSearch = doc.matricula.toLowerCase().includes(searchTerm.toLowerCase()) || doc.numero.toLowerCase().includes(searchTerm.toLowerCase()) || doc.unidade.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesStatus = statusFilter === "" || doc.status === statusFilter;
     const matchesType = typeFilter === "" || doc.tipo === typeFilter;
-    
     return matchesSearch && matchesStatus && matchesType;
   });
-
   const totalPages = Math.ceil(filteredDocuments.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const paginatedDocuments = filteredDocuments.slice(startIndex, startIndex + itemsPerPage);
-
-  return (
-    <div className="min-h-screen bg-background">
+  return <div className="min-h-screen bg-background">
       {/* Sidebar */}
       <div className="fixed left-0 top-0 w-64 h-full bg-gradient-to-b from-primary to-primary/80 text-primary-foreground">
         <div className="p-6">
           <div className="flex items-center gap-3 mb-8">
-            <div className="w-8 h-8 bg-primary-foreground/20 rounded-lg flex items-center justify-center">
-              <img src="/lovable-uploads/5463ac4b-0afc-4ed6-b3a7-04924c4a23fa.png" alt="Logo" className="w-6 h-6" />
-            </div>
+            
             <div>
               <h1 className="font-bold text-sm font-poppins">CUIDA - Sistema de Controle de Numerações</h1>
-              <p className="text-xs opacity-80">v 1.0_build_00</p>
+              
             </div>
           </div>
 
           <nav className="space-y-2">
-            <Button 
-              variant="ghost" 
-              className="w-full justify-start text-primary-foreground hover:bg-primary-foreground/10"
-              onClick={() => navigate("/home-funcionario")}
-            >
+            <Button variant="ghost" className="w-full justify-start text-primary-foreground hover:bg-primary-foreground/10" onClick={() => navigate("/home-funcionario")}>
               Início
             </Button>
-            <Button 
-              variant="ghost" 
-              className="w-full justify-start text-primary-foreground hover:bg-primary-foreground/10"
-            >
+            <Button variant="ghost" className="w-full justify-start text-primary-foreground hover:bg-primary-foreground/10">
               Administração
             </Button>
-            <Button 
-              variant="ghost" 
-              className="w-full justify-start text-primary-foreground hover:bg-primary-foreground/10"
-            >
+            <Button variant="ghost" className="w-full justify-start text-primary-foreground hover:bg-primary-foreground/10">
               Parâmetros Gerais
             </Button>
             <div className="bg-primary-foreground/20 rounded-lg">
-              <Button 
-                variant="ghost" 
-                className="w-full justify-start text-primary-foreground bg-primary-foreground/20"
-              >
+              <Button variant="ghost" className="w-full justify-start text-primary-foreground bg-primary-foreground/20">
                 Documentos
               </Button>
             </div>
@@ -157,7 +105,7 @@ const FuncionarioDocumentos = () => {
               <h1 className="text-xl font-semibold">Documentos</h1>
             </div>
             <div className="flex items-center gap-4">
-              <span className="text-sm text-muted-foreground">Andrea Alencar Bezerra</span>
+              
               <Button variant="ghost" size="sm">Sair</Button>
             </div>
           </div>
@@ -176,11 +124,7 @@ const FuncionarioDocumentos = () => {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                 <div>
                   <label className="text-sm font-medium mb-2 block">Tipo</label>
-                  <select 
-                    className="w-full p-2 border rounded-lg bg-background"
-                    value={typeFilter}
-                    onChange={(e) => setTypeFilter(e.target.value)}
-                  >
+                  <select className="w-full p-2 border rounded-lg bg-background" value={typeFilter} onChange={e => setTypeFilter(e.target.value)}>
                     <option value="">Selecionar tipo de documento</option>
                     <option value="INFORMAÇÃO">INFORMAÇÃO</option>
                   </select>
@@ -188,11 +132,7 @@ const FuncionarioDocumentos = () => {
                 
                 <div>
                   <label className="text-sm font-medium mb-2 block">Status</label>
-                  <select 
-                    className="w-full p-2 border rounded-lg bg-background"
-                    value={statusFilter}
-                    onChange={(e) => setStatusFilter(e.target.value)}
-                  >
+                  <select className="w-full p-2 border rounded-lg bg-background" value={statusFilter} onChange={e => setStatusFilter(e.target.value)}>
                     <option value="">Selecionar status</option>
                     <option value="Ativo">Ativo</option>
                   </select>
@@ -216,11 +156,7 @@ const FuncionarioDocumentos = () => {
                 
                 <div>
                   <label className="text-sm font-medium mb-2 block">Matrícula/nome</label>
-                  <Input 
-                    placeholder="Pesquisar pela matrícula e/ou nome"
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                  />
+                  <Input placeholder="Pesquisar pela matrícula e/ou nome" value={searchTerm} onChange={e => setSearchTerm(e.target.value)} />
                 </div>
 
                 <div>
@@ -293,8 +229,7 @@ const FuncionarioDocumentos = () => {
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {paginatedDocuments.map((doc, index) => (
-                    <TableRow key={index}>
+                  {paginatedDocuments.map((doc, index) => <TableRow key={index}>
                       <TableCell className="text-blue-600 font-medium">{doc.numero}</TableCell>
                       <TableCell>{doc.tipo}</TableCell>
                       <TableCell>{doc.matricula}</TableCell>
@@ -306,11 +241,7 @@ const FuncionarioDocumentos = () => {
                       </TableCell>
                       <TableCell>{doc.geracao}</TableCell>
                       <TableCell>
-                        {doc.arquivo ? (
-                          <Eye className="w-4 h-4 text-blue-600" />
-                        ) : (
-                          <span className="text-muted-foreground">Não possui</span>
-                        )}
+                        {doc.arquivo ? <Eye className="w-4 h-4 text-blue-600" /> : <span className="text-muted-foreground">Não possui</span>}
                       </TableCell>
                       <TableCell>
                         <div className="flex gap-1">
@@ -325,8 +256,7 @@ const FuncionarioDocumentos = () => {
                           </Button>
                         </div>
                       </TableCell>
-                    </TableRow>
-                  ))}
+                    </TableRow>)}
                 </TableBody>
               </Table>
 
@@ -336,24 +266,14 @@ const FuncionarioDocumentos = () => {
                   Mostrando de {startIndex + 1} até {Math.min(startIndex + itemsPerPage, filteredDocuments.length)} de {filteredDocuments.length} registros
                 </div>
                 <div className="flex items-center gap-2">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
-                    disabled={currentPage === 1}
-                  >
+                  <Button variant="outline" size="sm" onClick={() => setCurrentPage(Math.max(1, currentPage - 1))} disabled={currentPage === 1}>
                     <ChevronLeft className="w-4 h-4" />
                     Anterior
                   </Button>
                   <span className="text-sm px-3 py-1 bg-blue-600 text-white rounded">
                     {currentPage}
                   </span>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
-                    disabled={currentPage === totalPages}
-                  >
+                  <Button variant="outline" size="sm" onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))} disabled={currentPage === totalPages}>
                     Próxima
                     <ChevronRight className="w-4 h-4" />
                   </Button>
@@ -368,37 +288,23 @@ const FuncionarioDocumentos = () => {
       <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-[1001]">
         <div className="bg-card/90 backdrop-blur-xl rounded-3xl p-3 shadow-2xl border border-border/30">
           <div className="flex items-center gap-3">
-            <Button
-              onClick={() => navigate("/funcionario/mapa")}
-              variant="ghost"
-              className="flex flex-col items-center gap-2 p-4 h-auto hover:bg-accent/50 rounded-2xl"
-            >
+            <Button onClick={() => navigate("/funcionario/mapa")} variant="ghost" className="flex flex-col items-center gap-2 p-4 h-auto hover:bg-accent/50 rounded-2xl">
               <MapPin className="w-5 h-5" />
               <span className="text-xs font-medium">Mapa</span>
             </Button>
 
-            <Button
-              onClick={() => navigate("/funcionario/dashboard")}
-              variant="ghost"
-              className="flex flex-col items-center gap-2 p-4 h-auto hover:bg-accent/50 rounded-2xl"
-            >
+            <Button onClick={() => navigate("/funcionario/dashboard")} variant="ghost" className="flex flex-col items-center gap-2 p-4 h-auto hover:bg-accent/50 rounded-2xl">
               <BarChart3 className="w-5 h-5" />
               <span className="text-xs font-medium">Dashboard</span>
             </Button>
 
-            <Button
-              onClick={() => navigate("/funcionario/documentos")}
-              variant="default"
-              className="flex flex-col items-center gap-2 p-4 h-auto rounded-2xl"
-            >
+            <Button onClick={() => navigate("/funcionario/documentos")} variant="default" className="flex flex-col items-center gap-2 p-4 h-auto rounded-2xl">
               <Package className="w-5 h-5" />
               <span className="text-xs font-medium">Documentos</span>
             </Button>
           </div>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default FuncionarioDocumentos;
