@@ -30,7 +30,7 @@ const HomePage = () => {
                   Portal Cidadão
                 </Button>
               </Link>
-              <Link to="/funcionario/home">
+              <Link to="/login">
                 <Button variant="outline" className="border-2 border-primary/20 text-primary hover:bg-primary/5 rounded-xl px-6 py-3 text-sm font-medium transition-all duration-300">
                   <Shield className="w-4 h-4 mr-2" />
                   Área Gestores
@@ -75,7 +75,7 @@ const HomePage = () => {
                     Consultar Medicamentos
                   </Button>
                 </Link>
-                <Link to="/funcionario/home">
+                <Link to="/login">
                   <Button variant="outline" size="lg" className="border-2 border-primary/30 text-primary hover:bg-primary/10 rounded-xl px-8 py-4 text-base font-medium w-full sm:w-auto transition-all duration-300">
                     <Shield className="w-5 h-5 mr-3" />
                     Área dos Gestores

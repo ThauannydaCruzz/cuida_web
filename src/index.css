@@ -27,8 +27,8 @@ All colors MUST be HSL.
     --muted: 210 17% 95%;
     --muted-foreground: 213 15% 50%;
 
-    --accent: 25 95% 53%;
-    --accent-foreground: 25 95% 15%;
+    --accent: 30 85% 75%;
+    --accent-foreground: 30 25% 25%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
@@ -87,8 +87,8 @@ All colors MUST be HSL.
     --muted: 213 25% 15%;
     --muted-foreground: 213 15% 65%;
 
-    --accent: 152 35% 25%;
-    --accent-foreground: 152 45% 85%;
+    --accent: 30 70% 65%;
+    --accent-foreground: 30 15% 15%;
 
     --destructive: 0 62.8% 50.6%;
     --destructive-foreground: 210 40% 98%;
@@ -160,7 +160,7 @@ All colors MUST be HSL.
     --cuida-green: 152 45% 55%;
     --primary-hover: 206 84% 35%;
     --success: 152 45% 55%;
-    --warning: 45 93% 58%;
+    --warning: 30 85% 75%;
     --surface: 210 17% 96%;
   }
   
@@ -169,7 +169,7 @@ All colors MUST be HSL.
     --cuida-green: 152 45% 65%;
     --primary-hover: 206 84% 75%;
     --success: 152 45% 65%;
-    --warning: 45 93% 68%;
+    --warning: 30 70% 65%;
     --surface: 213 25% 12%;
   }
 }

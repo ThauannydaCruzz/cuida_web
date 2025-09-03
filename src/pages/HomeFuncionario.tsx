@@ -235,28 +235,46 @@ const HomeFuncionario = () => {
             <Button
               onClick={() => navigate("/funcionario/mapa")}
               variant="ghost"
-              className="flex flex-col items-center gap-1 p-3 h-auto hover:bg-gray-100 rounded-xl transition-colors"
+              className="flex flex-col items-center gap-1 p-3 h-auto hover:bg-primary/10 rounded-xl transition-colors"
             >
-              <MapPin className="w-5 h-5 text-gray-600" />
-              <span className="text-xs text-gray-600">Mapa</span>
+              <MapPin className="w-5 h-5 text-primary" />
+              <span className="text-xs text-foreground">Mapa</span>
             </Button>
 
             <Button
               onClick={() => navigate("/funcionario/dashboard")}
               variant="ghost"
-              className="flex flex-col items-center gap-1 p-3 h-auto hover:bg-gray-100 rounded-xl transition-colors"
+              className="flex flex-col items-center gap-1 p-3 h-auto hover:bg-primary/10 rounded-xl transition-colors"
             >
-              <Activity className="w-5 h-5 text-gray-600" />
-              <span className="text-xs text-gray-600">Dashboard</span>
+              <Activity className="w-5 h-5 text-primary" />
+              <span className="text-xs text-foreground">Dashboard</span>
             </Button>
 
             <Button
               onClick={() => navigate("/funcionario/documentos")}
               variant="ghost"
-              className="flex flex-col items-center gap-1 p-3 h-auto hover:bg-gray-100 rounded-xl transition-colors"
+              className="flex flex-col items-center gap-1 p-3 h-auto hover:bg-primary/10 rounded-xl transition-colors"
             >
-              <Users className="w-5 h-5 text-gray-600" />
-              <span className="text-xs text-gray-600">Documentos</span>
+              <FileText className="w-5 h-5 text-primary" />
+              <span className="text-xs text-foreground">Documentos</span>
+            </Button>
+
+            <Button
+              onClick={() => navigate("/clientes-cadastrados")}
+              variant="ghost"
+              className="flex flex-col items-center gap-1 p-3 h-auto hover:bg-secondary/10 rounded-xl transition-colors"
+            >
+              <Users className="w-5 h-5 text-secondary" />
+              <span className="text-xs text-foreground">Clientes</span>
+            </Button>
+
+            <Button
+              onClick={() => navigate("/funcionario/agendamento")}
+              variant="ghost"
+              className="flex flex-col items-center gap-1 p-3 h-auto hover:bg-accent/20 rounded-xl transition-colors"
+            >
+              <Calendar className="w-5 h-5 text-accent" />
+              <span className="text-xs text-foreground">Agendamentos</span>
             </Button>
           </div>
         </div>
