@@ -130,9 +130,7 @@ const FuncionarioDashboard = () => {
             <h1 className="text-3xl font-bold text-foreground mb-2 font-poppins">Dashboard Administrativo</h1>
             <p className="text-muted-foreground">Análise completa dos medicamentos na cidade de Marília</p>
           </div>
-          <Button className="bg-accent hover:bg-accent/90 text-accent-foreground px-6 py-2 rounded-lg">
-            Contato
-          </Button>
+          
         </div>
 
         {/* Key Metrics Cards */}
