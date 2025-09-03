@@ -18,12 +18,10 @@ const HomeFuncionario = () => {
                 <h1 className="text-xl font-bold text-foreground font-poppins">CUIDA</h1>
                 <p className="text-sm text-muted-foreground">Área dos Gestores - Marília, SP</p>
               </div>
-              <div className="text-xs text-muted-foreground mx-2">|</div>
+              
               <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                <div className="w-6 h-6 bg-secondary/10 rounded flex items-center justify-center">
-                  <Shield className="w-3 h-3 text-secondary" />
-                </div>
-                <span>Secretaria de Saúde de Marília</span>
+                
+                
               </div>
             </div>
             <div className="flex items-center gap-2">
@@ -105,25 +103,28 @@ const HomeFuncionario = () => {
               
               <CardContent className="space-y-8 px-8 pb-12 relative z-10">
                 <div className="space-y-6">
-                  {[
-                    { icon: Activity, text: "Gerenciamento inteligente de medicamentos", color: "from-blue-500/20 to-blue-600/20" },
-                    { icon: Users, text: "Controle de filas e atendimentos em tempo real", color: "from-green-500/20 to-green-600/20" },
-                    { icon: MapPin, text: "Monitoramento avançado de todas as unidades", color: "from-purple-500/20 to-purple-600/20" }
-                  ].map((item, index) => (
-                    <div key={index} className="flex items-center gap-6 p-4 rounded-2xl bg-gradient-to-r from-accent/10 to-accent/5 hover:from-accent/20 hover:to-accent/10 transition-all duration-300 group/item">
+                  {[{
+                  icon: Activity,
+                  text: "Gerenciamento inteligente de medicamentos",
+                  color: "from-blue-500/20 to-blue-600/20"
+                }, {
+                  icon: Users,
+                  text: "Controle de filas e atendimentos em tempo real",
+                  color: "from-green-500/20 to-green-600/20"
+                }, {
+                  icon: MapPin,
+                  text: "Monitoramento avançado de todas as unidades",
+                  color: "from-purple-500/20 to-purple-600/20"
+                }].map((item, index) => <div key={index} className="flex items-center gap-6 p-4 rounded-2xl bg-gradient-to-r from-accent/10 to-accent/5 hover:from-accent/20 hover:to-accent/10 transition-all duration-300 group/item">
                       <div className={`w-14 h-14 bg-gradient-to-br ${item.color} rounded-2xl flex items-center justify-center group-hover/item:scale-110 transition-transform duration-300`}>
                         <item.icon className="w-7 h-7 text-primary" />
                       </div>
                       <span className="text-foreground font-medium text-lg flex-1">{item.text}</span>
-                    </div>
-                  ))}
+                    </div>)}
                 </div>
                 
                 <div className="pt-8 space-y-4">
-                  <Button 
-                    onClick={() => navigate("/funcionario/dashboard")} 
-                    className="w-full bg-gradient-to-r from-primary via-primary/90 to-primary/80 hover:from-primary/90 hover:via-primary/80 hover:to-primary/70 py-6 text-xl font-semibold rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-[1.02] text-primary-foreground"
-                  >
+                  <Button onClick={() => navigate("/funcionario/dashboard")} className="w-full bg-gradient-to-r from-primary via-primary/90 to-primary/80 hover:from-primary/90 hover:via-primary/80 hover:to-primary/70 py-6 text-xl font-semibold rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-[1.02] text-primary-foreground">
                     <UserCheck className="w-5 h-5 mr-2" />
                     Acessar Sistema Interno
                   </Button>
@@ -151,25 +152,28 @@ const HomeFuncionario = () => {
               
               <CardContent className="space-y-8 px-8 pb-12 relative z-10">
                 <div className="space-y-6">
-                  {[
-                    { icon: MapPin, text: "Localizar postos de saúde mais próximos", color: "from-emerald-500/20 to-emerald-600/20" },
-                    { icon: Activity, text: "Consultar medicamentos disponíveis", color: "from-indigo-500/20 to-indigo-600/20" },
-                    { icon: Heart, text: "Informações e dicas de saúde preventiva", color: "from-rose-500/20 to-rose-600/20" }
-                  ].map((item, index) => (
-                    <div key={index} className="flex items-center gap-6 p-4 rounded-2xl bg-gradient-to-r from-accent/10 to-accent/5 hover:from-accent/20 hover:to-accent/10 transition-all duration-300 group/item">
+                  {[{
+                  icon: MapPin,
+                  text: "Localizar postos de saúde mais próximos",
+                  color: "from-emerald-500/20 to-emerald-600/20"
+                }, {
+                  icon: Activity,
+                  text: "Consultar medicamentos disponíveis",
+                  color: "from-indigo-500/20 to-indigo-600/20"
+                }, {
+                  icon: Heart,
+                  text: "Informações e dicas de saúde preventiva",
+                  color: "from-rose-500/20 to-rose-600/20"
+                }].map((item, index) => <div key={index} className="flex items-center gap-6 p-4 rounded-2xl bg-gradient-to-r from-accent/10 to-accent/5 hover:from-accent/20 hover:to-accent/10 transition-all duration-300 group/item">
                       <div className={`w-14 h-14 bg-gradient-to-br ${item.color} rounded-2xl flex items-center justify-center group-hover/item:scale-110 transition-transform duration-300`}>
                         <item.icon className="w-7 h-7 text-secondary-foreground" />
                       </div>
                       <span className="text-foreground font-medium text-lg flex-1">{item.text}</span>
-                    </div>
-                  ))}
+                    </div>)}
                 </div>
                 
                 <div className="pt-8">
-                  <Button 
-                    className="w-full bg-gradient-to-r from-secondary via-secondary/90 to-secondary/80 hover:from-secondary/90 hover:via-secondary/80 hover:to-secondary/70 py-6 text-xl font-semibold rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-[1.02] text-secondary-foreground" 
-                    onClick={() => navigate("/portal-cidadao")}
-                  >
+                  <Button className="w-full bg-gradient-to-r from-secondary via-secondary/90 to-secondary/80 hover:from-secondary/90 hover:via-secondary/80 hover:to-secondary/70 py-6 text-xl font-semibold rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-[1.02] text-secondary-foreground" onClick={() => navigate("/portal-cidadao")}>
                     <Users className="w-5 h-5 mr-2" />
                     Entrar no Portal
                   </Button>
@@ -191,30 +195,25 @@ const HomeFuncionario = () => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-10">
-            {[
-              {
-                icon: Activity,
-                title: "Tempo Real",
-                description: "Monitoramento instantâneo de filas, medicamentos e visualizações com atualizações automáticas",
-                gradient: "from-blue-500/10 to-blue-600/10",
-                iconBg: "from-blue-500 to-blue-600"
-              },
-              {
-                icon: MapPin,
-                title: "Geolocalização",
-                description: "Encontre o posto de saúde mais próximo com informações precisas e atualizadas",
-                gradient: "from-green-500/10 to-green-600/10",
-                iconBg: "from-green-500 to-green-600"
-              },
-              {
-                icon: Shield,
-                title: "Segurança Total",
-                description: "Dados protegidos com criptografia avançada e sistema confiável para informações de saúde",
-                gradient: "from-purple-500/10 to-purple-600/10",
-                iconBg: "from-purple-500 to-purple-600"
-              }
-            ].map((feature, index) => (
-              <div key={index} className="group text-center">
+            {[{
+            icon: Activity,
+            title: "Tempo Real",
+            description: "Monitoramento instantâneo de filas, medicamentos e visualizações com atualizações automáticas",
+            gradient: "from-blue-500/10 to-blue-600/10",
+            iconBg: "from-blue-500 to-blue-600"
+          }, {
+            icon: MapPin,
+            title: "Geolocalização",
+            description: "Encontre o posto de saúde mais próximo com informações precisas e atualizadas",
+            gradient: "from-green-500/10 to-green-600/10",
+            iconBg: "from-green-500 to-green-600"
+          }, {
+            icon: Shield,
+            title: "Segurança Total",
+            description: "Dados protegidos com criptografia avançada e sistema confiável para informações de saúde",
+            gradient: "from-purple-500/10 to-purple-600/10",
+            iconBg: "from-purple-500 to-purple-600"
+          }].map((feature, index) => <div key={index} className="group text-center">
                 <div className={`p-8 rounded-3xl bg-gradient-to-br ${feature.gradient} hover:shadow-2xl transition-all duration-500 border border-border/20 hover:scale-105`}>
                   <div className={`w-20 h-20 bg-gradient-to-br ${feature.iconBg} rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
                     <feature.icon className="w-10 h-10 text-white" />
@@ -222,8 +221,7 @@ const HomeFuncionario = () => {
                   <h4 className="text-2xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors duration-300">{feature.title}</h4>
                   <p className="text-muted-foreground text-lg leading-relaxed">{feature.description}</p>
                 </div>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </section>
@@ -232,49 +230,19 @@ const HomeFuncionario = () => {
       <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50">
         <div className="bg-white/95 backdrop-blur-sm rounded-2xl px-4 py-3 shadow-lg border border-gray-200/50">
           <div className="flex items-center gap-1">
-            <Button
-              onClick={() => navigate("/funcionario/mapa")}
-              variant="ghost"
-              className="flex flex-col items-center gap-1 p-3 h-auto hover:bg-primary/10 rounded-xl transition-colors"
-            >
-              <MapPin className="w-5 h-5 text-primary" />
-              <span className="text-xs text-foreground">Mapa</span>
+            <Button onClick={() => navigate("/funcionario/mapa")} variant="ghost" className="flex flex-col items-center gap-1 p-3 h-auto hover:bg-gray-100 rounded-xl transition-colors">
+              <MapPin className="w-5 h-5 text-gray-600" />
+              <span className="text-xs text-gray-600">Mapa</span>
             </Button>
 
-            <Button
-              onClick={() => navigate("/funcionario/dashboard")}
-              variant="ghost"
-              className="flex flex-col items-center gap-1 p-3 h-auto hover:bg-primary/10 rounded-xl transition-colors"
-            >
-              <Activity className="w-5 h-5 text-primary" />
-              <span className="text-xs text-foreground">Dashboard</span>
+            <Button onClick={() => navigate("/funcionario/dashboard")} variant="ghost" className="flex flex-col items-center gap-1 p-3 h-auto hover:bg-gray-100 rounded-xl transition-colors">
+              <Activity className="w-5 h-5 text-gray-600" />
+              <span className="text-xs text-gray-600">Dashboard</span>
             </Button>
 
-            <Button
-              onClick={() => navigate("/funcionario/documentos")}
-              variant="ghost"
-              className="flex flex-col items-center gap-1 p-3 h-auto hover:bg-primary/10 rounded-xl transition-colors"
-            >
-              <FileText className="w-5 h-5 text-primary" />
-              <span className="text-xs text-foreground">Documentos</span>
-            </Button>
-
-            <Button
-              onClick={() => navigate("/clientes-cadastrados")}
-              variant="ghost"
-              className="flex flex-col items-center gap-1 p-3 h-auto hover:bg-secondary/10 rounded-xl transition-colors"
-            >
-              <Users className="w-5 h-5 text-secondary" />
-              <span className="text-xs text-foreground">Clientes</span>
-            </Button>
-
-            <Button
-              onClick={() => navigate("/funcionario/agendamento")}
-              variant="ghost"
-              className="flex flex-col items-center gap-1 p-3 h-auto hover:bg-accent/20 rounded-xl transition-colors"
-            >
-              <Calendar className="w-5 h-5 text-accent" />
-              <span className="text-xs text-foreground">Agendamentos</span>
+            <Button onClick={() => navigate("/funcionario/documentos")} variant="ghost" className="flex flex-col items-center gap-1 p-3 h-auto hover:bg-gray-100 rounded-xl transition-colors">
+              <Users className="w-5 h-5 text-gray-600" />
+              <span className="text-xs text-gray-600">Documentos</span>
             </Button>
           </div>
         </div>
