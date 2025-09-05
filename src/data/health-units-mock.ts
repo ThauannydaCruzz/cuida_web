@@ -7,7 +7,7 @@ export const healthUnits: HealthUnit[] = [
     name: "UBS Alto Cafezal",
     type: "UBS",
     address: "Rua Paes Lemes, 850",
-    coordinates: [-22.2134, -49.9453], // Alto Cafezal
+    coordinates: [-49.9453, -22.2134], // Alto Cafezal
     phone: "(14) 3402-1234",
     manager: "Dr. Ana Santos",
     status: "healthy",
@@ -39,7 +39,7 @@ export const healthUnits: HealthUnit[] = [
     name: "UBS Bandeirantes",
     type: "UBS",
     address: "Rua Albericio Mendes Pinto, 96",
-    coordinates: [-22.2156, -49.9445], // Bandeirantes
+    coordinates: [-49.9445, -22.2156], // Bandeirantes
     phone: "(14) 3402-1235",
     manager: "Dra. Maria Silva",
     status: "normal",
@@ -71,7 +71,7 @@ export const healthUnits: HealthUnit[] = [
     name: "UBS Cascata",
     type: "UBS",
     address: "Rua Cláudio Manoel da Costa, 43",
-    coordinates: [-22.2167, -49.9428], // Cascata
+    coordinates: [-49.9428, -22.2167], // Cascata
     phone: "(14) 3402-1236",
     manager: "Dr. João Costa",
     status: "attention",
@@ -103,7 +103,7 @@ export const healthUnits: HealthUnit[] = [
     name: "UBS Castelo Branco",
     type: "UBS",
     address: "Rua Adamantina, 15",
-    coordinates: [-22.2178, -49.9411], // Castelo Branco
+    coordinates: [-49.9411, -22.2178], // Castelo Branco
     phone: "(14) 3402-1237",
     manager: "Dra. Carla Oliveira",
     status: "healthy",
@@ -126,7 +126,7 @@ export const healthUnits: HealthUnit[] = [
     name: "UBS Chico Mendes",
     type: "UBS",
     address: "Rua Amador Bueno, 1085",
-    coordinates: [-22.2189, -49.9394], // Chico Mendes
+    coordinates: [-49.9394, -22.2189], // Chico Mendes
     phone: "(14) 3402-1238",
     manager: "Dr. Pedro Lima",
     status: "urgent",
@@ -158,7 +158,7 @@ export const healthUnits: HealthUnit[] = [
     name: "UBS Costa e Silva",
     type: "UBS",
     address: "Rua Fernando Fontana, 300",
-    coordinates: [-22.2200, -49.9377], // Costa e Silva
+    coordinates: [-49.9377, -22.2200], // Costa e Silva
     phone: "(14) 3402-1239",
     manager: "Dra. Isabel Costa",
     status: "normal",
@@ -181,7 +181,7 @@ export const healthUnits: HealthUnit[] = [
     name: "USF JK (D. Maria da Conceição Brandão)",
     type: "USF",
     address: "Rua Lucílio Coelho de Oliveira, 5",
-    coordinates: [-22.2211, -49.9360], // JK
+    coordinates: [-49.9360, -22.2211], // JK
     phone: "(14) 3402-1240",
     manager: "Dr. Carlos Santos",
     status: "healthy",
@@ -204,7 +204,7 @@ export const healthUnits: HealthUnit[] = [
     name: "UBS Nova Marília",
     type: "UBS",
     address: "Av. Mem de Sá, 360",
-    coordinates: [-22.2089, -49.9550], // Nova Marília
+    coordinates: [-49.9550, -22.2089], // Nova Marília
     phone: "(14) 3402-1241",
     manager: "Dra. Rosa Lima",
     status: "attention",
@@ -227,7 +227,7 @@ export const healthUnits: HealthUnit[] = [
     name: "UBS Planalto",
     type: "UBS",
     address: "Rua Gildo Bonato, 207",
-    coordinates: [-22.1978, -49.9612], // Planalto
+    coordinates: [-49.9612, -22.1978], // Planalto
     phone: "(14) 3402-1242",
     manager: "Dr. Fernando Silva",
     status: "normal",
@@ -250,7 +250,7 @@ export const healthUnits: HealthUnit[] = [
     name: "UBS São Judas",
     type: "UBS",
     address: "Rua Ribeirão Preto, 510",
-    coordinates: [-22.2067, -49.9334], // São Judas
+    coordinates: [-49.9334, -22.2067], // São Judas
     phone: "(14) 3402-1243",
     manager: "Dra. Paula Santos",
     status: "healthy",
@@ -273,7 +273,7 @@ export const healthUnits: HealthUnit[] = [
     name: "UBS São Miguel",
     type: "UBS",
     address: "Rua 24 de Dezembro, 2865",
-    coordinates: [-22.2278, -49.9201], // São Miguel
+    coordinates: [-49.9201, -22.2278], // São Miguel
     phone: "(14) 3402-1244",
     manager: "Dr. Miguel Costa",
     status: "urgent",
@@ -296,7 +296,7 @@ export const healthUnits: HealthUnit[] = [
     name: "UBS Santa Antonieta",
     type: "UBS",
     address: "Rua Profª Berta de Camargo Vieira, 595",
-    coordinates: [-22.2101, -49.9512], // Santa Antonieta
+    coordinates: [-49.9512, -22.2101], // Santa Antonieta
     phone: "(14) 3402-1245",
     manager: "Dra. Antonieta Lima",
     status: "normal",
@@ -319,7 +319,7 @@ export const healthUnits: HealthUnit[] = [
     name: "USF Aniz Badra",
     type: "USF",
     address: "Rua Urias Avelino de Moraes, s/n",
-    coordinates: [-22.1945, -49.9456], // Aniz Badra
+    coordinates: [-49.9456, -22.1945], // Aniz Badra
     phone: "(14) 3402-1246",
     manager: "Dr. Aniz Badra",
     status: "healthy",
@@ -342,7 +342,7 @@ export const healthUnits: HealthUnit[] = [
     name: "USF Parque das Nações",
     type: "USF",
     address: "Rua Antonio Spressão, 465",
-    coordinates: [-22.2123, -49.9501], // Parque das Nações
+    coordinates: [-49.9501, -22.2123], // Parque das Nações
     phone: "(14) 3402-1247",
     manager: "Dra. Nação Silva",
     status: "attention",
@@ -365,7 +365,7 @@ export const healthUnits: HealthUnit[] = [
     name: "USF Rosália",
     type: "USF",
     address: "Rua Kaniti Yamani, s/n",
-    coordinates: [-22.1889, -49.9601], // Rosália
+    coordinates: [-49.9601, -22.1889], // Rosália
     phone: "(14) 3402-1248",
     manager: "Dra. Rosália Santos",
     status: "normal",
@@ -388,7 +388,7 @@ export const healthUnits: HealthUnit[] = [
     name: "USF Avencas",
     type: "USF",
     address: "Av. Vitória Régia, 608",
-    coordinates: [-22.1834, -49.9723], // Avencas
+    coordinates: [-49.9723, -22.1834], // Avencas
     phone: "(14) 3402-1249",
     manager: "Dr. Avencas Costa",
     status: "healthy",
@@ -411,7 +411,7 @@ export const healthUnits: HealthUnit[] = [
     name: "USF Amadeu Amaral",
     type: "USF",
     address: "Rua Dr. Pimenta de Pádua, 168",
-    coordinates: [-22.2345, -49.9278], // Amadeu Amaral
+    coordinates: [-49.9278, -22.2345], // Amadeu Amaral
     phone: "(14) 3402-1250",
     manager: "Dr. Amadeu Amaral",
     status: "urgent",
@@ -434,7 +434,7 @@ export const healthUnits: HealthUnit[] = [
     name: "USF Jardim Cavalari",
     type: "USF",
     address: "Rua João Gerônimo Perinetti, 94",
-    coordinates: [-22.2089, -49.9324], // Jardim Cavalari
+    coordinates: [-49.9324, -22.2089], // Jardim Cavalari
     phone: "(14) 3402-1251",
     manager: "Dr. Cavalari Silva",
     status: "normal",
@@ -457,7 +457,7 @@ export const healthUnits: HealthUnit[] = [
     name: "USF Vila Real",
     type: "USF",
     address: "Rua Arthur Martins Ribeiro, 35",
-    coordinates: [-22.2456, -49.9123], // Vila Real
+    coordinates: [-49.9123, -22.2456], // Vila Real
     phone: "(14) 3402-1252",
     manager: "Dra. Real Santos",
     status: "attention",
@@ -480,7 +480,7 @@ export const healthUnits: HealthUnit[] = [
     name: "USF CDHU/São Bento",
     type: "USF",
     address: "Rua Ioneu Carvalho Domingos, 556",
-    coordinates: [-22.2567, -49.9089], // CDHU/São Bento
+    coordinates: [-49.9089, -22.2567], // CDHU/São Bento
     phone: "(14) 3402-1253",
     manager: "Dr. Bento Silva",
     status: "healthy",
@@ -503,20 +503,20 @@ export const healthUnits: HealthUnit[] = [
     name: "USF Padre Nóbrega I",
     type: "USF",
     address: "Rua Salgado Filho, 30",
-    coordinates: [-22.2123, -49.9467], // Padre Nóbrega I
+    coordinates: [-49.9567, -22.2345], // Padre Nóbrega I
     phone: "(14) 3402-1254",
-    manager: "Padre Nóbrega I",
+    manager: "Dr. Nóbrega Silva",
     status: "normal",
     workingHours: "07:00 - 17:00",
     services: ["Saúde da Família", "Consultas", "Vacinas"],
     medications: [
       {
         id: "med32",
-        name: "Azitromicina",
-        dosage: "500mg",
-        quantity: 45,
-        minStock: 30,
-        maxStock: 120,
+        name: "Omeprazol",
+        dosage: "20mg",
+        quantity: 85,
+        minStock: 60,
+        maxStock: 200,
         status: "normal"
       }
     ]
@@ -526,21 +526,21 @@ export const healthUnits: HealthUnit[] = [
     name: "USF Jânio Quadros",
     type: "USF",
     address: "Rua Felipe Navas, 204",
-    coordinates: [-22.2345, -49.9278], // Jânio Quadros
+    coordinates: [-49.9432, -22.2189], // Jânio Quadros
     phone: "(14) 3402-1255",
-    manager: "Dr. Jânio Quadros",
-    status: "attention",
+    manager: "Dr. Quadros Santos",
+    status: "healthy",
     workingHours: "07:00 - 17:00",
     services: ["Saúde da Família", "Pediatria", "Vacinas"],
     medications: [
       {
         id: "med33",
-        name: "Omeprazol",
-        dosage: "20mg",
-        quantity: 35,
-        minStock: 50,
-        maxStock: 150,
-        status: "attention"
+        name: "Vitamina C",
+        dosage: "500mg",
+        quantity: 120,
+        minStock: 80,
+        maxStock: 300,
+        status: "healthy"
       }
     ]
   },
@@ -549,21 +549,21 @@ export const healthUnits: HealthUnit[] = [
     name: "USF Lácio",
     type: "USF",
     address: "Av. Brasil, 272",
-    coordinates: [-22.2144, -49.9463], // Centro - Lácio
+    coordinates: [-49.9451, -22.2143], // Lácio
     phone: "(14) 3402-1256",
-    manager: "Dr. Lácio Lima",
-    status: "normal",
+    manager: "Dr. Lácio Costa",
+    status: "attention",
     workingHours: "07:00 - 17:00",
-    services: ["Saúde da Família", "Consultas", "Vacinas"],
+    services: ["Saúde da Família", "Consultas", "Curativos"],
     medications: [
       {
         id: "med34",
-        name: "Sinvastatina",
-        dosage: "20mg",
-        quantity: 75,
-        minStock: 40,
+        name: "Ranitidina",
+        dosage: "150mg",
+        quantity: 45,
+        minStock: 50,
         maxStock: 150,
-        status: "normal"
+        status: "attention"
       }
     ]
   },
@@ -572,21 +572,21 @@ export const healthUnits: HealthUnit[] = [
     name: "USF Figueirinha",
     type: "USF",
     address: "Av. José Jorente, 291",
-    coordinates: [-22.2456, -49.9123], // Figueirinha
+    coordinates: [-49.9398, -22.2267], // Figueirinha
     phone: "(14) 3402-1257",
-    manager: "Dra. Figueirinha Santos",
-    status: "attention",
+    manager: "Dra. Figueira Lima",
+    status: "normal",
     workingHours: "07:00 - 17:00",
-    services: ["Saúde da Família", "Pediatria", "Vacinas"],
+    services: ["Saúde da Família", "Ginecologia", "Pré-natal"],
     medications: [
       {
         id: "med35",
-        name: "Fluconazol",
-        dosage: "150mg",
-        quantity: 40,
+        name: "Clonazepam",
+        dosage: "2mg",
+        quantity: 70,
         minStock: 50,
         maxStock: 200,
-        status: "attention"
+        status: "normal"
       }
     ]
   },
@@ -595,21 +595,21 @@ export const healthUnits: HealthUnit[] = [
     name: "USF Vila Barros",
     type: "USF",
     address: "Rua Amando Oliveira Rocha Filho, 10",
-    coordinates: [-22.2567, -49.9089], // Vila Barros
+    coordinates: [-49.9234, -22.2345], // Vila Barros
     phone: "(14) 3402-1258",
-    manager: "Dr. Barros Silva",
-    status: "healthy",
+    manager: "Dr. Barros Santos",
+    status: "urgent",
     workingHours: "07:00 - 17:00",
-    services: ["Saúde da Família", "Consultas", "Curativos"],
+    services: ["Saúde da Família", "Urgência", "Consultas"],
     medications: [
       {
         id: "med36",
-        name: "Cetirizina",
-        dosage: "10mg",
-        quantity: 125,
-        minStock: 70,
-        maxStock: 250,
-        status: "healthy"
+        name: "Hidrocortisona",
+        dosage: "20mg",
+        quantity: 12,
+        minStock: 30,
+        maxStock: 100,
+        status: "urgent"
       }
     ]
   },
@@ -617,22 +617,22 @@ export const healthUnits: HealthUnit[] = [
     id: "usf-aeroporto",
     name: "USF Aeroporto",
     type: "USF",
-    address: "Rua Iporãs, 5",
-    coordinates: [-22.1978, -49.9234], // Aeroporto
+    address: "Rua Iporâs, 5",
+    coordinates: [-49.9678, -22.1967], // Aeroporto
     phone: "(14) 3402-1259",
     manager: "Dr. Aeroporto Silva",
-    status: "normal",
+    status: "healthy",
     workingHours: "07:00 - 17:00",
     services: ["Saúde da Família", "Consultas", "Vacinas"],
     medications: [
       {
         id: "med37",
-        name: "Hidroclorotiazida",
-        dosage: "25mg",
-        quantity: 85,
-        minStock: 50,
+        name: "Azitromicina",
+        dosage: "500mg",
+        quantity: 95,
+        minStock: 60,
         maxStock: 200,
-        status: "normal"
+        status: "healthy"
       }
     ]
   },
@@ -641,21 +641,21 @@ export const healthUnits: HealthUnit[] = [
     name: "USF Marajó",
     type: "USF",
     address: "Rua Japão, 380",
-    coordinates: [-22.2023, -49.9345], // Marajó
+    coordinates: [-49.9512, -22.2123], // Marajó
     phone: "(14) 3402-1260",
-    manager: "Dra. Marajó Santos",
-    status: "healthy",
+    manager: "Dra. Marajó Costa",
+    status: "normal",
     workingHours: "07:00 - 17:00",
     services: ["Saúde da Família", "Pediatria", "Vacinas"],
     medications: [
       {
         id: "med38",
-        name: "Vitamina C",
-        dosage: "500mg",
-        quantity: 110,
-        minStock: 60,
-        maxStock: 250,
-        status: "healthy"
+        name: "Bromexina",
+        dosage: "8mg",
+        quantity: 65,
+        minStock: 50,
+        maxStock: 150,
+        status: "normal"
       }
     ]
   },
@@ -664,21 +664,21 @@ export const healthUnits: HealthUnit[] = [
     name: "USF Julieta",
     type: "USF",
     address: "Rua Eliezer Rocha, 2505",
-    coordinates: [-22.2278, -49.9201], // Julieta
+    coordinates: [-49.9301, -22.2456], // Julieta
     phone: "(14) 3402-1261",
-    manager: "Dra. Julieta Costa",
-    status: "urgent",
+    manager: "Dra. Julieta Santos",
+    status: "attention",
     workingHours: "07:00 - 17:00",
-    services: ["Saúde da Família", "Urgência", "Consultas"],
+    services: ["Saúde da Família", "Consultas", "Curativos"],
     medications: [
       {
         id: "med39",
-        name: "Morfina",
-        dosage: "10mg",
-        quantity: 5,
-        minStock: 30,
-        maxStock: 100,
-        status: "urgent"
+        name: "Dextrometorfano",
+        dosage: "15mg",
+        quantity: 40,
+        minStock: 50,
+        maxStock: 200,
+        status: "attention"
       }
     ]
   },
@@ -687,21 +687,21 @@ export const healthUnits: HealthUnit[] = [
     name: "USF Santa Antonieta II",
     type: "USF",
     address: "Rua Luciano Borguetti, 148",
-    coordinates: [-22.2101, -49.9512], // Santa Antonieta II
+    coordinates: [-49.9523, -22.2112], // Santa Antonieta II
     phone: "(14) 3402-1262",
-    manager: "Dra. Antonieta II Lima",
-    status: "normal",
+    manager: "Dr. Antonieta Silva",
+    status: "healthy",
     workingHours: "07:00 - 17:00",
     services: ["Saúde da Família", "Ginecologia", "Pré-natal"],
     medications: [
       {
         id: "med40",
-        name: "Progesterona",
-        dosage: "200mg",
-        quantity: 65,
+        name: "Fluconazol",
+        dosage: "150mg",
+        quantity: 80,
         minStock: 40,
         maxStock: 150,
-        status: "normal"
+        status: "healthy"
       }
     ]
   },
@@ -710,63 +710,17 @@ export const healthUnits: HealthUnit[] = [
     name: "USF Tóffoli",
     type: "USF",
     address: "Rua Yutaka Kamakura, 34",
-    coordinates: [-22.2145, -49.9356], // Tóffoli
+    coordinates: [-49.9345, -22.2234], // Tóffoli
     phone: "(14) 3402-1263",
-    manager: "Dr. Tóffoli Silva",
-    status: "healthy",
+    manager: "Dr. Tóffoli Costa",
+    status: "normal",
     workingHours: "07:00 - 17:00",
     services: ["Saúde da Família", "Consultas", "Vacinas"],
     medications: [
       {
         id: "med41",
-        name: "Levotiroxina",
-        dosage: "50mcg",
-        quantity: 140,
-        minStock: 80,
-        maxStock: 300,
-        status: "healthy"
-      }
-    ]
-  },
-  {
-    id: "usf-parque-ipes",
-    name: "USF Parque dos Ipês",
-    type: "USF",
-    address: "Rua Francisco da Costa Pimentel, 880",
-    coordinates: [-22.1923, -49.9534], // Parque dos Ipês
-    phone: "(14) 3402-1264",
-    manager: "Dr. Ipês Silva",
-    status: "attention",
-    workingHours: "07:00 - 17:00",
-    services: ["Saúde da Família", "Pediatria", "Vacinas"],
-    medications: [
-      {
-        id: "med42",
-        name: "Prednisolona",
-        dosage: "5mg",
-        quantity: 35,
-        minStock: 50,
-        maxStock: 150,
-        status: "attention"
-      }
-    ]
-  },
-  {
-    id: "usf-santa-augusta",
-    name: "USF Santa Augusta",
-    type: "USF",
-    address: "Rua Gildo Bonato, 207",
-    coordinates: [-22.1978, -49.9612], // Santa Augusta (mesmo local do Planalto)
-    phone: "(14) 3402-1265",
-    manager: "Dra. Augusta Santos",
-    status: "normal",
-    workingHours: "07:00 - 17:00",
-    services: ["Saúde da Família", "Consultas", "Curativos"],
-    medications: [
-      {
-        id: "med43",
-        name: "Betametasona",
-        dosage: "0,5mg",
+        name: "Sinvastatina",
+        dosage: "20mg",
         quantity: 75,
         minStock: 60,
         maxStock: 200,
@@ -775,25 +729,71 @@ export const healthUnits: HealthUnit[] = [
     ]
   },
   {
+    id: "usf-parque-ipes",
+    name: "USF Parque dos Ipês",
+    type: "USF",
+    address: "Rua Francisco da Costa Pimentel, 880",
+    coordinates: [-49.9434, -22.2178], // Parque dos Ipês
+    phone: "(14) 3402-1264",
+    manager: "Dra. Ipês Santos",
+    status: "urgent",
+    workingHours: "07:00 - 17:00",
+    services: ["Saúde da Família", "Urgência", "Consultas"],
+    medications: [
+      {
+        id: "med42",
+        name: "Ceftriaxona",
+        dosage: "1g",
+        quantity: 8,
+        minStock: 20,
+        maxStock: 80,
+        status: "urgent"
+      }
+    ]
+  },
+  {
+    id: "usf-santa-augusta",
+    name: "USF Santa Augusta",
+    type: "USF",
+    address: "Rua Gildo Bonato, 207",
+    coordinates: [-49.9612, -22.1978], // Santa Augusta
+    phone: "(14) 3402-1265",
+    manager: "Dr. Augusta Silva",
+    status: "healthy",
+    workingHours: "07:00 - 17:00",
+    services: ["Saúde da Família", "Pediatria", "Vacinas"],
+    medications: [
+      {
+        id: "med43",
+        name: "Salbutamol",
+        dosage: "100mcg",
+        quantity: 105,
+        minStock: 70,
+        maxStock: 250,
+        status: "healthy"
+      }
+    ]
+  },
+  {
     id: "usf-vila-nova",
     name: "USF Vila Nova",
     type: "USF",
     address: "Rua Hermes da Fonseca, 496",
-    coordinates: [-22.2234, -49.9456], // Vila Nova
+    coordinates: [-49.9367, -22.2289], // Vila Nova
     phone: "(14) 3402-1266",
-    manager: "Dr. Nova Silva",
-    status: "healthy",
+    manager: "Dra. Nova Costa",
+    status: "attention",
     workingHours: "07:00 - 17:00",
-    services: ["Saúde da Família", "Consultas", "Vacinas"],
+    services: ["Saúde da Família", "Consultas", "Curativos"],
     medications: [
       {
         id: "med44",
-        name: "Bromazepam",
-        dosage: "3mg",
-        quantity: 95,
+        name: "Desloratadina",
+        dosage: "5mg",
+        quantity: 45,
         minStock: 50,
-        maxStock: 200,
-        status: "healthy"
+        maxStock: 150,
+        status: "attention"
       }
     ]
   },
@@ -802,53 +802,390 @@ export const healthUnits: HealthUnit[] = [
     name: "USF Vila Hípica",
     type: "USF",
     address: "Rua Luiz Manhães, 156",
-    coordinates: [-22.2567, -49.9189], // Vila Hípica
+    coordinates: [-49.9198, -22.2345], // Vila Hípica
     phone: "(14) 3402-1267",
-    manager: "Dr. Hípica Costa",
+    manager: "Dr. Hípica Santos",
+    status: "normal",
+    workingHours: "07:00 - 17:00",
+    services: ["Saúde da Família", "Ginecologia", "Pré-natal"],
+    medications: [
+      {
+        id: "med45",
+        name: "Cetoconazol",
+        dosage: "200mg",
+        quantity: 60,
+        minStock: 40,
+        maxStock: 150,
+        status: "normal"
+      }
+    ]
+  },
+  {
+    id: "usf-palmital",
+    name: "USF Palmital",
+    type: "USF",
+    address: "Rua Bartholomé Lopes Vilharrubia, 397",
+    coordinates: [-49.9423, -22.2367], // Palmital
+    phone: "(14) 3402-1268",
+    manager: "Dra. Palmital Silva",
+    status: "healthy",
+    workingHours: "07:00 - 17:00",
+    services: ["Saúde da Família", "Consultas", "Vacinas"],
+    medications: [
+      {
+        id: "med46",
+        name: "Cloridrato de Tramadol",
+        dosage: "50mg",
+        quantity: 90,
+        minStock: 60,
+        maxStock: 200,
+        status: "healthy"
+      }
+    ]
+  },
+  {
+    id: "usf-altaneira",
+    name: "USF Altaneira",
+    type: "USF",
+    address: "Rua Riachuelo, 139",
+    coordinates: [-49.9456, -22.2134], // Altaneira
+    phone: "(14) 3402-1269",
+    manager: "Dr. Altaneira Costa",
     status: "urgent",
     workingHours: "07:00 - 17:00",
     services: ["Saúde da Família", "Urgência", "Consultas"],
     medications: [
       {
-        id: "med45",
-        name: "Tramadol",
-        dosage: "50mg",
-        quantity: 8,
-        minStock: 30,
-        maxStock: 100,
+        id: "med47",
+        name: "Morfina",
+        dosage: "10mg",
+        quantity: 5,
+        minStock: 15,
+        maxStock: 50,
         status: "urgent"
       }
     ]
   },
+  {
+    id: "usf-novo-horizonte",
+    name: "USF Novo Horizonte",
+    type: "USF",
+    address: "Rua Orlando Silva, 15",
+    coordinates: [-49.9378, -22.2298], // Novo Horizonte
+    phone: "(14) 3402-1270",
+    manager: "Dra. Horizonte Santos",
+    status: "normal",
+    workingHours: "07:00 - 17:00",
+    services: ["Saúde da Família", "Pediatria", "Vacinas"],
+    medications: [
+      {
+        id: "med48",
+        name: "Dipirona Gotas",
+        dosage: "500mg/ml",
+        quantity: 55,
+        minStock: 40,
+        maxStock: 150,
+        status: "normal"
+      }
+    ]
+  },
+  {
+    id: "usf-jardim-marilia",
+    name: "USF Jardim Marília",
+    type: "USF",
+    address: "Rua Jesuítas, 40",
+    coordinates: [-49.9501, -22.2089], // Jardim Marília
+    phone: "(14) 3402-1271",
+    manager: "Dr. Marília Silva",
+    status: "attention",
+    workingHours: "07:00 - 17:00",
+    services: ["Saúde da Família", "Consultas", "Curativos"],
+    medications: [
+      {
+        id: "med49",
+        name: "Clonidina",
+        dosage: "0,15mg",
+        quantity: 35,
+        minStock: 50,
+        maxStock: 200,
+        status: "attention"
+      }
+    ]
+  },
+  {
+    id: "usf-tres-lagos",
+    name: "USF Três Lagos",
+    type: "USF",
+    address: "Rua Sebastião Innocêncio de Oliveira, 30",
+    coordinates: [-49.9434, -22.2245], // Três Lagos
+    phone: "(14) 3402-1272",
+    manager: "Dra. Lagos Costa",
+    status: "healthy",
+    workingHours: "07:00 - 17:00",
+    services: ["Saúde da Família", "Ginecologia", "Pré-natal"],
+    medications: [
+      {
+        id: "med50",
+        name: "Miconazol",
+        dosage: "2%",
+        quantity: 85,
+        minStock: 50,
+        maxStock: 200,
+        status: "healthy"
+      }
+    ]
+  },
+  {
+    id: "usf-jardim-america-4",
+    name: "USF Jardim América IV",
+    type: "USF",
+    address: "Rua Arnaldo Silva, 63",
+    coordinates: [-49.9312, -22.2367], // Jardim América IV
+    phone: "(14) 3402-1273",
+    manager: "Dr. América Santos",
+    status: "normal",
+    workingHours: "07:00 - 17:00",
+    services: ["Saúde da Família", "Consultas", "Vacinas"],
+    medications: [
+      {
+        id: "med51",
+        name: "Betametasona",
+        dosage: "4mg",
+        quantity: 65,
+        minStock: 40,
+        maxStock: 150,
+        status: "normal"
+      }
+    ]
+  },
+  {
+    id: "usf-campo-belo-santa-helena",
+    name: "USF Campo Belo - Santa Helena",
+    type: "USF",
+    address: "Fazenda do Estado, Casa nº 09",
+    coordinates: [-49.9678, -22.1889], // Campo Belo Santa Helena
+    phone: "(14) 3402-1274",
+    manager: "Dra. Helena Silva",
+    status: "urgent",
+    workingHours: "07:00 - 17:00",
+    services: ["Saúde da Família", "Urgência", "Consultas"],
+    medications: [
+      {
+        id: "med52",
+        name: "Epinefrina",
+        dosage: "1mg/ml",
+        quantity: 3,
+        minStock: 10,
+        maxStock: 30,
+        status: "urgent"
+      }
+    ]
+  },
+  {
+    id: "usf-campo-belo-dirceu",
+    name: "USF Campo Belo - Dirceu",
+    type: "USF",
+    address: "Av. Sampaio Vidal, s/n",
+    coordinates: [-49.9723, -22.1945], // Campo Belo Dirceu
+    phone: "(14) 3402-1275",
+    manager: "Dr. Dirceu Costa",
+    status: "attention",
+    workingHours: "07:00 - 17:00",
+    services: ["Saúde da Família", "Consultas", "Curativos"],
+    medications: [
+      {
+        id: "med53",
+        name: "Nistatina",
+        dosage: "100.000 UI/ml",
+        quantity: 45,
+        minStock: 50,
+        maxStock: 150,
+        status: "attention"
+      }
+    ]
+  },
+  {
+    id: "usf-jardim-renata",
+    name: "USF Jardim Renata",
+    type: "USF",
+    address: "Rua Antonia Bergamini Sândalo, 35",
+    coordinates: [-49.9389, -22.2323], // Jardim Renata
+    phone: "(14) 3402-1276",
+    manager: "Dra. Renata Santos",
+    status: "healthy",
+    workingHours: "07:00 - 17:00",
+    services: ["Saúde da Família", "Pediatria", "Vacinas"],
+    medications: [
+      {
+        id: "med54",
+        name: "Vitamina A",
+        dosage: "100.000 UI",
+        quantity: 95,
+        minStock: 60,
+        maxStock: 200,
+        status: "healthy"
+      }
+    ]
+  },
+  {
+    id: "usf-jardim-flamingo",
+    name: "USF Jardim Flamingo",
+    type: "USF",
+    address: "Rua Padre José Osvaldo Nunes, s/n",
+    coordinates: [-49.9456, -22.2278], // Jardim Flamingo
+    phone: "(14) 3402-1277",
+    manager: "Dr. Flamingo Silva",
+    status: "normal",
+    workingHours: "07:00 - 17:00",
+    services: ["Saúde da Família", "Consultas", "Ginecologia"],
+    medications: [
+      {
+        id: "med55",
+        name: "Eritromicina",
+        dosage: "250mg",
+        quantity: 70,
+        minStock: 50,
+        maxStock: 200,
+        status: "normal"
+      }
+    ]
+  },
+  {
+    id: "usf-jardim-teruel",
+    name: "USF Jardim Teruel",
+    type: "USF",
+    address: "Rua Elias Rifan, 35",
+    coordinates: [-49.9334, -22.2389], // Jardim Teruel
+    phone: "(14) 3402-1278",
+    manager: "Dra. Teruel Costa",
+    status: "attention",
+    workingHours: "07:00 - 17:00",
+    services: ["Saúde da Família", "Consultas", "Curativos"],
+    medications: [
+      {
+        id: "med56",
+        name: "Dipropionato de Betametasona",
+        dosage: "0,64mg/ml",
+        quantity: 40,
+        minStock: 50,
+        maxStock: 150,
+        status: "attention"
+      }
+    ]
+  },
+  {
+    id: "usf-argolo-ferrao",
+    name: "USF Argolo Ferrão",
+    type: "USF",
+    address: "Rua Monsenhor João Baptista, 331",
+    coordinates: [-49.9423, -22.2156], // Argolo Ferrão
+    phone: "(14) 3402-1279",
+    manager: "Dr. Argolo Santos",
+    status: "urgent",
+    workingHours: "07:00 - 17:00",
+    services: ["Saúde da Família", "Urgência", "Consultas"],
+    medications: [
+      {
+        id: "med57",
+        name: "Naloxona",
+        dosage: "0,4mg/ml",
+        quantity: 2,
+        minStock: 5,
+        maxStock: 20,
+        status: "urgent"
+      }
+    ]
+  },
+  {
+    id: "usf-primeiro-maio",
+    name: "USF 1º de Maio",
+    type: "USF",
+    address: "Av. José Jorente, 291",
+    coordinates: [-49.9398, -22.2267], // 1º de Maio
+    phone: "(14) 3402-1280",
+    manager: "Dra. Maio Silva",
+    status: "healthy",
+    workingHours: "07:00 - 17:00",
+    services: ["Saúde da Família", "Ginecologia", "Pré-natal"],
+    medications: [
+      {
+        id: "med58",
+        name: "Sulfadiazina de Prata",
+        dosage: "1%",
+        quantity: 80,
+        minStock: 40,
+        maxStock: 150,
+        status: "healthy"
+      }
+    ]
+  },
+  {
+    id: "usf-santa-antonieta-3",
+    name: "USF Santa Antonieta III",
+    type: "USF",
+    address: "Rua Eliezer Rocha, 2505",
+    coordinates: [-49.9301, -22.2456], // Santa Antonieta III
+    phone: "(14) 3402-1281",
+    manager: "Dr. Antonieta Costa",
+    status: "normal",
+    workingHours: "07:00 - 17:00",
+    services: ["Saúde da Família", "Consultas", "Vacinas"],
+    medications: [
+      {
+        id: "med59",
+        name: "Oxitocina",
+        dosage: "5 UI/ml",
+        quantity: 60,
+        minStock: 30,
+        maxStock: 100,
+        status: "normal"
+      }
+    ]
+  },
+  {
+    id: "usf-padre-nobrega-2",
+    name: "USF Padre Nóbrega II",
+    type: "USF",
+    address: "Rua Salgado Filho, 30",
+    coordinates: [-49.9567, -22.2345], // Padre Nóbrega II
+    phone: "(14) 3402-1282",
+    manager: "Dra. Nóbrega Santos",
+    status: "attention",
+    workingHours: "07:00 - 17:00",
+    services: ["Saúde da Família", "Consultas", "Curativos"],
+    medications: [
+      {
+        id: "med60",
+        name: "Clindamicina",
+        dosage: "300mg",
+        quantity: 45,
+        minStock: 50,
+        maxStock: 200,
+        status: "attention"
+      }
+    ]
+  },
+  
   // UPAs
   {
     id: "upa-norte",
     name: "UPA Norte (Zona Norte)",
     type: "UPA",
     address: "Rua João Caliman, 110, Parque das Nações",
-    coordinates: [-22.2123, -49.9501], // UPA Norte
-    phone: "(14) 3402-2000",
+    coordinates: [-49.9501, -22.2123], // UPA Norte
+    phone: "(14) 3402-2001",
     manager: "Dr. Norte Silva",
     status: "healthy",
-    workingHours: "24h",
-    services: ["Urgência", "Emergência", "Pronto Atendimento"],
+    workingHours: "24 horas",
+    services: ["Pronto Atendimento", "Urgência", "Emergência"],
     medications: [
       {
-        id: "upa-med1",
+        id: "med61",
         name: "Adrenalina",
         dosage: "1mg/ml",
         quantity: 50,
-        minStock: 20,
+        minStock: 30,
         maxStock: 100,
-        status: "healthy"
-      },
-      {
-        id: "upa-med2",
-        name: "Morfina",
-        dosage: "10mg",
-        quantity: 30,
-        minStock: 15,
-        maxStock: 80,
         status: "healthy"
       }
     ]
@@ -858,62 +1195,45 @@ export const healthUnits: HealthUnit[] = [
     name: "UPA Zona Sul",
     type: "UPA",
     address: "Rua Antônio Pereira da Silva, 288, Hípica Paulista",
-    coordinates: [-22.2567, -49.9189], // UPA Sul
-    phone: "(14) 3402-2001",
-    manager: "Dra. Sul Costa",
-    status: "normal",
-    workingHours: "24h",
-    services: ["Urgência", "Emergência", "Pronto Atendimento"],
+    coordinates: [-49.9198, -22.2456], // UPA Sul
+    phone: "(14) 3402-2002",
+    manager: "Dra. Sul Santos",
+    status: "urgent",
+    workingHours: "24 horas",
+    services: ["Pronto Atendimento", "Urgência", "Emergência"],
     medications: [
       {
-        id: "upa-med3",
+        id: "med62",
         name: "Atropina",
-        dosage: "0,5mg",
-        quantity: 25,
-        minStock: 15,
-        maxStock: 60,
-        status: "normal"
-      },
-      {
-        id: "upa-med4",
-        name: "Naloxona",
-        dosage: "0,4mg",
-        quantity: 20,
-        minStock: 10,
-        maxStock: 50,
-        status: "normal"
+        dosage: "0,25mg/ml",
+        quantity: 15,
+        minStock: 20,
+        maxStock: 80,
+        status: "urgent"
       }
     ]
   },
-  // Farmácias Municipais
+  
+  // Farmácias
   {
     id: "farmacia-central",
     name: "Farmácia Municipal Central",
     type: "Farmácia",
     address: "Rua Hidekichi Nomura, 170, Fragata",
-    coordinates: [-22.2144, -49.9463], // Centro
-    phone: "(14) 3402-3000",
-    manager: "Farm. Central Santos",
+    coordinates: [-49.9445, -22.2178], // Farmácia Central
+    phone: "(14) 3402-3001",
+    manager: "Farm. Central Silva",
     status: "healthy",
-    workingHours: "08:00 - 18:00",
-    services: ["Dispensação", "Farmácia Clínica", "Atenção Farmacêutica"],
+    workingHours: "07:00 - 19:00",
+    services: ["Dispensação", "Orientação Farmacêutica"],
     medications: [
       {
-        id: "farm-med1",
-        name: "Insulina NPH",
-        dosage: "100UI/ml",
-        quantity: 200,
-        minStock: 100,
-        maxStock: 500,
-        status: "healthy"
-      },
-      {
-        id: "farm-med2",
-        name: "Losartana",
-        dosage: "50mg",
-        quantity: 1500,
-        minStock: 500,
-        maxStock: 3000,
+        id: "med63",
+        name: "Estoque Geral",
+        dosage: "Variado",
+        quantity: 5000,
+        minStock: 3000,
+        maxStock: 10000,
         status: "healthy"
       }
     ]
@@ -923,21 +1243,21 @@ export const healthUnits: HealthUnit[] = [
     name: "Farmácia Municipal Zona Norte",
     type: "Farmácia",
     address: "Av. Professora Berta de Camargo Vieira, 595",
-    coordinates: [-22.2101, -49.9512], // Zona Norte
-    phone: "(14) 3402-3001",
-    manager: "Farm. Norte Lima",
-    status: "attention",
-    workingHours: "08:00 - 18:00",
-    services: ["Dispensação", "Farmácia Clínica"],
+    coordinates: [-49.9512, -22.2101], // Farmácia Norte
+    phone: "(14) 3402-3002",
+    manager: "Farm. Norte Santos",
+    status: "normal",
+    workingHours: "07:00 - 19:00",
+    services: ["Dispensação", "Orientação Farmacêutica"],
     medications: [
       {
-        id: "farm-med3",
-        name: "Metformina",
-        dosage: "850mg",
-        quantity: 800,
-        minStock: 1000,
-        maxStock: 2500,
-        status: "attention"
+        id: "med64",
+        name: "Estoque Geral",
+        dosage: "Variado",
+        quantity: 3500,
+        minStock: 2000,
+        maxStock: 8000,
+        status: "normal"
       }
     ]
   },
@@ -946,21 +1266,21 @@ export const healthUnits: HealthUnit[] = [
     name: "Farmácia Municipal Zona Sul",
     type: "Farmácia",
     address: "Av. João Ramalho, 1081, Parque São Jorge",
-    coordinates: [-22.2456, -49.9234], // Zona Sul
-    phone: "(14) 3402-3002",
+    coordinates: [-49.9234, -22.2378], // Farmácia Sul
+    phone: "(14) 3402-3003",
     manager: "Farm. Sul Costa",
-    status: "normal",
-    workingHours: "08:00 - 18:00",
-    services: ["Dispensação", "Farmácia Clínica"],
+    status: "attention",
+    workingHours: "07:00 - 19:00",
+    services: ["Dispensação", "Orientação Farmacêutica"],
     medications: [
       {
-        id: "farm-med4",
-        name: "Captopril",
-        dosage: "25mg",
-        quantity: 1200,
-        minStock: 800,
-        maxStock: 2000,
-        status: "normal"
+        id: "med65",
+        name: "Estoque Geral",
+        dosage: "Variado",
+        quantity: 1800,
+        minStock: 2000,
+        maxStock: 6000,
+        status: "attention"
       }
     ]
   },
@@ -969,21 +1289,21 @@ export const healthUnits: HealthUnit[] = [
     name: "Farmácia Municipal Zona Oeste",
     type: "Farmácia",
     address: "Av. Maria Fernandes Cavallari, 2287, Jardim Cavalari",
-    coordinates: [-22.2089, -49.9324], // Zona Oeste
-    phone: "(14) 3402-3003",
+    coordinates: [-49.9324, -22.2089], // Farmácia Oeste
+    phone: "(14) 3402-3004",
     manager: "Farm. Oeste Silva",
-    status: "healthy",
-    workingHours: "08:00 - 18:00",
-    services: ["Dispensação", "Farmácia Clínica"],
+    status: "urgent",
+    workingHours: "07:00 - 19:00",
+    services: ["Dispensação", "Orientação Farmacêutica"],
     medications: [
       {
-        id: "farm-med5",
-        name: "Glibenclamida",
-        dosage: "5mg",
-        quantity: 1800,
-        minStock: 1000,
-        maxStock: 3000,
-        status: "healthy"
+        id: "med66",
+        name: "Estoque Geral",
+        dosage: "Variado",
+        quantity: 900,
+        minStock: 2000,
+        maxStock: 6000,
+        status: "urgent"
       }
     ]
   },
@@ -992,53 +1312,44 @@ export const healthUnits: HealthUnit[] = [
     name: "Farmácia Municipal Zona Leste",
     type: "Farmácia",
     address: "Rua Santa Helena, 396, Jardim Alvorada",
-    coordinates: [-22.2023, -49.9234], // Zona Leste
-    phone: "(14) 3402-3004",
+    coordinates: [-49.9367, -22.2289], // Farmácia Leste
+    phone: "(14) 3402-3005",
     manager: "Farm. Leste Santos",
-    status: "urgent",
-    workingHours: "08:00 - 18:00",
-    services: ["Dispensação", "Farmácia Clínica"],
+    status: "healthy",
+    workingHours: "07:00 - 19:00",
+    services: ["Dispensação", "Orientação Farmacêutica"],
     medications: [
       {
-        id: "farm-med6",
-        name: "Atenolol",
-        dosage: "50mg",
-        quantity: 150,
-        minStock: 500,
-        maxStock: 1500,
-        status: "urgent"
+        id: "med67",
+        name: "Estoque Geral",
+        dosage: "Variado",
+        quantity: 4200,
+        minStock: 2500,
+        maxStock: 7000,
+        status: "healthy"
       }
     ]
   },
   {
-    id: "farmacia-popular-centro",
+    id: "farmacia-popular",
     name: "Farmácia Popular do Brasil - Centro",
-    type: "Farmácia Popular",
+    type: "Farmácia",
     address: "Avenida Brasil, 184, Centro",
-    coordinates: [-22.2144, -49.9463], // Centro
-    phone: "(14) 3402-4000",
-    manager: "Farm. Popular Brasil",
-    status: "healthy",
+    coordinates: [-49.9451, -22.2143], // Farmácia Popular
+    phone: "(14) 3402-3006",
+    manager: "Farm. Popular Costa",
+    status: "normal",
     workingHours: "08:00 - 18:00",
-    services: ["Dispensação Popular", "Medicamentos Gratuitos"],
+    services: ["Dispensação", "Programa Federal"],
     medications: [
       {
-        id: "pop-med1",
-        name: "Paracetamol",
-        dosage: "750mg",
-        quantity: 5000,
+        id: "med68",
+        name: "Estoque Federal",
+        dosage: "Variado",
+        quantity: 2800,
         minStock: 2000,
-        maxStock: 8000,
-        status: "healthy"
-      },
-      {
-        id: "pop-med2",
-        name: "Dipirona",
-        dosage: "500mg",
-        quantity: 4500,
-        minStock: 2000,
-        maxStock: 7000,
-        status: "healthy"
+        maxStock: 5000,
+        status: "normal"
       }
     ]
   }
