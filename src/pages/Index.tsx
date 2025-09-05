@@ -31,10 +31,7 @@ const HomePage = () => {
                 </Button>
               </Link>
               <Link to="/login">
-                <Button variant="outline" className="border-2 border-primary/20 text-primary hover:bg-primary/5 rounded-xl px-6 py-3 text-sm font-medium transition-all duration-300">
-                  <Shield className="w-4 h-4 mr-2" />
-                  Área Gestores
-                </Button>
+                
               </Link>
             </div>
           </div>
