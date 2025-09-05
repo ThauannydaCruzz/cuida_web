@@ -224,20 +224,12 @@ const FuncionarioMapa = () => {
   return <div className="min-h-screen bg-gradient-to-br from-primary/5 via-background to-secondary/5">
       {/* Back Button - Floating */}
       <div className="fixed top-6 left-6 z-[1002]">
-        <Button variant="ghost" onClick={() => navigate("/home-funcionario")} className="flex items-center gap-2 bg-card/90 backdrop-blur-xl hover:bg-card border border-border/30 rounded-2xl shadow-lg transition-all duration-300 hover:scale-105">
+        <Button variant="ghost" onClick={() => navigate("/")} className="flex items-center gap-2 bg-card/90 backdrop-blur-xl hover:bg-card border border-border/30 rounded-2xl shadow-lg transition-all duration-300 hover:scale-105">
           <ArrowLeft className="w-4 h-4" />
           Voltar
         </Button>
       </div>
 
-      {/* Floating Action Buttons */}
-      <div className="fixed top-6 right-6 z-[1002] flex flex-col gap-3">
-        <Button onClick={() => navigate("/funcionario/agendamento")} className="bg-primary/90 hover:bg-primary backdrop-blur-xl text-primary-foreground rounded-2xl shadow-lg transition-all duration-300 hover:scale-105 flex items-center gap-2 px-4 py-3">
-          <Truck className="w-4 h-4" />
-          Agendar Entrega
-        </Button>
-        
-      </div>
 
       {/* Full Screen Map Container */}
       <div className="fixed inset-0 top-0 left-0 w-full h-full">
@@ -283,27 +275,6 @@ const FuncionarioMapa = () => {
           </div>
         </div>
 
-        {/* Floating Navigation Bar */}
-        <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-[1001]">
-          <div className="bg-card/90 backdrop-blur-xl rounded-3xl p-3 shadow-2xl border border-border/30">
-            <div className="flex items-center gap-3">
-              <Button onClick={() => navigate("/funcionario/mapa")} variant="default" className="flex flex-col items-center gap-2 p-4 h-auto rounded-2xl">
-                <MapPin className="w-5 h-5" />
-                <span className="text-xs font-medium">Mapa</span>
-              </Button>
-
-              <Button onClick={() => navigate("/funcionario/dashboard")} variant="ghost" className="flex flex-col items-center gap-2 p-4 h-auto hover:bg-accent/50 rounded-2xl">
-                <BarChart3 className="w-5 h-5" />
-                <span className="text-xs font-medium">Dashboard</span>
-              </Button>
-
-              <Button onClick={() => navigate("/funcionario/documentos")} variant="ghost" className="flex flex-col items-center gap-2 p-4 h-auto hover:bg-accent/50 rounded-2xl">
-                <Package className="w-5 h-5" />
-                <span className="text-xs font-medium">Documentos</span>
-              </Button>
-            </div>
-          </div>
-        </div>
 
         {/* Simplified Info Bubble */}
         {selectedUnit && selectedMarkerPosition && <div className="fixed z-[1001] w-72 max-w-[calc(100vw-40px)] bg-card/95 backdrop-blur-xl rounded-xl shadow-lg border border-border/30 overflow-hidden animate-in fade-in-0 zoom-in-95 duration-200" style={{
@@ -335,17 +306,14 @@ const FuncionarioMapa = () => {
 
               {/* Actions */}
               <div className="flex gap-2">
-                <Button onClick={() => navigate("/funcionario/agendamento", {
-              state: {
-                selectedUnit
-              }
-            })} size="sm" className="flex-1 text-xs">
-                  <Truck className="w-3 h-3 mr-1" />
-                  Agendar
-                </Button>
-                <Button variant="outline" size="sm" className="flex-1 text-xs">
-                  <BarChart3 className="w-3 h-3 mr-1" />
-                  Analisar
+                <Button onClick={() => {
+                  toast({
+                    title: "Informações da Unidade",
+                    description: `${selectedUnit.name} - ${selectedUnit.workingHours}`,
+                  });
+                }} size="sm" className="flex-1 text-xs">
+                  <Eye className="w-3 h-3 mr-1" />
+                  Detalhes
                 </Button>
               </div>
             </div>
