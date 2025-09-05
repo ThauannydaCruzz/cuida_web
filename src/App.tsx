@@ -6,8 +6,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import PortalCidadao from "./pages/PortalCidadao";
 import NotFound from "./pages/NotFound";
-import Login from "./pages/Login";
-import Cadastro from "./pages/Cadastro";
 import LoginCli from "./pages/LoginCli";
 import CadastroClientes from "./pages/CadastroClientes";
 import FuncionarioMapa from "./pages/FuncionarioMapa";
@@ -23,8 +21,6 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/portal-cidadao" element={<PortalCidadao />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/cadastro" element={<Cadastro />} />
           <Route path="/clientes/loginClientes" element={<LoginCli />} />
           <Route path="/clientes/cadastroClientes" element={<CadastroClientes />} />
           <Route path="/mapa" element={<FuncionarioMapa />} />
