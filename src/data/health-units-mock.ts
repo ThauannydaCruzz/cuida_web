@@ -200,6 +200,29 @@ export const healthUnits: HealthUnit[] = [
     ]
   },
   {
+    id: "ubs-nova-marilia",
+    name: "UBS Nova Marília",
+    type: "UBS",
+    address: "Av. Mem de Sá, 360",
+    coordinates: [-49.9550, -22.2089], // Approximate coordinates since not provided
+    phone: "(14) 3402-1241",
+    manager: "Dra. Rosa Lima",
+    status: "attention",
+    workingHours: "07:00 - 17:00",
+    services: ["Consultas", "Curativos", "Vacinas"],
+    medications: [
+      {
+        id: "med19",
+        name: "Dexametasona",
+        dosage: "4mg",
+        quantity: 30,
+        minStock: 40,
+        maxStock: 120,
+        status: "attention"
+      }
+    ]
+  },
+  {
     id: "ubs-planalto",
     name: "UBS Planalto",
     type: "UBS",
@@ -1301,15 +1324,29 @@ export const healthUnits: HealthUnit[] = [
         minStock: 20,
         maxStock: 80,
         status: "urgent"
-      },
+      }
+    ]
+  },
+  {
+    id: "farmacia-central",
+    name: "Farmácia Municipal Central",
+    type: "Farmácia",
+    address: "Rua Hidekichi Nomura, 170, Fragata",
+    coordinates: [-49.9450, -22.2150], // Approximate coordinates since not provided in your list
+    phone: "(14) 3402-3005",
+    manager: "Farm. Central Santos",
+    status: "healthy",
+    workingHours: "08:00 - 17:00",
+    services: ["Dispensação de Medicamentos", "Farmácia Municipal"],
+    medications: [
       {
-        id: "med71",
-        name: "Tacrolimus",
-        dosage: "1mg",
-        quantity: 8,
-        minStock: 15,
-        maxStock: 60,
-        status: "urgent"
+        id: "med74",
+        name: "Medicamentos Básicos",
+        dosage: "Variado",
+        quantity: 800,
+        minStock: 500,
+        maxStock: 1500,
+        status: "healthy"
       }
     ]
   },
