@@ -1346,27 +1346,3 @@ export const healthUnits: HealthUnit[] = [
     ]
   }
 ];
-  {
-    id: "farmacia-popular",
-    name: "Farmácia Popular do Brasil - Centro",
-    type: "Farmácia",
-    address: "Avenida Brasil, 184, Centro",
-    coordinates: [-49.9451, -22.2143], // Farmácia Popular
-    phone: "(14) 3402-3006",
-    manager: "Farm. Popular Costa",
-    status: "normal",
-    workingHours: "08:00 - 18:00",
-    services: ["Dispensação", "Programa Federal"],
-    medications: [
-      {
-        id: "med68",
-        name: "Estoque Federal",
-        dosage: "Variado",
-        quantity: 2800,
-        minStock: 2000,
-        maxStock: 5000,
-        status: "normal"
-      }
-    ]
-  }
-];
