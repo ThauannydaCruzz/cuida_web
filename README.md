@@ -7,15 +7,6 @@ Mapa interativo para localização de unidades de saúde e consulta de medicamen
 
 ---
 
-### 🖼️ Visualização do Projeto
-
-_É altamente recomendado que você tire um screenshot da tela principal do mapa e coloque aqui para que todos possam ver como ficou!_
-
-![Insira aqui um screenshot do seu projeto](https://raw.githubusercontent.com/ThauannydaCruzz/cuida_web/main/public/placeholder.svg) 
-_Substitua `public/placeholder.svg` pelo caminho da sua imagem após o upload._
-
----
-
 ## 📖 Sobre o Projeto
 
 O **Cuida Web** foi desenvolvido para centralizar e facilitar o acesso a informações vitais de saúde para os cidadãos de Marília, São Paulo. A plataforma oferece um mapa interativo onde é possível visualizar a localização de todas as Unidades Básicas de Saúde (UBS), Unidades de Pronto Atendimento (UPA) e farmácias da cidade, além de permitir a busca por medicamentos disponíveis em cada local.
@@ -55,7 +46,7 @@ Para rodar este projeto em sua máquina, siga os passos abaixo.
 
 ### Pré-requisitos
 
--   [Node.js](https://nodejs.org/en/) (versão 18 ou superior)
+-   [Node.js](https://nodejs.org/en/) 
 -   [Git](https://git-scm.com/)
 
 ### Instalação
