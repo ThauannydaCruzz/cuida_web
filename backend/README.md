@@ -1,6 +1,6 @@
-# CUIDA - Back-end de Autenticação e Cadastro
+# CUIDA - Back-end Web
 
-Este é o back-end do módulo de autenticação e cadastro do projeto CUIDA. Ele foi desenvolvido para gerenciar o acesso de funcionários à plataforma de gestão, oferecendo endpoints seguros para registro e login.
+Este é o back-end do projeto CUIDA, desenvolvido para a versão web da plataforma. Ele gerencia a autenticação e o cadastro tanto de funcionários quanto de cidadãos (pacientes), servindo como a API principal para a aplicação.
 
 ---
 
@@ -14,17 +14,13 @@ Este é o back-end do módulo de autenticação e cadastro do projeto CUIDA. Ele
 
 ## 📁 Estrutura do Projeto
 
-O código está organizado da seguinte forma para facilitar a manutenção e a integração:
-
-Sim, com certeza. Formatar como um README.md é a melhor maneira de documentar um projeto.
-
-Aqui está o texto que você pode copiar e colar diretamente em um novo arquivo chamado README.md na pasta backend.
+O back-end segue a seguinte estrutura, facilitando a organização e a integração:
 
 Markdown
 
-# CUIDA - Back-end de Autenticação e Cadastro
+# CUIDA - Back-end Web
 
-Este é o back-end do módulo de autenticação e cadastro do projeto CUIDA. Ele foi desenvolvido para gerenciar o acesso de funcionários à plataforma de gestão, oferecendo endpoints seguros para registro e login.
+Este é o back-end do projeto CUIDA, desenvolvido para a versão web da plataforma. Ele gerencia a autenticação e o cadastro tanto de funcionários quanto de cidadãos (pacientes), servindo como a API principal para a aplicação.
 
 ---
 
@@ -38,79 +34,103 @@ Este é o back-end do módulo de autenticação e cadastro do projeto CUIDA. Ele
 
 ## 📁 Estrutura do Projeto
 
-O código está organizado da seguinte forma para facilitar a manutenção e a integração:
-
+O back-end segue a seguinte estrutura, facilitando a organização e a integração:
 
 /backend
 ├─── src/
 │    ├─── controllers/
-│    │    └─── authController.js     # Contém a lógica principal das requisições.
+│    │    └─── authController.js     # Lógica de negócio para login/cadastro de funcionários.
+│    │    └─── publicController.js   # Lógica de negócio para login/cadastro de cidadãos.
 │    ├─── models/
-│    │    └─── User.js               # Define o modelo de usuário e a lógica de acesso aos dados.
+│    │    └─── funcionario.js        # Modelo de dados para funcionários.
+│    │    └─── cidadao.js            # Modelo de dados para cidadãos.
 │    ├─── routes/
-│    │    └─── authRoutes.js         # Define os endpoints da API (/cadastro, /login).
+│    │    └─── authRoutes.js         # Endpoints para funcionários.
+│    │    └─── publicRoutes.js       # Endpoints para cidadãos.
 │    ├─── db/
-│    │    └─── db.js                 # Simulação de um banco de dados em um arquivo JSON.
-│    │    └─── mock_db.json          # Arquivo de armazenamento de dados dos usuários (mock).
+│    │    └─── db.js                 # Lógica de persistência em arquivo JSON.
+│    │    └─── mock_db.json          # O "banco de dados" de mentira.
 │    └─── server.js                 # Ponto de entrada da aplicação.
-├─── .env                          # Variáveis de ambiente (PORTA, segredo JWT).
-├─── package.json                  # Lista de dependências e scripts do projeto.
+├─── .env                          # Variáveis de ambiente.
+├─── package.json                  # Dependências e scripts do projeto.
+└─── package-lock.json
 
 
-## ⚙️ Como Executar o Back-end
 
-1.  **Instale as dependências:**
-    ```sh
-    npm install
-    ```
+## ⚙️ Como Executar o Projeto
 
-2.  **Inicie o servidor de desenvolvimento:**
-    ```sh
-    npm run dev
-    ```
-    O servidor será iniciado na porta `3001` e reiniciará automaticamente a cada alteração nos arquivos.
+Para rodar o projeto completo, você precisa iniciar o back-end e o front-end em terminais separados.
+
+### 1. Iniciar o Back-end
+
+1.  Abra o terminal na pasta `backend`.
+2.  Instale as dependências com `npm install`.
+3.  Inicie o servidor com `npm run dev`.
+
+### 2. Iniciar o Front-end
+
+1.  Abra um **segundo terminal** na pasta raiz do projeto (fora de `backend`).
+2.  Instale as dependências com `npm install`.
+3.  Inicie a aplicação com `npm run dev`.
 
 ## 🎯 Endpoints da API
 
-A API expõe dois endpoints principais para autenticação:
+O back-end expõe os seguintes endpoints:
 
-### 1. `POST /api/auth/cadastro`
+### **Para Funcionários:**
+* **`POST /api/auth/cadastro`**
+    * **Descrição**: Cadastra um novo funcionário.
+    * **Corpo da Requisição**:
+        ```json
+        {
+          "nome": "string",
+          "email": "string",
+          "password": "string",
+          "matricula": "string",
+          "departamento": "string",
+          "cargo": "string"
+        }
+        ```
+* **`POST /api/auth/login`**
+    * **Descrição**: Autentica um funcionário.
+    * **Corpo da Requisição**:
+        ```json
+        {
+          "email": "string",
+          "password": "string"
+        }
+        ```
 
-* **Descrição**: Registra um novo funcionário no sistema.
-* **Corpo da Requisição (JSON):**
-    ```json
-    {
-      "nome": "string",
-      "email": "string",
-      "password": "string"
-    }
-    ```
-* **Respostas**:
-    * `201 Created`: Sucesso no cadastro.
-    * `400 Bad Request`: Campos obrigatórios ausentes.
-    * `409 Conflict`: E-mail já cadastrado.
-
-### 2. `POST /api/auth/login`
-
-* **Descrição**: Autentica um funcionário existente.
-* **Corpo da Requisição (JSON):**
-    ```json
-    {
-      "email": "string",
-      "password": "string"
-    }
-    ```
-* **Respostas**:
-    * `200 OK`: Login bem-sucedido. O corpo da resposta inclui um token JWT.
-    * `400 Bad Request`: E-mail ou senha incorretos.
-
-### 🔑 Autenticação (JWT)
-
-Após um cadastro ou login bem-sucedido, o back-end retorna um **JSON Web Token (JWT)**. Este token é a chave para acessar rotas protegidas. O front-end deve armazená-lo e enviá-lo no cabeçalho `Authorization` de futuras requisições para rotas que exigem autenticação.
-
-Formato do cabeçalho de autenticação:
-`Authorization: Bearer <seu_token_jwt_aqui>`
+### **Para Cidadãos:**
+* **`POST /api/publico/cadastro-cidadao`**
+    * **Descrição**: Cadastra um novo cidadão (paciente).
+    * **Corpo da Requisição**:
+        ```json
+        {
+          "nome": "string",
+          "idade": "string",
+          "endereco": "string",
+          "cpf": "string",
+          "rg": "string",
+          "email": "string",
+          "telefone": "string",
+          "carteirinha": "string",
+          "tipoSanguineo": "string",
+          "medicamentosRestritos": "string",
+          "diagnosticos": "string",
+          "password": "string"
+        }
+        ```
+* **`POST /api/publico/login-cidadao`**
+    * **Descrição**: Autentica um cidadão (paciente).
+    * **Corpo da Requisição**:
+        ```json
+        {
+          "email": "string",
+          "password": "string"
+        }
+        ```
 
 ---
 
-Este back-end pode ser testado de forma independente com ferramentas como `cURL`, Postman ou Insomnia antes da integração com o front-end.
+O back-end está pronto para ser testado e integrado com a aplicação web.
