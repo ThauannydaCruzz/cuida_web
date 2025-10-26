@@ -29,7 +29,7 @@ export const healthUnits: HealthUnit[] = allUnitsData.map((unit, index) => {
         .slice(0, Math.floor(Math.random() * 4) + 2);
 
     return {
-        id: `unit-${index + 1}`,
+        id: `unit-${unit.id}`,
         name: unit.name,
         address: unit.address,
         coordinates: [unit.lat, unit.lon],

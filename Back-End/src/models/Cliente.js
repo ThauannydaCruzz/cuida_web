@@ -8,15 +8,15 @@ class Cliente {
     const senha_hash = await bcrypt.hash(data.password, salt);
 
     const { data: novoCliente, error } = await supabase
-      .from('paciente')
+      .from('cliente')
       .insert({
         nome_completo: data.nome,
         idade: data.idade,
-        endereco_completo: data.endereco,
         cpf: data.cpf,
         rg: data.rg,
         email: data.email,
         telefone: data.telefone,
+        endereco_completo: data.endereco,
         carteirinha_sus: data.carteirinha,
         tipo_sanguineo: data.tipoSanguineo,
         medicamentos_restritos: data.medicamentosRestritos,
@@ -36,23 +36,16 @@ class Cliente {
 
   static async loginCliente(data) {
     const { data: cliente, error } = await supabase
-      .from('paciente')
+      .from('cliente')
       .select('*')
       .eq('cpf', data.cpf)
       .single();
 
-    if (error || !cliente) {
-      return null;
-    }
+    if (error || !cliente) { return null; }
 
-    const senhaCorreta = await bcrypt.compare(
-      data.password,
-      cliente.senha_hash
-    );
+    const senhaCorreta = await bcrypt.compare( data.password, cliente.senha_hash );
 
-    if (!senhaCorreta) {
-      return null;
-    }
+    if (!senhaCorreta) { return null; }
 
     delete cliente.senha_hash;
     return cliente;
@@ -62,10 +55,11 @@ class Cliente {
     const { data, error } = await supabase
       .from('unidade')
       .select(`
-        name:nome_unidade,
-        address:endereco,
-        lat:latitude,
-        lon:longitude
+        id:      id_unidade,
+        name:    nome_unidade,
+        address: endereco,
+        lat:     latitude,
+        lon:     longitude
       `);
 
     if (error) {
