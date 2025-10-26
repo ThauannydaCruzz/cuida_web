@@ -4,7 +4,7 @@ const SECRET = process.env.JWT_SECRET;
 
 exports.register = async (req, res) => {
   try {
-    const user = await Cliente.cratedCliente(req.body);
+    const user = await Cliente.createCliente(req.body);
     res.status(201).json(user);
   } catch (err) {
     if (err.code === '23505') {

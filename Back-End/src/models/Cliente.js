@@ -1,59 +1,73 @@
-const pool = require("../db/database");
+// Importa o cliente Supabase (do seu arquivo /db/database.js)
+const supabase = require('../db/database');
 const bcrypt = require('bcryptjs');
 
 class Cliente {
-  static async cratedCliente(data) {
-    const query =
-      `INSERT INTO cliente (
-      nome_completo,
-      idade,
-      endereco_completo,
-      cpf,
-      rg,
-      email,
-      telefone,
-      carteirinha_sus,
-      tipo_sanguineo,
-      medicamentos_restritos,
-      problemas_saude,
-      senha_hash
-    ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12)
-      RETURNING *`;
+  static async createCliente(data) {
+    const salt = await bcrypt.genSalt(10);
+    const senha_hash = await bcrypt.hash(data.password, salt);
 
-    const values = [
-      data.nome,
-      data.idade,
-      data.endereco,
-      data.cpf,
-      data.rg,
-      data.email,
-      data.telefone,
-      data.carteirinha,
-      data.tipoSanguineo,
-      data.medicamentosRestritos,
-      data.diagnosticos,
-      data.password,
-    ];
+    const { data: novoCliente, error } = await supabase
+      .from('cliente')
+      .insert({
+        nome_completo: data.nome,
+        idade: data.idade,
+        cpf: data.cpf,
+        rg: data.rg,
+        email: data.email,
+        telefone: data.telefone,
+        endereco_completo: data.endereco,
+        carteirinha_sus: data.carteirinha,
+        tipo_sanguineo: data.tipoSanguineo,
+        medicamentos_restritos: data.medicamentosRestritos,
+        problemas_saude: data.diagnosticos,
+        senha_hash: senha_hash
+      })
+      .select()
+      .single();
 
-    const result = await pool.query(query, values);
-    return result.rows[0];
-  };
+    if (error) {
+      console.error('Erro ao criar cliente:', error.message);
+      return null;
+    }
+
+    return novoCliente;
+  }
 
   static async loginCliente(data) {
-    const query = "SELECT * FROM cliente WHERE cpf = $1 AND senha_hash = $2";
-    const values = [
-      data.cpf,
-      data.password
-    ];
-    const result = await pool.query(query, values);
-    return result.rows[0];
+    const { data: cliente, error } = await supabase
+      .from('cliente')
+      .select('*')
+      .eq('cpf', data.cpf)
+      .single();
+
+    if (error || !cliente) { return null; }
+
+    const senhaCorreta = await bcrypt.compare( data.password, cliente.senha_hash );
+
+    if (!senhaCorreta) { return null; }
+
+    delete cliente.senha_hash;
+    return cliente;
   }
 
   static async getUnidade() {
-    const result = await pool.query("SELECT nome_unidade AS name, endereco AS address, CAST(latitude AS FLOAT) AS lat, CAST(longitude AS FLOAT) AS lon FROM unidade");
+    const { data, error } = await supabase
+      .from('unidade')
+      .select(`
+        id:      id_unidade,
+        name:    nome_unidade,
+        address: endereco,
+        lat:     latitude,
+        lon:     longitude
+      `);
 
-    return result.rows;
+    if (error) {
+      return [];
+    }
+
+    return data;
   }
-
 }
+
 module.exports = Cliente;
