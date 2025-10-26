@@ -1,14 +1,15 @@
 require("dotenv").config();
-const { Pool } = require("pg");
+const { createClient } = require('@supabase/supabase-js');
 
-const pool = new Pool({
-  user: process.env.DB_USER,
-  host: process.env.DB_HOST,
-  database: process.env.DB_DATABASE,
-  password: process.env.DB_PASS,
-  port: process.env.DB_PORT,
-});
+const supabaseUrl = process.env.SUPABASE_URL;
+const supabaseKey = process.env.SUPABASE_KEY;
 
-pool.on("connect", () => console.log("PostgreSQL - Connect"));
+if (!supabaseUrl || !supabaseKey) {
+  console.error("Erro: Variáveis de ambiente SUPABASE_URL e SUPABASE_KEY não estão definidas.");
+  console.error("Verifique se você tem um arquivo .env e se o dotenv está funcionando.");
+  process.exit(1);
+}
 
-module.exports = pool;
+const supabase = createClient(supabaseUrl, supabaseKey);
+
+module.exports = supabase;
