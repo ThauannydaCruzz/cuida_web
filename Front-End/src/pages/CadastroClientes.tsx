@@ -24,7 +24,6 @@ export default function CadastroClientes() {
     confirmPassword: "",
     acceptTerms: false,
   });
-  const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const navigate = useNavigate();
@@ -45,31 +44,6 @@ export default function CadastroClientes() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
-    const requiredFields = ["nome", "idade", "endereco", "cpf", "rg", "email", "telefone", "password"];
-    for (const field of requiredFields) {
-      if (!formData[field as keyof typeof formData]) {
-        alert("Preencha todos os campos obrigatórios.");
-        return;
-      }
-    }
-
-    if (formData.password !== formData.confirmPassword) {
-      alert("As senhas não coincidem");
-      return;
-    }
-
-    if (!formData.acceptTerms) {
-      alert("Você deve aceitar os termos de uso.");
-      return;
-    }
-
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      alert("Cadastro realizado com sucesso!");
-      navigate("/clientes/loginClientes"); // Volta para login
-    }, 1500);
   };
 
   return (
@@ -325,29 +299,25 @@ export default function CadastroClientes() {
                 />
                 <Label htmlFor="acceptTerms" className="text-sm text-foreground leading-relaxed cursor-pointer">
                   Aceito os{" "}
-                  <Link to="/termos-de-uso" className="text-secondary hover:text-secondary/80 font-semibold underline decoration-2 underline-offset-2">
+                  <a 
+                    href="/termos-de-uso.txt" 
+                    download="Termos_de_Uso_Portal_Cidadao.txt"
+                    className="text-secondary hover:text-secondary/80 font-semibold underline decoration-2 underline-offset-2"
+                  >
                     termos de uso e política de privacidade
-                  </Link>{" "}
+                  </a>{" "}
                   do Portal do Cidadão
                 </Label>
               </div>
 
               <Button 
                 type="submit" 
-                className="w-full bg-gradient-secondary text-white hover:opacity-90 h-14 font-bold rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] text-base" 
-                disabled={loading}
+                className="w-full bg-gradient-secondary text-white hover:opacity-90 h-14 font-bold rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] text-base"
               >
-                {loading ? (
-                  <div className="flex items-center gap-3">
-                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
-                    Cadastrando...
-                  </div>
-                ) : (
-                  <div className="flex items-center gap-2">
-                    Criar Conta
-                    <Users className="w-5 h-5" />
-                  </div>
-                )}
+                <div className="flex items-center gap-2">
+                  Criar Conta
+                  <Users className="w-5 h-5" />
+                </div>
               </Button>
             </form>
 
