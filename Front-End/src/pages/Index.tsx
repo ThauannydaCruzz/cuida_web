@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Heart, Users, Activity, Shield, MapPin, Clock, Stethoscope, Bot, TrendingUp, Award } from "lucide-react";
 import roboticHand from "@/assets/robotic-hand-medical.png";
+import logoSecretaria from "@/assets/logo-secretaria-saude-marilia.png";
 const HomePage = () => {
   return <div className="min-h-screen bg-gradient-to-b from-background to-surface">
       {/* Navigation */}
@@ -16,10 +17,11 @@ const HomePage = () => {
               <div className="text-xl font-bold text-foreground font-poppins">CUIDA</div>
               <div className="text-xs text-muted-foreground mx-2">|</div>
               <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                <div className="w-6 h-6 bg-secondary/10 rounded flex items-center justify-center">
-                  <Shield className="w-3 h-3 text-secondary" />
-                </div>
-                <span>Secretaria de Saúde de Marília</span>
+                <img 
+                  src={logoSecretaria} 
+                  alt="Secretaria de Saúde de Marília" 
+                  className="h-8 w-auto object-contain"
+                />
               </div>
             </div>
             
@@ -60,9 +62,9 @@ const HomePage = () => {
               </div>
               
               <p className="text-muted-foreground text-lg leading-relaxed max-w-lg">
-                Transforme a gestão de medicamentos com IA. Diagnósticos de estoque, 
-                controle automatizado e transparência inovadora desenvolvida pelo CUIDA.
-                Explore o futuro da medicina. Empodere profissionais de saúde e cidadãos.
+                Transforme a gestão de medicamentos com o CUIDA. Tenha controle de estoque em tempo real, 
+                logística otimizada entre unidades e transparência total para o cidadão. Conectamos gestores 
+                de saúde e cidadãos de Marília.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 pt-6">
@@ -73,10 +75,7 @@ const HomePage = () => {
                   </Button>
                 </Link>
                 <Link to="/login">
-                  <Button variant="outline" size="lg" className="border-2 border-primary/30 text-primary hover:bg-primary/10 rounded-xl px-8 py-4 text-base font-medium w-full sm:w-auto transition-all duration-300">
-                    <Shield className="w-5 h-5 mr-3" />
-                    Área dos Gestores
-                  </Button>
+                  
                 </Link>
               </div>
             </div>
@@ -187,9 +186,9 @@ const HomePage = () => {
                 <div className="w-20 h-20 bg-gradient-to-br from-accent/20 to-accent/10 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 border border-accent/20">
                   <Bot className="w-9 h-9 text-accent" />
                 </div>
-                <h3 className="text-2xl font-bold mb-4 font-poppins text-foreground">IA Avançada</h3>
+                <h3 className="text-2xl font-bold mb-4 font-poppins text-foreground">Dados Centralizados</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  Inteligência artificial para previsão de demanda, alertas automáticos e otimização de recursos.
+                  Dashboards consolidados para tomada de decisão, agendamento de entregas entre unidades e documentação 100% digital para auditoria.
                 </p>
                 <div className="flex items-center justify-center gap-2 mt-6 text-accent">
                   <Bot className="w-4 h-4" />
