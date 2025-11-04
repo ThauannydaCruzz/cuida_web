@@ -6,7 +6,6 @@ import roboticHand from "@/assets/robotic-hand-medical.png";
 import logoSecretaria from "@/assets/logo-secretaria-saude-marilia.png";
 const HomePage = () => {
   return <div className="min-h-screen bg-gradient-to-b from-background to-surface">
-      {/* Navigation */}
       <nav className="relative z-10 bg-background/95 backdrop-blur-md border-b border-border/50 shadow-sm">
         <div className="max-w-7xl mx-auto px-8 py-6">
           <div className="flex items-center justify-between">
@@ -26,12 +25,6 @@ const HomePage = () => {
             </div>
             
             <div className="flex items-center space-x-3">
-              <Link to="/clientes/loginClientes">
-                <Button className="bg-gradient-primary text-white hover:opacity-90 rounded-xl px-6 py-3 text-sm font-medium transition-all duration-300 shadow-lg hover:shadow-xl">
-                  <Users className="w-4 h-4 mr-2" />
-                  Portal Cidadão
-                </Button>
-              </Link>
               <Link to="/login">
                 
               </Link>
@@ -40,12 +33,10 @@ const HomePage = () => {
         </div>
       </nav>
 
-      {/* Hero Section */}
       <section className="relative py-20">
         <div className="max-w-7xl mx-auto px-8">
           <div className="grid lg:grid-cols-2 gap-20 items-center">
             
-            {/* Left Side - Content */}
             <div className="space-y-8">
               <div className="space-y-6">
                 <div className="inline-flex items-center gap-2 bg-primary/10 text-primary font-medium px-4 py-2 rounded-full text-sm border border-primary/20">
@@ -80,14 +71,11 @@ const HomePage = () => {
               </div>
             </div>
 
-            {/* Right Side - Robot illustration with floating cards */}
             <div className="relative">
-              {/* Main robot image */}
               <div className="relative z-10 flex justify-center">
                 
               </div>
 
-              {/* Floating cards */}
               <Card className="absolute top-8 right-0 bg-card/80 backdrop-blur-sm shadow-2xl rounded-2xl p-5 w-56 animate-float border border-primary/10">
                 <CardContent className="p-0">
                   <div className="flex items-center gap-4">
@@ -136,7 +124,6 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Features Section */}
       <section className="py-20 bg-surface/50">
         <div className="max-w-7xl mx-auto px-8">
           <div className="text-center mb-16">

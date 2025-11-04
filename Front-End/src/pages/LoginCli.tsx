@@ -11,10 +11,17 @@ export default function LoginCli() {
     cpf: "",
     password: ""
   });
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-  
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    setIsLoading(true);
+
+    // Simula autenticação
+    setTimeout(() => {
+      setIsLoading(false);
+      navigate("/PortalCidadao"); // Redireciona para o mapa
+    }, 1000);
   };
   return <div className="min-h-screen bg-gradient-to-br from-primary/5 via-surface to-secondary/5 flex items-center justify-center p-4 relative overflow-hidden">
       {/* Background decorativo */}
@@ -98,12 +105,20 @@ export default function LoginCli() {
 
               <Button 
                 type="submit" 
+                disabled={isLoading} 
                 className="w-full bg-gradient-primary text-white hover:opacity-90 h-14 font-bold rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] mt-8 text-base"
               >
-                <div className="flex items-center gap-2">
-                  Entrar no Portal
-                  <Users className="w-5 h-5" />
-                </div>
+                {isLoading ? (
+                  <div className="flex items-center gap-3">
+                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                    Entrando...
+                  </div>
+                ) : (
+                  <div className="flex items-center gap-2">
+                    Entrar no Portal
+                    <Users className="w-5 h-5" />
+                  </div>
+                )}
               </Button>
             </form>
 

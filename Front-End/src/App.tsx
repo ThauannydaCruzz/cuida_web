@@ -3,11 +3,15 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+
 import Index from "./pages/Index";
 import PortalCidadao from "./pages/PortalCidadao";
 import NotFound from "./pages/NotFound";
 import LoginCli from "./pages/LoginCli";
+import Profile from "./pages/Profile";
+import Mapa from "./components/HealthMap";
 import CadastroClientes from "./pages/CadastroClientes";
+import TermosDeUso from "./pages/TermosDeUso"; // ✅ import adicionado
 
 const queryClient = new QueryClient();
 
@@ -19,9 +23,12 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/mapa" element={<PortalCidadao />} />
+          <Route path="/PortalCidadao" element={<PortalCidadao />} />
           <Route path="/clientes/loginClientes" element={<LoginCli />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/mapa" element={<Mapa />} />
           <Route path="/clientes/cadastroClientes" element={<CadastroClientes />} />
+          <Route path="/termos-de-uso" element={<TermosDeUso />} /> {/* ✅ nova rota */}
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
