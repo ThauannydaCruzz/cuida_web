@@ -28,14 +28,3 @@ exports.login = async (req, res) => {
     res.status(500).json({ error: "Erro ao logar" });
   }
 };
-
-
-exports.unidade = async (req, res) => {
-  try {
-    const data = await Cliente.getUnidade();
-    res.status(200).json(data);
-  } catch (err) {
-    console.error("Erro ao buscar unidades:", err);
-    res.status(500).json({ error: "Erro ao buscar unidades" });
-  }
-};

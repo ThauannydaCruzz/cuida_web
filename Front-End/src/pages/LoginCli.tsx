@@ -1,27 +1,27 @@
 import { useState } from "react";
+import { login } from "../services/auth";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Users, Eye, EyeOff, ArrowLeft, Heart } from "lucide-react";
 import { useNavigate, Link } from "react-router-dom";
+
 export default function LoginCli() {
   const [showPassword, setShowPassword] = useState(false);
-  const [formData, setFormData] = useState({
-    cpf: "",
-    password: ""
-  });
+  const [formData, setFormData] = useState({ cpf: "", password: "" });
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsLoading(true);
-
-    // Simula autenticação
-    setTimeout(() => {
-      setIsLoading(false);
-      navigate("/PortalCidadao"); // Redireciona para o mapa
-    }, 1000);
+    
+    try {
+      const res = await login(formData);
+      localStorage.setItem("token", res.data.token);
+      navigate("/PortalCidadao");
+    } catch {
+      alert("Credenciais inválidas!");
+    }
   };
   return <div className="min-h-screen bg-gradient-to-br from-primary/5 via-surface to-secondary/5 flex items-center justify-center p-4 relative overflow-hidden">
       {/* Background decorativo */}

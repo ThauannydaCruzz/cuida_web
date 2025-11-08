@@ -1,4 +1,5 @@
 import { Link, useLocation, useNavigate } from "react-router-dom"; 
+import { logout } from "../services/auth";
 import { User, Map, Pill, Home, LogOut, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -20,6 +21,7 @@ const Sidebar: React.FC<SidebarProps> = ({ userName = "Usuário", userPhoto }) =
     { title: "Consultar Medicamentos", icon: Pill, path: "/mapa" },
   ];
    const handleLogout = () => {
+    logout();
     navigate("/"); 
   };
 

@@ -11,7 +11,8 @@ import LoginCli from "./pages/LoginCli";
 import Profile from "./pages/Profile";
 import Mapa from "./components/HealthMap";
 import CadastroClientes from "./pages/CadastroClientes";
-import TermosDeUso from "./pages/TermosDeUso"; // ✅ import adicionado
+import TermosDeUso from "./pages/TermosDeUso";
+import PrivateRoute from "./components/PrivateRoute";
 
 const queryClient = new QueryClient();
 
@@ -23,11 +24,11 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/PortalCidadao" element={<PortalCidadao />} />
-          <Route path="/clientes/loginClientes" element={<LoginCli />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/mapa" element={<Mapa />} />
           <Route path="/clientes/cadastroClientes" element={<CadastroClientes />} />
+          <Route path="/clientes/loginClientes" element={<LoginCli />} />
+          <Route path="/PortalCidadao" element={<PrivateRoute><PortalCidadao /></PrivateRoute>} />
+          <Route path="/mapa" element={ <PrivateRoute><Mapa /></PrivateRoute>} />
+          <Route path="/profile" element={ <PrivateRoute><Profile /></PrivateRoute>} />
           <Route path="/termos-de-uso" element={<TermosDeUso />} /> {/* ✅ nova rota */}
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

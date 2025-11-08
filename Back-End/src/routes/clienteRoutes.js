@@ -9,6 +9,4 @@ router.get("/perfil", autenticarToken, (req, res) => {
   res.json({ message: `Bem-vindo, usuário ${req.user.id}` });
 });
 
-router.get("/get-unidades", controller.unidade);
-
 module.exports = router;

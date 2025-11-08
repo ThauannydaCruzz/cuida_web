@@ -43,30 +43,12 @@ class Cliente {
 
     if (error || !cliente) { return null; }
 
-    const senhaCorreta = await bcrypt.compare( data.password, cliente.senha_hash );
+    const senhaCorreta = await bcrypt.compare(data.password, cliente.senha_hash);
 
     if (!senhaCorreta) { return null; }
 
     delete cliente.senha_hash;
     return cliente;
-  }
-
-  static async getUnidade() {
-    const { data, error } = await supabase
-      .from('unidade')
-      .select(`
-        id:      id_unidade,
-        name:    nome_unidade,
-        address: endereco,
-        lat:     latitude,
-        lon:     longitude
-      `);
-
-    if (error) {
-      return [];
-    }
-
-    return data;
   }
 }
 

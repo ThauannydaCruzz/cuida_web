@@ -18,8 +18,8 @@ interface MedicationDetailProps {
         name: string;
         dosage: string;
         quantity: number;
+        tipo: string;
         imageUrl: string;
-        type: string;
         description: string;
         requiresPrescription: boolean;
         viewingCount: number;
@@ -63,9 +63,11 @@ const getStockLevel = (quantity: number) => {
     return { label: 'Estoque Médio', variant: 'secondary' as const };
 };
 
+   
 export default function ItemDetailSidebarMap({ medication, onBack, onRequestMore, selectedUnit, unitViewers }: MedicationDetailProps) {
-    const { id, name, dosage, quantity, imageUrl, type, description, requiresPrescription, viewingCount } = medication;
+    const { id, name, dosage, quantity, tipo, imageUrl, description, requiresPrescription, viewingCount } = medication;
     const stock = getStockLevel(quantity);
+    console.log(medication);
     return (
         <div>
             <div className="relative ml-7 mt-7">
@@ -106,11 +108,11 @@ export default function ItemDetailSidebarMap({ medication, onBack, onRequestMore
                 <Card className="p-4">
                     <div className="flex items-center justify-center gap-3">
                         <div className="p-3 bg-primary/10 rounded-full">
-                            {getMedicationIcon(type)}
+                            {getMedicationIcon(tipo)}
                         </div>
                         <div>
                             <p className="text-sm text-muted-foreground">Tipo de Medicamento</p>
-                            <p className="font-semibold text-foreground">{getMedicationTypeLabel(type)}</p>
+                            <p className="font-semibold text-foreground">{tipo}</p>
                         </div>
                     </div>
                 </Card>

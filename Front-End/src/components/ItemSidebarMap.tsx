@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Heart } from "lucide-react";
 
-export default function ItemSidebarMap({ id, name, dosage, quantity, interests, handleMedicationInterest, handleDetail }: any) {
+export default function ItemSidebarMap({ id, name, dosage, tipo, description, quantity, interests, handleMedicationInterest, handleDetail }: any) {
 
     return (
         <div key={id}         
@@ -14,7 +14,7 @@ export default function ItemSidebarMap({ id, name, dosage, quantity, interests, 
             }
             onClick={ (e) => {
                 e.stopPropagation();
-                handleDetail({ data: { id, name, dosage, quantity, interests } });
+                handleDetail({ data: { id, name, dosage, tipo, description, quantity, interests } });
             } }
         >
             

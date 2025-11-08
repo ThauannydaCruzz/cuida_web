@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { register } from "../services/auth";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -33,7 +34,7 @@ export default function CadastroClientes() {
     let { id, value, checked, type } = e.target;
 
     if (id === "cpf" || id === "telefone") {
-      value = value.replace(/\D/g, "");
+      value = value.replace(/\D/g, ""); // Remove tudo que não é número
     }
 
     if (type === "checkbox") {
@@ -43,9 +44,10 @@ export default function CadastroClientes() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    // Validação
     const requiredFields = ["nome", "idade", "endereco", "cpf", "rg", "email", "telefone", "password"];
     for (const field of requiredFields) {
       if (!formData[field as keyof typeof formData]) {
@@ -55,7 +57,7 @@ export default function CadastroClientes() {
     }
 
     if (formData.password !== formData.confirmPassword) {
-      alert("As senhas não coincidem");
+      alert("As senhas não coincidem.");
       return;
     }
 
@@ -64,12 +66,15 @@ export default function CadastroClientes() {
       return;
     }
 
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      alert("Cadastro realizado com sucesso!");
-      navigate("/clientes/loginClientes"); // Volta para login
-    }, 1500);
+    try {
+      await register(formData);
+      navigate("/clientes/loginClientes");
+
+      alert("Conta criada com sucesso!");
+    } catch (err) {
+      console.error(err);
+      alert(err.response.data.message);
+    } 
   };
 
   return (

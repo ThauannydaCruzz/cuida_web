@@ -33,7 +33,7 @@ export default function SidebarMap({ selectedUnit, mapInstanceRef, setSelectedUn
         dosage: "",
         quantity: 0,
         imageUrl: "",
-        type: 'pill',
+        tipo: 'pill',
         description: "",
         requiresPrescription: false,
         viewingCount: 0
@@ -113,7 +113,9 @@ export default function SidebarMap({ selectedUnit, mapInstanceRef, setSelectedUn
                                 name={med.name}
                                 dosage={med.dosage}
                                 quantity={med.quantity}
+                                tipo={med.tipo}
                                 interests={interests}
+                                description={med.description}
                                 handleMedicationInterest={handleMedicationInterest}
                                 handleDetail={handleDetailMenu}
                             />
