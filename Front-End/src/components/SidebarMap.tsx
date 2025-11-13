@@ -45,7 +45,7 @@ export default function SidebarMap({ selectedUnit, mapInstanceRef, setSelectedUn
     }
 
     return (
-        <div className="w-full md:w-1/2 lg:w-2/5 h-1/2 md:h-full bg-background border-b md:border-r md:border-b-0 border-border z-[1000] overflow-y-hidden fixed bottom-0 md:static">
+        <div className="w-full md:w-1/2 lg:w-2/5 bg-background border-b md:border-r md:border-b-0 border-border z-[1000] fixed bottom-0 md:static h-[50vh] md:h-full overflow-y-auto">
             { hiddenDetailMenu ? (
                 <ItemDetailSidebarMap 
                     medication={selectedItemDetail} 
@@ -62,7 +62,7 @@ export default function SidebarMap({ selectedUnit, mapInstanceRef, setSelectedUn
                         <div className="flex items-center gap-1 md:gap-2 flex-wrap">
                             <Badge variant="outline" className="text-xs border-primary/30 bg-primary/5">
                                 <Eye className="w-3 h-3 mr-1" />
-                                {unitViewers[selectedUnit.id] || 0} visualizando esta unidade
+                                {1} visualizando esta unidade
                             </Badge>
                         </div>
                     </div>

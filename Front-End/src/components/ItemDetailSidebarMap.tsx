@@ -1,3 +1,4 @@
+import { useState } from "react"; // Importação adicionada
 import { 
     Users, 
     Pill, 
@@ -6,7 +7,9 @@ import {
     Package,
     ArrowLeft,
     FileText,
-    Eye
+    Eye,
+    CheckCircle, // Ícone adicionado
+    Clock // Ícone adicionado
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -67,7 +70,17 @@ const getStockLevel = (quantity: number) => {
 export default function ItemDetailSidebarMap({ medication, onBack, onRequestMore, selectedUnit, unitViewers }: MedicationDetailProps) {
     const { id, name, dosage, quantity, tipo, imageUrl, description, requiresPrescription, viewingCount } = medication;
     const stock = getStockLevel(quantity);
-    console.log(medication);
+    
+    // Estado para controlar se a solicitação foi feita
+    const [isRequested, setIsRequested] = useState(false);
+
+    const handleRequest = () => {
+        if (onRequestMore) {
+            onRequestMore(id);
+        }
+        setIsRequested(true);
+    };
+
     return (
         <div>
             <div className="relative ml-7 mt-7">
@@ -75,7 +88,7 @@ export default function ItemDetailSidebarMap({ medication, onBack, onRequestMore
                 <div className="flex items-center gap-1 md:gap-2 flex-wrap">
                     <Badge variant="outline" className="text-xs border-primary/30 bg-primary/5">
                         <Eye className="w-3 h-3 mr-1" />
-                        {unitViewers[selectedUnit.id] || 0} visualizando este medicamento
+                        {1} visualizando este medicamento
                     </Badge>
                 </div>
                 <Button
@@ -104,7 +117,6 @@ export default function ItemDetailSidebarMap({ medication, onBack, onRequestMore
                     </div>
                 </div>
 
-                {/* Tipo de medicamento */}
                 <Card className="p-4">
                     <div className="flex items-center justify-center gap-3">
                         <div className="p-3 bg-primary/10 rounded-full">
@@ -117,7 +129,6 @@ export default function ItemDetailSidebarMap({ medication, onBack, onRequestMore
                     </div>
                 </Card>
 
-                {/* Informações de estoque */}
                 <Card className="p-4">
                     <div className="flex items-center justify-between mb-2">
                         <div className="flex items-center gap-2 text-muted-foreground">
@@ -133,25 +144,42 @@ export default function ItemDetailSidebarMap({ medication, onBack, onRequestMore
                         <span className="text-lg text-muted-foreground ml-2">unidades</span>
                     </div>
                     
-                    {/* Botão de solicitar - apenas se estoque baixo */}
                     {quantity <= 15 && (
                         <div className="mt-4 pt-4 border-t border-border">
-                            <Button 
-                                variant="destructive" 
-                                className="w-full gap-2"
-                                onClick={() => onRequestMore?.(id)}
-                            >
-                                <AlertTriangle className="h-4 w-4" />
-                                Solicitar Mais Medicamentos
-                            </Button>
-                            <p className="text-xs text-center text-muted-foreground mt-2">
-                                O estoque está baixo. Solicite reposição para esta unidade.
-                            </p>
+                            {!isRequested ? (
+                                // ESTADO 1: Botão visível (Ainda não solicitado)
+                                <>
+                                    <Button 
+                                        variant="destructive" 
+                                        className="w-full gap-2"
+                                        onClick={handleRequest}
+                                    >
+                                        <AlertTriangle className="h-4 w-4" />
+                                        Solicitar Mais Medicamentos
+                                    </Button>
+                                    <p className="text-xs text-center text-muted-foreground mt-2">
+                                        O estoque está baixo. Solicite reposição para esta unidade.
+                                    </p>
+                                </>
+                            ) : (
+                                // ESTADO 2: Mensagem de sucesso (Já solicitado)
+                                <div className="bg-green-50 border border-green-200 dark:bg-green-900/20 dark:border-green-800 rounded-lg p-4 animate-in fade-in zoom-in duration-300">
+                                    <div className="flex flex-col items-center text-center gap-2">
+                                        <div className="flex items-center gap-2 text-green-600 dark:text-green-400 font-bold text-lg">
+                                            <CheckCircle className="h-6 w-6" />
+                                            <span>Solicitação Enviada!</span>
+                                        </div>
+                                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                                            <Clock className="h-4 w-4" />
+                                            <span>Aguarde <strong>3 dias úteis</strong> para o reabastecimento.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
                         </div>
                     )}
                 </Card>
 
-                {/* Aviso de prescrição */}
                 {requiresPrescription && (
                     <Card className="border-l-4 border-l-warning bg-warning/5 p-4">
                         <div className="flex gap-3">
@@ -176,7 +204,6 @@ export default function ItemDetailSidebarMap({ medication, onBack, onRequestMore
                     </Card>
                 )}
 
-                {/* Descrição detalhada */}
                 <Card className="p-5">
                     <h3 className="font-bold text-lg text-foreground mb-3 flex items-center gap-2">
                         <Package className="h-5 w-5 text-primary" />
